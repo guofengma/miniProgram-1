@@ -1,0 +1,49 @@
+.list-table{
+  font-size: 26rpx;
+}
+.table-head{
+  position: absolute;
+  top: 0;left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 20rpx;
+  background-color: #eaeaea;
+}
+.th,.td{
+  width: 22%;
+  text-align: center;
+}
+/* .th:last-child,.td:last-child{
+  width: 25%;
+} */
+.th.lg,.td.lg{
+  width: 30%;
+  
+}
+.table-body{
+  margin-top: 82rpx;
+   
+}
+.tr{
+  padding: 30rpx 20rpx;
+  border-bottom: 2rpx solid #eaeaea;
+  position: absolute;
+  z-index: 500;
+  font-size: 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.float-btn-box{
+  position: fixed;
+  bottom: 70rpx;
+  right: 38rpx;
+  z-index: 5000;
+}
+.float-btn{
+  width: 150rpx;
+  height: 150rpx;
+}
+.formId-btn{
+  width: 750rpx;
+  height: 104rpx;
+}

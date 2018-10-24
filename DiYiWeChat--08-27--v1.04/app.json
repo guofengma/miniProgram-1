@@ -1,0 +1,39 @@
+{
+  "pages":[
+    
+    "pages/login/login",
+    "pages/menu/menu",
+    "pages/message/message",
+    "pages/contractFollow/contractFollow",
+    "pages/user/user",
+    "pages/changePsd/changePsd",
+    "pages/warehouseIn/warehouseIn",
+    "pages/warehouseOut/warehouseOut",
+    "pages/success/success",
+    "pages/orderTracking/orderTrackingDetail/orderTrackingDetail",
+    "pages/orderTracking/orderTrackingList/orderTrackingList",
+    "pages/orderFollow/orderDetail/orderDetail",
+    "pages/orderFollow/progressDetail/progressDetail",
+    "pages/orderFollow/addProgress/addProgress",
+    "pages/orderFollow/orderList/orderList",
+    "pages/inventory/inventory",
+    "pages/orderFollow/addVat/addVat",
+    "pages/contractTracking/contractTracking",
+    "pages/orderFollow/checkForm/checkForm",
+    "pages/contractFollowBystaff/contractFollowBystaff",
+    "pages/orderList_search/orderList_search",
+    
+    
+    
+
+    "pages/basic/basic",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "缔衣纺织",
+    "navigationBarTextStyle":"black"
+  }
+}

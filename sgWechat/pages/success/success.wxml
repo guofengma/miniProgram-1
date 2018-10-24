@@ -1,0 +1,29 @@
+<view class="section"> 
+  <view class='icon-box'><image src='../../images/ok.png' class='success-icon'></image></view>
+   <view class='success-title'>{{value.label}}成功</view>
+
+   <view wx:if="{{value.label=='盘库'}}">
+   <block wx:for="{{value.warehouse}}" wx:key="">
+      <view>
+        <text>原料：{{item.materialNum}}，</text>
+        <text>数量：{{item.count}}{{value.unit}}</text>
+      </view>
+    </block>
+    <text>从货架：{{value.shelfName}}</text>
+    <text>盘库到</text>
+    <text>货架：{{value.inShelfName}}</text>
+     
+    <view class='finished-time'>完成时间:{{time}}</view>
+   </view>
+   
+   <view wx:else>
+    <text>{{value.numlabel}}：{{value.num}}</text>
+    <block wx:for="{{value.warehouse}}" wx:key="">
+      <view>
+        <text>{{value.label}}货架：{{item.placeName}}，</text>
+        <text>{{value.label}}数量：{{item.count}}{{value.unit}}</text>
+      </view>
+    </block>
+    <view class='finished-time'>完成时间:{{time}}</view>
+   </view>
+</view>  

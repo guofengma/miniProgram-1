@@ -1,0 +1,51 @@
+page{
+  position: relative;
+}
+.section{
+  font-size: 30rpx;
+  
+}
+.info-item,.form-item{
+  line-height: 80rpx;
+  min-height: 80rpx;
+  padding: 0 22rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.form-item.noBorder{
+  border: none;
+}
+.form-value{
+  text-align: right;
+}
+.form-input{
+  line-height: 78rpx;
+  height: 78rpx;
+  padding: 0;
+}
+.form-textarea{
+  width: 450rpx;
+}
+.add-img-box{
+  
+}
+.btn-box{
+  margin-top: 100rpx;
+}
+.border{
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.btn.sm{
+  width: 330rpx;
+  height: 93rpx;
+  font-size: 30rpx;
+}
+.modal{
+  top: 42%;
+}
+.modal-body-item{
+  /* justify-content: flex-start; */
+}
+.modal-body-item-right{
+  /* max-width: 280rpx;
+  display: inline-block; */
+}

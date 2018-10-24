@@ -1,0 +1,103 @@
+<view class="section">
+    <view class='head-box flex-box'>
+      <view>投坯匹数：{{boltLimit}}</view>
+      <view>验收匹数：{{bolt}}</view>
+      <view>差值： <text class="{{diffBolt<0?'red':''}}">{{diffBolt}}</text></view>
+    </view>  
+   <form bindsubmit="formSubmit">
+   <!--成品  -->
+      <view >
+        <view class='input-box '>
+          <view class='input-item flex-box'>
+            <text class='input-label'>成品匹数</text>
+            <input class='input' placeholder='' name="boltOut" value='{{acceptance.boltOut}}' type='number' bindinput='calcBolt' data-name="boltOut"></input>
+          </view>
+          <view class='input-item flex-box'>
+            <text class='input-label'>成品数量</text>
+            <input class='input' placeholder='' name="numOut" value='{{acceptance.numOut}}' type='digit'></input>
+            <text>{{unit}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <!--次品  -->
+      <view wx:for="{{inferiorList}}" wx:key="">
+
+        <view class='input-box '>
+          <view class='input-item flex-box'>
+            <text class='input-label'>次品匹数</text>
+            <input class='input' placeholder='' name="inferiorBolt" value='{{acceptance.inferiorBolt}}' type='number' bindinput='calcBolt' data-name="inferiorBolt"></input>
+          </view>
+          <view class='input-item flex-box'>
+            <text class='input-label'>次品数量</text>
+            <input class='input' placeholder='' name="inferiorNum" value='{{acceptance.inferiorNum}}' type='digit'></input>
+            <text>{{unit}}</text>
+          </view>
+        </view>
+
+        <view class='textarea-box'>
+          <view class='textarea-item flex-box'>
+              <text class='textarea-label'>次品描述</text>
+              <textarea class='textarea' name="inferiorReason" ></textarea>
+          </view>
+        </view>
+
+        <view class='picker-box'>
+            <picker bindchange="bindInferiorOpinionPickerChange" value="{{inferiorOpinion_index}}" range="{{inferiorOpinion_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>处理意见</text>
+                <view class='picker-item'>
+                  <text wx:if="{{inferiorOpinion_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{inferiorOpinion_arr[inferiorOpinion_index].value}}' name="inferiorOpinion" style='display:none'></input>
+                  {{inferiorOpinion_arr[inferiorOpinion_index].name}}<image src='../../../images/down.png'class="picker-icon"></image></view>
+              </view>
+            </picker>
+          </view>
+
+      </view>
+
+      <!--损坏 -->
+      <view wx:for="{{destroyList}}" wx:key="">
+
+        <view class='input-box '>
+          <view class='input-item flex-box'>
+            <text class='input-label'>损坏匹数</text>
+            <input class='input' placeholder='' name="destroyBolt" value='{{acceptance.destroyBolt}}' type='number' bindinput='calcBolt' data-name="destroyBolt"></input>
+          </view>
+          <view class='input-item flex-box'>
+            <text class='input-label'>损坏数量</text>
+            <input class='input' placeholder='' name="destroyNum" value='{{acceptance.destroyNum}}' type='digit'></input>
+            <text>{{unit}}</text>
+          </view>
+        </view>
+
+        <view class='textarea-box'>
+          <view class='textarea-item flex-box'>
+              <text class='textarea-label'>损坏描述</text>
+              <textarea class='textarea' name="destroyReason" ></textarea>
+          </view>
+        </view>
+
+        <view class='picker-box'>
+            <picker bindchange="bindDestroyOpinionPickerChange" value="{{destroyOpinion_index}}" range="{{destroyOpinion_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>处理意见</text>
+                <view class='picker-item'>
+                  <text wx:if="{{destroyOpinion_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{destroyOpinion_arr[destroyOpinion_index].value}}' name="destroyOpinion" style='display:none'></input>
+                  {{destroyOpinion_arr[destroyOpinion_index].name}}<image src='../../../images/down.png'class="picker-icon"></image></view>
+              </view>
+            </picker>
+          </view>
+          
+      </view>
+      <view class='add-box flex-box' >
+        <button  size='mini' class='add-btn' bindtap='addInferiorInfo' data-list="inferiorList" >{{inferiorBtn}}次品信息</button>
+        <button  size='mini' class='add-btn' bindtap='addDestroyInfo' data-list="destroyList">{{destroyBtn}}损坏信息</button>
+      </view>
+      
+       <view class='submit-btn-box'>
+            <button  formType="submit" class='submit-btn'>提交</button>
+       </view>
+   </form>
+</view>  

@@ -1,0 +1,61 @@
+<view class="section"> 
+ <!-- 详情参数 -->
+   <view class='arg-box'>
+      <view class='arg-item'>编号：{{info.applyNum}}</view>
+      <view class='arg-item'>用途：{{info.useReason}}</view>
+      <view class='arg-item'>状态：{{info.statusStr}}</view>
+      <view class='arg-item'>物料数量：{{info.totalNum}}件</view>
+      <view class='arg-item'>预计金额：{{info.totalPrice}}元</view>
+      <view class='arg-item'>申请人：{{info.applyUser.realName}}</view>
+      <view class='arg-item' wx:if="{{info.examineUser}}">审核人：{{info.examineUser.realName}}</view>
+      <view class='arg-item' wx:if="{{info.materielUser}}">仓库操作人：{{info.materielUser.realName}}</view>
+      <view class='arg-item' wx:if="{{info.remarks}}">驳回理由：{{info.remarks}}</view>
+      
+   </view>
+ <!-- 详情参数 end-->
+
+ <!-- 领用明细  -->
+ <view class='receive-box'>
+  <view class='receive-title'>领用明细</view>
+
+  <view class='receive-list'>
+
+    <view class='receive-item flex-box' wx:for="{{info.applyMaterialList}}" wx:key="">
+      <view class='item-left'>
+        <image class='item-left-img' src='{{item.img}}' data-index="{{index}}" binderror="imgError" bindtap='previewImg' data-url="{{item.img}}" ></image>
+      </view>
+
+      <view class='item-right flex-box'>
+        <view class='flex-box'>
+          <text>{{item.materielName}}</text><!-- 名称 -->
+          <text wx:if="{{item.spec==null}}">/</text>
+          <text wx:else>{{item.spec}}</text><!-- 规格 -->
+        </view>
+         <view>￥{{item.price}}</view>
+        <view class='flex-box'>
+          <text>{{item.num}}{{item.unitName}}</text><!-- 申请数量 -->
+          <view>
+            <view wx:if="{{item.status==2}}">
+              <text class='red' >已拒绝</text>
+              <text class='red' wx:if="{{item.remarks!==null}}">（{{item.remarks}})</text>
+            </view>
+
+            <view wx:else>
+                <text class='red' wx:if="{{item.realNum>0}}">{{item.realNum}}{{item.unitName}}</text><!-- 实际领用数量 -->
+            </view>
+             
+             
+          </view>
+        </view>
+       
+       
+      </view>
+      
+    </view>
+  </view>
+ 
+ </view>
+ <!-- 领用明细  end-->
+ 
+
+</view>  

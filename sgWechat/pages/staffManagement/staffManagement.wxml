@@ -1,0 +1,46 @@
+<view class="section"> 
+
+  <!--list  -->
+   <view class='list-table'>
+
+      <view class='table-head flex-box'>
+        <!-- <view class='th'>编号</view> -->
+        <view class='th'>姓名</view>
+        <view class='th lg'>手机号</view>
+        <view class='th lg'>角色</view>
+      </view>
+
+      <view class='table-body '  >
+        <view class='tr flex-box'  wx:for="{{list}}" wx:key="key">
+          <!-- <view class='td'>{{item.code}}</view> -->
+          <view class='td'>{{item.realName}}</view>
+          <view class='td lg'>{{item.mobile}}</view>
+          <view class='td lg'>
+            <view wx:for="{{item.roleNameList}}" wx:key="" wx:for-item="subItem">
+              <text>{{subItem}}</text>
+               <text wx:if="{{item.roleNameList.length>1&&index<(item.roleNameList.length-1)}}">，</text> 
+            </view>
+            
+          </view>
+        </view>
+
+      </view>
+      
+   </view>
+   <!--end list  -->
+
+    <!--添加按钮  -->
+   <view class='float-btn-box' bindtap='goAddForm'>
+      <image class='float-btn' src="/images/add.png"></image>
+  </view> 
+
+  <view class='no-data {{noData}}' style="min-height:{{scrollHeight}}px">暂无数据</view>
+  <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+  <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+  </view> 
+
+
+</view>  

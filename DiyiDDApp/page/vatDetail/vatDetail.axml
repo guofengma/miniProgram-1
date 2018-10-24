@@ -1,0 +1,33 @@
+<view>
+    <!-- 跟进流水 -->
+  <view class="flow-log">
+    <view class="log-item  {{item.checkType=='1'?'':'red'}}" a:for={{flowLog}}>
+      <view class="log-item-head flex-box">
+        <view class="l-i-h-point">{{item.nameFirst}}</view>
+        <view class="l-i-h-name">{{item.createByUserName}}</view>
+        <view class="l-i-h-time">{{item.createDate}}</view>
+      </view>
+      <view class="log-item-body">
+        <view class="l-i-b-title ">{{item.remarks}}</view>
+        <!-- <view class="l-i-b-content">{{item.remarks}}</view> -->
+        <view class="l-i-b-imgs">
+          <image 
+          a:for={{item.imgList}} 
+          a:for-item="imgItem" 
+          a:for-index="imgIndex" 
+          src="{{imgItem}}" 
+          mode="aspectFit" 
+          data-list="{{item.imgList}}" 
+          data-type="2" 
+          onTap="previewImage" 
+          data-index="{{imgIndex}}"/>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+  <!-- end跟进流水 -->
+
+   <view class="no-data" a:if={{flowLog.length<1}}>暂无数据</view>
+    
+</view>

@@ -1,0 +1,115 @@
+<view >
+   
+  <!-- 搜索框 -->
+  <view class="search-box" onTap="toOrderList">
+    <view class="search-content">
+         <icon type="search" class="search-icon" size="16"></icon>
+      <text class="search-pld">搜索缸号/日期区间/染厂/面料品名/客户ID</text>                            
+    </view>
+  </view>
+  <!-- 搜索框 -->
+
+  <view class="padding-view"></view>
+  
+  <!-- 折叠面板列表 -->
+   <view class="a-collapse" style='min-height:{{systemInfo.screenHeight-46}}px;'>
+    <view a:for={{collapseData.panels}}>
+      <!-- 父级 -->
+      <view
+        class="a-collapse-title {{item.expanded}}"
+        data-index={{index}}
+      >
+      <!-- 父级内容 -->
+        <view class="a-c-title-box">
+          <!-- 父级头部 -->
+            <view class="a-c-title-head {{item.contract.urgency}}  {{item.contract.contractStatus==3?'grey':''}}">
+              <view>客户编号：{{item.contract.customerNum}}</view>
+              <view class="tag-list" >
+                <view a:for={{item.contract.tagList}} a:for-item="sub" style="color:{{sub.colorCode}};border-color:{{sub.colorCode}}">{{sub.tagName}}</view>
+              </view>
+            </view>
+          <!-- end 父级头部 -->
+          <!-- 父级主体 -->
+            <view class="a-c-title-body" onTap="toContractDetail" data-title='{{item.contract.fabricNameStr}}' data-id="{{item.contract.id}}">
+              <view class="a-c-t-body-top ellipsis">
+                <text a:if={{item.contract.lidanNames}}>【理】{{item.contract.lidanNames}} </text>
+                <text a:if={{item.contract.gendanNames}}>【跟】{{item.contract.gendanNames}} </text>
+                <text a:if={{item.contract.salerNames}}>【销】{{item.contract.salerNames}} </text>
+                <text a:if={{item.contract.focusNames}}>【关】{{item.contract.focusNames}}</text>                
+              </view>
+              <view class="a-c-t-body-center ellipsis">{{item.contract.fabricNameStr}}</view>
+              <view class="a-c-t-body-bottom flex-box">
+                <view class='detail-bottom-left'>
+                  <!-- 已完成量=仓库锁定量inventorySum+投染已完成量completeNum -->
+                  <text>已排单{{item.contract.allNum}}{{item.contract.unit}}/已完成{{(item.contract.completeNum+item.contract.inventorySum).toFixed(2)}}{{item.contract.unit}}/合同数量{{item.contract.fabricSum}}{{item.contract.unit}} </text>
+                  <text class='last'>{{item.contract.process}}%</text> 
+                </view>
+                <view a:if={{item.contract.contractStatus==3}} class="stop-txt">暂停</view>
+                <view a:else  class='order-time {{item.contract.dateStatus}}'>{{item.contract.dateStr}}</view>
+              </view>
+            </view>
+          <!-- end 父级主体 -->
+        </view> 
+      <!-- end 父级内容 -->
+      <view class="right-arrow"  onTap="{{collapseData.onTitleTap}}" data-index={{index}}>
+        <view  class="{{item.expanded ? 'a-collapse-title-arrow a-collapse-title-arrow-up' : 'a-collapse-title-arrow'}}" /></view>
+      </view>
+        
+       <!-- end父级 -->
+
+      <!-- 子级 -->
+      <view class="a-collapse-content" a:if={{item.expanded}}>
+        <view a:if={{item.contract.orderList.length<1}} class="not-order">暂无订单</view>
+        <view 
+          class="a-c-c-item flex-box" 
+          a:for={{item.contract.orderList}} 
+          a:for-item="orderItem" 
+          onTap="toVatList" 
+          data-gendans="{{item.contract.gendans}}"
+          id="{{orderItem.id}}" 
+          data-status="{{orderItem.status}}"
+          data-title="{{orderItem.spec}} {{orderItem.color}}"
+          data-breakage="{{orderItem.estimateBreakage}}">
+          <view class="left-priority {{orderItem.urgency}} {{orderItem.isEmergent}} {{item.contract.contractStatus==3?'stop':''}}"></view>
+          <view class="right-box {{orderItem.urgency}} {{orderItem.isEmergent}} {{item.contract.contractStatus==3?'stop':''}}">
+            <view class="progress-bar {{orderItem.isEmergent}} {{item.contract.contractStatus==3?'stop':''}}" style="width:{{orderItem.progress*7}}rem"></view>
+            <!-- 子级主体 -->
+            <view class="right-content">
+              <view class="a-c-c-top flex-box">
+                <view >印染厂:{{orderItem.partners.pname}}</view>
+                <view >{{orderItem.tecName}}</view>
+              </view>
+              <view class="a-c-c-center flex-box">
+                <view class="left bold">{{orderItem.fabricInfo.fabricName}}</view>
+                <view class="right">
+                  <view>[规]{{orderItem.spec}}</view>
+                  <view>[色]{{orderItem.color}}</view>
+                </view>
+              </view>
+              <view class="a-c-c-bottom flex-box ">
+                <view class='left'>
+                 <text>已排单{{orderItem.paidanNum}}{{item.contract.unit}}/已完成{{orderItem.completeNum.toFixed(2)}}{{item.contract.unit}}/订单数量{{orderItem.estimateProduction}}{{item.contract.unit}} </text>
+                 <text class='last'>{{orderItem.process}}%</text> 
+                </view>
+                <view a:if={{item.contract.contractStatus==3}} class="stop-txt">订单暂停</view>
+                <view a:else >
+                  <view a:if={{orderItem.status!==1}} class='right {{orderItem.dateStatus}}'>{{orderItem.dateStr}}</view>
+                </view>
+              </view>
+              <!-- 完成图标 -->
+              <view a:if={{orderItem.status==1}} class="finish-box">
+                <image src="/images/finished.png" mode="aspectFit" class="finish-img"/>
+              </view>
+            </view>
+            <!-- end 子级主体 -->
+          </view>
+        </view>
+      </view>
+      <!-- 子级 -->
+    </view>
+    <!-- <view class="check-finish">查看完成合同</view> -->
+   </view>
+  <!-- 折叠面板列表 -->
+  <view class="bottom-line " hidden="{{bottomHidden}}" onTap="toFinishContract">查看完成合同</view>
+  <view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>
+</view>

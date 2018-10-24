@@ -1,0 +1,59 @@
+<view class="section">  
+   <form class='var-form' bindsubmit="formSubmit">
+    <!--分缸明细  -->
+    <view class='form-item' wx:for="{{vatList}}" wx:key="{{vat}}" >
+      <view class='item-top flex-box'>
+        <text>分缸明细({{index+1}})</text>
+        <text class='delete-btn' bindtap="delBind" wx:if="{{index>0}}" data-index="{{index}}">删除</text>
+      </view>
+
+      <view class='input-box flex-box'>
+      <view class='label-box flex-box'>
+          <text class='input-label'>印染编号</text>
+        </view>
+        <input class='input' placeholder='' value='{{orderNum}}-{{dyeNum+index}}' disabled name='dipdye_num{{index}}'></input>
+      </view>
+
+      <view class='input-box flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>缸号</text>
+        </view>
+        <input class='input' placeholder='请输入缸号'   name="vat_num{{index}}" value="{{item.vat_num}}" bindblur='setVal' data-name="vat_num" data-index="{{index}}"></input>
+        
+      </view>
+
+      <view class='input-box flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>匹数</text>
+          <text class='input-tips'>当前可用匹数:{{p_count}}</text>
+        </view>
+        <input class='input' placeholder='请输入匹数'  type='number' value="{{item.p_count}}" name="p_count{{index}}" bindinput='limitVal' bindblur='calcPCount' bindfocus='focusVal' data-index="{{index}}"  data-name="p_count" ></input>
+      </view>
+
+      <view class='input-box flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>数量</text>
+          <text class='input-tips'>当前可用数量:{{count}}</text>
+        </view>
+        <input class='input' placeholder='请输入数量 单位：{{unit}}'  type='number' value="{{item.count}}" name="count{{index}}" bindinput='limitVal2' bindblur='calcCount' bindfocus='focusVal2' data-index="{{index}}" data-name="count"></input>
+      </view>
+
+      <view class='input-box flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>进缸匹重</text>
+        </view>
+        <input class='input' type='number' placeholder='单位：{{unit}}/匹'  value="{{item.weight}}{{unit}}/匹" name="weight{{index}}" disabled></input>
+      </view>
+    </view>
+    
+    <!--分缸明细 end -->
+    <view class='allot-vat flex-box' bindtap="insert">
+      <image class='addVat-icon' src="../../../images/tian.png"></image>
+      <text>分缸</text>
+    </view>
+
+    <view class='submit-btn-box'>
+      <button  formType="submit" class='submit-btn'>提交</button>
+    </view>
+   </form>
+</view>  

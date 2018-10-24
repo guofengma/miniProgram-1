@@ -1,0 +1,93 @@
+.section{
+  font-size: 30rpx;
+}
+.head-box{
+  padding: 0 32rpx;
+  line-height: 100rpx;
+  background-color: #f8f8f8;
+}
+.head-box view{
+  /* width: 33.3%; */
+}
+.head-box text.red{
+  color: #f12;
+}
+.input-box,.textarea-box,.picker-box{
+  font-size: 30rpx;
+ /* padding-bottom: 30rpx; */
+}
+.input-box{
+  border-top: 2rpx solid #ddd;
+}
+.input-item,.textarea-item,.picker-box{
+  border-bottom: 2rpx solid #ddd;
+  padding: 0rpx 32rpx;
+  font-size: 28rpx;
+  min-height: 120rpx;
+  line-height: 120rpx;
+}
+.label-box{
+  width: 150rpx;
+  float: left;
+}
+.input-label{
+  /* width: 140rpx; */
+  margin-right: 16rpx;
+}
+.input{
+  width: 420rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  /* border: 2rpx solid #ddd; */
+  height: 120rpx;
+  font-size: 30rpx;
+  float: left;
+  
+}
+.textarea-item{
+  justify-content: flex-start;
+}
+.textarea{
+  /* border: 2rpx solid #ddd; */
+  height: 120rpx;
+  width: 400rpx;
+  padding: 40rpx 20rpx;
+
+}
+.textarea-label{
+  width: 128rpx;
+  /* text-align: center; */
+}
+.picker{
+}
+.picker-icon{
+  width: 30rpx;
+  height: 20rpx;
+  float: right;
+  margin-top: 50rpx;
+  margin-right: 18rpx;
+}
+.picker-item{
+  width: 526rpx;
+  height: 57rpx;
+  /* border: 2rpx solid #ddd; */
+  padding: 0 16rpx;
+}
+.picker-pld{
+  color: #919191;
+}
+.submit-btn{
+  background-color: #1498F7;
+  color: #fff;
+  margin: 30rpx  20rpx;
+}
+.add-box{
+  margin: 30rpx 0;
+}
+.btn.sm{
+  width: 330rpx;
+}
+.unit{
+  width: 80rpx;
+  float: right
+}

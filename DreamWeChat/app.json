@@ -1,0 +1,48 @@
+{
+  "pages":[
+    
+    
+    "pages/login/login",
+    
+    "pages/menu/menu",
+    
+    "pages/materialRequisition/requisitionList/requisitionList",
+    "pages/materialRequisition/requisitionConfirm/requisitionConfirm",
+    "pages/materialRequisition/requisitionDetail/requisitionDetail",
+    "pages/materialRequisition/receiveConfirm/receiveConfirm",
+    "pages/materialRequisition/requisitionForm/requisitionForm",
+    
+    
+    
+    
+
+    "pages/materialCheck/materialCheckList/materialCheckList",
+    "pages/materialCheck/materialCheckDetail/materialCheckDetail",
+
+    "pages/materialPrepare/materialPrepareList/materialPrepareList",
+    "pages/materialPrepare/materialPrepareDetail/materialPrepareDetail",
+    
+
+    "pages/materialReturn/materialReturnList/materialReturnList",
+    "pages/materialReturn/materialReturnDetail/materialReturnDetail",
+    
+    "pages/warehouseInCheck/inCheckList/inCheckList",
+    "pages/warehouseInCheck/inCheckForm/inCheckForm",
+
+    "pages/warehouseInApply/inApplyList/inApplyList",
+    "pages/warehouseInApply/inApplyForm/inApplyForm",
+        
+    "pages/user/user",
+    "pages/changePsd/changePsd",
+
+
+    "pages/basic/basic",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "梦境仓库",
+    "navigationBarTextStyle":"black"
+  }
+}

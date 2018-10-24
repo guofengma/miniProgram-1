@@ -1,0 +1,112 @@
+/*!
+ * WeUI v1.1.1 (https://github.com/weui/weui-wxss)
+ * Copyright 2017 Tencent, Inc.
+ * Licensed under the MIT license
+ */
+.weui-flex{-webkit-box-align:center;-webkit-align-items:center;align-items:center}
+.weui-cells{margin-top:0;opacity:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);-webkit-transition:.3s;transition:.3s}.weui-cells:after,.weui-cells:before{display:none}
+.weui-cells_show{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}
+.weui-cell:before{right:30rpx}
+.kind-list__item{margin:12rpx 0;background-color:#fff;border-radius:4rpx;overflow:hidden}
+.kind-list__item:first-child{margin-top:0}
+.kind-list__img{width:32rpx;height:32rpx}
+.kind-list__img__sub{
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 10rpx;
+}
+.kind-list__item-hd{padding:26rpx;-webkit-transition:opacity .3s;transition:opacity .3s;display: flex;justify-content: space-between;}
+.kind-list__item-hd_show{opacity:.4}
+.kind-list__item-bd{height:0;overflow:hidden}
+.kind-list__item-bd_show{height:auto}
+.kind-list{
+  background-color: #EBEBEB;
+  border-top: 2rpx solid #ddd;
+  border-bottom: 2rpx solid #ddd;
+  
+}
+.weui-flex__item{
+  font-size: 36rpx;
+}
+.info-item{
+  font-size: 28rpx;
+  line-height: 80rpx;
+  border-top: 2rpx solid #ddd;
+  background-color: #F8F8F8;
+}
+.info-value{
+  /* width: 480rpx;
+  text-align: right; */
+}
+.info-item-sub{
+  margin-top:0;opacity:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);-webkit-transition:.3s;transition:.3s;
+  height: 0;
+  overflow: hidden; /*不加这句会导致下一个info-item点击无效  */
+ 
+}
+.info-item-hd{
+  padding: 14rpx 40rpx;
+   line-height: 48rpx; 
+}
+.info-item-sub_show{
+  opacity:1;-webkit-transform:translateY(0);transform:translateY(0);
+  height: auto;
+}
+.info-item-sub-item{
+  border-top: 2rpx solid #ddd;
+   padding: 14rpx 40rpx;
+   background-color:#EBEEF3;
+   line-height: 48rpx; 
+}
+.item-list-val>text{
+    margin-right: 6rpx;
+    padding: 6rpx;
+    border: 1px solid #ddd;
+    border-radius: 8rpx;
+}
+
+/*18-7-77  */
+.info-item-title{
+  font-weight: bold;
+  text-align: center;
+}
+.cloth_value{
+  text-align: center;
+  word-break: break-all;
+}
+.title_1,.value_1{
+  width: 35%;
+}
+.title_2,.value_2{
+  width: 20%;
+}
+.title_3,.value_3{
+  width: 10%;
+}
+.title_4,.value_4{
+  width: 20%;
+}
+.title_5,.value_5{
+  width: 15%;
+}
+.dye_value{
+  text-align: center;
+  word-break: break-all;
+  
+}
+.title_1.dye_title,.value_1.dye_value{
+  width: 20%;
+}
+.title_2.dye_title,.value_2.dye_value{
+  width: 20%;
+}
+.title_3.dye_title,.value_3.dye_value{
+  width: 20%;
+}
+.title_4.dye_title,.value_4.dye_value{
+  width: 20%;
+}
+.title_5.dye_title{
+  width: 5%;
+}
+/*18-7-77  end */

@@ -1,0 +1,115 @@
+<view class="section"> 
+ <!-- 详情参数 -->
+   <view class='arg-box'>
+      <view class='arg-item'>编号：{{info.applyNum}}</view>
+      <view class='arg-item'>用途：{{info.useReason}}</view>
+      <view class='arg-item'>物料数量：{{info.totalNum}}件</view>
+      <view class='arg-item'>预计金额：{{info.totalPrice}}元</view>
+      <view class='arg-item'>归还时间：{{info.predictBackDate}}</view>
+   </view>
+ <!-- 详情参数 end-->
+
+ <view class='margin-line'></view>
+
+
+ <!-- 领用明细  -->
+ <view class='receive-box'>
+  <view class='receive-title'>物料明细</view>
+
+  <view class='receive-list'>
+
+    <view class='receive-item flex-box' wx:for="{{info.applyMaterialList}}" wx:key="">
+      <view class='item-left'>
+        <image class='item-left-img' src='{{item.img}}' data-index="{{index}}" binderror="imgError" bindtap='previewImg' data-url="{{item.img}}"></image>
+      </view>
+      <view class='item-center flex-box'>
+        <text>{{item.materielName}}</text><!-- 名称 -->
+        <text>￥{{item.price}}</text>
+        <text>{{item.num}}{{item.unitName}}</text><!-- 申请数量 -->
+      </view>
+      <view class='item-right flex-box'>
+      <text wx:if="{{item.spec==null}}">/</text>
+        <text wx:else>{{item.spec}}</text><!-- 规格 -->
+        <!-- <text wx:if="{{item.realNum==0}}"></text> -->
+        <!-- <text wx:else class='red'>{{item.realNum}}件</text> 实际领用数量  -->
+      </view>
+    </view>
+  </view>
+ 
+ </view>
+ <!-- 领用明细  end-->
+ 
+ <view class='btn-group flex-box'>
+
+    <view class='btn-box'>
+      <button class='btn blue sm' bindtap='showModal' data-status="1">同意</button>
+    </view>
+
+    <view class='btn-box'>
+      <button class='btn grey sm' bindtap='showModal' data-status="0">拒绝</button>
+    </view>
+
+ </view>
+
+</view> 
+
+<!--模态框  同意-->
+<view class='modal {{showAgreeModal.showModal}}'  >
+    <form bindsubmit="formSubmitAgree">
+      <view class='modal-content'>
+        <view class='modal-title'>
+          <image src="/images/modal_title.png" class='modal-title-bg'></image>
+          <text class='modal-title-txt'>审核通过</text>
+          
+        </view>
+        <view class='modal-detail flex-box'>
+          <text class='picker-label'>物料负责人：</text>
+          <picker class='picker ' value="{{personIndex}}" range="{{personArray}}" bindchange='bindPickerChange' name="person" range-key="name">
+            <input class='picker-input' disabled value='{{personArray[personIndex].name}}'></input>
+            <input class='picker-input' hidden value='{{personArray[personIndex].id}}' name="personId"></input>
+            <image class='picker-icon' src="/images/select.png"></image>
+          </picker>
+        </view>
+
+        <view class='modal-btn-group flex-box'>
+            <view class='modal-btn-item'>
+              <button formType="submit" class='modal-btn submit-btn' >提交</button>
+            </view>
+            <view class='modal-btn-item'>
+              <button  class='modal-btn cancel-btn'  bindtap='hideModal' data-status="1">关闭</button>
+            </view>
+        </view>
+       
+      </view>
+    </form>
+ </view>
+ <view class='mask {{showAgreeModal.showMask}}' bindtap='hideModal' ></view>
+ <!--模态框 同意 end--> 
+
+ <!--模态框  拒绝-->
+<view class='modal {{showDisagreeModal.showModal}}'  >
+    <form bindsubmit="formSubmitDisagree">
+      <view class='modal-content'>
+        <view class='modal-title'>
+          <image src="/images/modal_title.png" class='modal-title-bg'></image>
+          <text class='modal-title-txt'>审核拒绝</text>
+          
+        </view>
+        <view class='modal-detail'>
+          <textarea class='modal-textarea' placeholder='请输入备注' name="remarks" value='{{remarks}}'></textarea>
+        </view>
+
+        <view class='modal-btn-group flex-box'>
+            <view class='modal-btn-item'>
+              <button formType="submit" class='modal-btn submit-btn' >提交</button>
+            </view>
+            <view class='modal-btn-item'>
+              <button  class='modal-btn cancel-btn'  bindtap='hideModal' data-status="0">关闭</button>
+            </view>
+        </view>
+       
+      </view>
+    </form>
+ </view>
+ <view class='mask {{showDisagreeModal.showMask}}' bindtap='hideModal' ></view>
+ <!--模态框 拒绝 end--> 

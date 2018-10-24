@@ -1,0 +1,19 @@
+.section{
+  font-size: 34rpx;
+}
+.list-item{
+  padding: 20rpx 28rpx;
+  border-bottom:2rpx solid #ddd;
+}
+.goBack{
+  background-color: #fff;
+  font-size: 34rpx;
+  width: 95%;
+  margin: 60rpx auto;
+}
+.input-label{
+  width: 150rpx;
+}
+.input{
+  width: 400rpx;
+}

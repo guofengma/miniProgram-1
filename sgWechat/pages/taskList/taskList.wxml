@@ -1,0 +1,52 @@
+<view class="section"> 
+
+  <!--list  -->
+   <view class='list-table' style="min-height:{{scrollHeight}}px">
+
+      <view class='table-head flex-box'>
+        <view class='th'>客户订单号</view>
+        <view class='th'>产品编号</view>
+        <view class='th lg'>生产步骤</view>
+        <view class='th lg'>预计完成时间</view>
+      </view>
+
+      <view class='table-body '  >
+       
+        <form report-submit='true' bindsubmit="submitFormId"  wx:for="{{list}}" wx:key="key" data-id="{{item.id}}">
+          <button formType="submit" class='formId-btn'>
+            <form report-submit='true' bindsubmit="submitFormId"  >
+              <button formType="submit" class='formId-btn'>
+                <form report-submit='true' bindsubmit="submitFormId"  >
+                  <button formType="submit" class='formId-btn'>
+                    <view class='tr flex-box'  >
+                      <view class='td'>{{item.orderNum}}</view>
+                      <view class='td'>{{item.productNum}}</view>
+                      <view class='td lg'>{{item.flowName}}</view>
+                      <view class='td lg'>{{item.predictCompleteDate}}</view>
+                    </view>
+                  </button>
+                </form>
+             </button>
+          </form>
+        </button>
+       </form>
+
+      </view>
+
+       <view class='no-data {{noData}}' style="min-height:{{scrollHeight}}px">暂无数据</view>
+  <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+  <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+  </view> 
+      
+   </view>
+   <!--end list  -->
+
+  
+
+ 
+
+
+</view>  

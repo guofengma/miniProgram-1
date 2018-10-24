@@ -1,0 +1,30 @@
+<view>
+  <!-- 列表 -->
+  <view class="list">
+    <view class="list-item " a:for={{list}} id="{{item.id}}" onTap="toClothDetail" data-title="{{item.fabric.clothName}}">
+      <view class="item-content">
+        <view class="content-top flex-box">
+          <view class="c-t-left">{{item.batch}}</view>
+          <view class="c-t-right">{{item.storehostName}}--{{item.shelvesName}}</view>          
+        </view>
+        <view class="content-center">
+          <view class="c-c-txt">{{item.clothInfo.clothName}}</view>
+        </view>
+        <view class="content-bottom flex-box">
+          <view class="c-b-left">{{item.lockBolt}}匹/{{item.lockNum}}kg</view>
+          <view class="c-b-right">预染颜色：{{item.color}}</view>          
+        </view>        
+      </view>
+      <view class="item-btn-group flex-box">
+        <button class="btn sm" type="default" onTap="toAudit" data-type="agree" id="{{item.id}}">同意</button>
+        <button class="btn sm" type="default" onTap="toAudit" data-type="reject" id="{{item.id}}">拒绝</button>        
+      </view>      
+    </view>
+  </view>
+  <!-- end列表 -->  
+
+     
+<view class="bottom-line " hidden="{{bottomHidden}}">————————我是有底线的————————</view>
+<view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>
+    
+</view>

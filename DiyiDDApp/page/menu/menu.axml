@@ -1,0 +1,47 @@
+<view class="container"> 
+
+ <view class='top-box flex-box'>
+  <view class='top-left'>
+    <view>
+      <view class='user-name'>
+        <text>{{userInfo.realName}}</text>
+        <block a:for="{{userInfo.roleList}}" >
+           <text class='user-role'>{{item}}</text>
+        </block>
+      </view>
+      <view class='company'>浙江缔衣纺织有限公司</view>
+    </view>
+  </view>
+  <view class='top-right'>
+    <image src='../../images/logo.png' class='logo' mode='center'></image>
+  </view>
+ </view>
+
+  <!-- <view class='message-box'  onTap="goMessage">
+    <view class='message'>
+      <image src='../../images/message.png' class='message-icon'></image>
+      <text  class='message-txt'>{{unReadStr}}</text>
+    </view>
+    <view class='message-right'><image src="../../images/message2.png" class='message-icon'></image></view>
+ </view> -->
+<!-- 菜单列表 -->
+ <view class='menu-box flex-box'>
+   <view class='menu-item' data-src="../webView/webView" onTap="toNext">
+      <image src="../../images/office.png" class='item-icon'></image>
+      <text class='item-title'>CRM</text>
+    </view>
+    <block a:for="{{menuList}}" >
+     <view class='menu-item'  data-src="{{item.url}}" onTap="toNext">
+          <image src="../../images/{{item.icon}}" class='item-icon'></image>
+          <text class='item-title'>{{item.name}}</text>         
+     </view>
+    </block>
+     <view class='menu-item'  data-src="../user/user" onTap="toNext">
+          <image src="../../images/people.png" class='item-icon'></image>
+          <text class='item-title'>个人中心</text>         
+     </view>
+      
+      
+ </view>
+ <!-- end 菜单列表 -->
+</view>  

@@ -1,0 +1,57 @@
+<view>
+  <!-- 列表 -->
+  <view class="list">
+    <view class="list-item" a:for={{list}} >
+     <view 
+     class="item-top flex-box" 
+     id="{{item.orderId}}" 
+     data-fabricOqaId="{{item.fabricOqaId}}" 
+     data-pname="{{item.pname}}" 
+     onTap="toDetail" 
+     data-title="{{item.fabricName}}" 
+     data-item='{{item}}'>
+       <view class="i-t-left {{item.urgency}} {{item.isEmergency}}"></view>
+       <view class="i-t-right flex-box  {{item.isEmergency}}">
+         <view class="i-t-r-top" >
+           <text class="ellipsis" a:if={{item.salersNames}}>【销】{{item.salersNames}}</text>
+           <text class="ellipsis"  a:if={{item.salersNames}}>【跟】{{item.gendanNames}}</text>           
+         </view>
+         <view class="i-t-r-center flex-box">
+           <view class="i-t-r-c-left">
+             {{item.fabricName}}
+           </view>
+           <view class="i-t-r-c-center">
+             <view>{{item.fabricSpec}}</view>
+             <view>{{item.fabricColor}}</view>             
+           </view>
+           <view class="i-t-r-c-right" >
+             <text a:if={{item.pname}}>印染厂：{{item.pname}}</text>
+            </view>           
+         </view>
+         <view class="i-t-r-bottom flex-box" >
+           <view class="i-t-r-b-left" a:if={{item.estimateDate}}>
+             <text class="red">待成检{{item.waitForCheck}}缸；</text>
+             <text >生产中{{item.produceNum}}缸；</text>
+             <text >已完成{{item.completeNum}}缸</text>             
+           </view>
+           <view class="i-t-r-b-right {{item.dateStatus}}" a:if={{item.estimateDate}}>{{item.dateStr}}</view>           
+         </view>
+       </view>       
+     </view>
+     <view class="item-bottom" a:if="{{canDistribution}}">
+       <picker 
+       range={{personList}} 
+       range-key="realName" 
+       onChange="chosePerson" 
+       data-index="{{index}}" 
+       data-fabricOqaId="{{item.fabricOqaId}}"
+       data-orderId="{{item.orderId}}">
+         <text class="picker-txt">分配人员</text>
+       </picker>
+     </view>
+    </view>
+  </view>
+  <!-- end列表 -->
+  <view class="bottom-line ">————————我是有底线的————————</view>
+  <view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>
+</view>

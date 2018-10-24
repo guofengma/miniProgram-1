@@ -1,0 +1,81 @@
+<view class="section">
+  <!-- 类型tabs -->
+  <view class="tabBar">
+    <text a:for="{{tabBar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" onTap="choseType">{{item}}</text>
+  </view> 
+  <!-- end 类型tabs -->
+   <!--下拉筛选  -->
+   <view class="dropdown">
+     <view 
+     class="dropdown-item ellipsis  {{dropdownIndex===index ? 'active' : ''}}" 
+     a:for={{dropdown}} onTap="dropdownTap" 
+     data-idx="{{index}}"
+     data-key="{{item.key}}">
+       <view class="dropdown-tab">{{item.name}}</view>
+     </view>
+   </view>
+   
+   <scroll-view class="dropdown-list" a:if="{{dropdownShow}}">
+     <view class="d-l-item" data-value="" data-name="不限" onTap="choseDropdown">不限</view>
+     <view class="d-l-item " a:for={{selectList}} data-value="{{item.value}}" data-name="{{item.name}}" onTap="choseDropdown">
+       <text>{{item.name}}</text>
+       <text class="item-tips">{{item.tips}}</text>
+      </view>     
+   </scroll-view>
+   <!--end下拉筛选  --> 
+
+  <!-- 列表内容 -->
+  <view class="inventory-list">
+    <view class="a-collapse">
+      <view a:for={{list}}>
+        <!-- 父级-->
+        <view class="a-collapse-title"   >
+          <view class="a-c-t-item flex-box">
+            <view class="a-c-t-left flex-box">
+              <view class="a-c-t-l-top" a:if="{{currentTab==2}}">{{item.data.fabric.clothNum}}</view>
+              <view class="a-c-t-l-top" a:else>{{item.data.fabric.fabricNum}}</view>              
+              <view class="a-c-t-l-center" a:if="{{currentTab==2}}">{{item.data.fabric.clothName}} {{item.data.spec}} {{item.data.color}}</view>
+              <view class="a-c-t-l-center" a:else>{{item.data.fabric.fabricName}} {{item.data.spec}} {{item.data.color}}</view>              
+
+              <view class="a-c-t-l-bottom" a:if='{{item.data.children.length>1}}' onTap="handleTitleTap" data-index={{index}} >
+                <text class="blue">多柜</text>
+                <view class="{{item.expanded ? 'a-collapse-title-arrow a-collapse-title-arrow-up' : 'a-collapse-title-arrow'}}"></view>
+                </view>
+              <view class="a-c-t-l-bottom" a:else>{{item.data.children[0].storehost.storeName}}--{{item.data.children[0].shelves.shelvesName}}</view>                                          
+            </view>
+            <view class="a-c-t-right flex-box" a:if='{{item.data.children.length>1}}'>
+              <!-- 匹数/数量 （总数-已准备量）-->
+                <view>{{(item.data.bolt-item.data.lockBolt).toFixed(2)}}/{{(item.data.num-item.data.lockNum).toFixed(2)}}</view>
+            </view>
+             
+            <view class="a-c-t-right flex-box" a:else>
+              <!-- 匹数/数量 （总数-已准备量）-->
+              <view>{{(item.data.children[0].bolt-item.data.children[0].lockBolt).toFixed(2)}}/{{(item.data.children[0].num-item.data.children[0].lockNum).toFixed(2)}}</view>
+              <view>批次：{{item.data.children[0].batch}}</view>
+            </view>
+          </view>      
+          
+        </view>
+        <!-- end父级-->        
+        <!-- 子级 -->
+        <view class="a-collapse-content" a:if={{item.expanded}}>
+          <view class="a-c-c-item flex-box" a:for={{item.data.children}} a:for-item="subItem">
+            <view class="a-c-c-left">
+              {{subItem.storehost.storeName}}--{{subItem.shelves.shelvesName}}
+            </view>
+            <view class="a-c-c-right">
+              <view class="a-c-c-r-top">{{(subItem.bolt-subItem.lockBolt).toFixed(2)}}/{{(subItem.num-subItem.lockNum).toFixed(2)}}</view>
+              <!-- {{subItem.bolt-subItem.lockBolt}}匹/{{subItem.num-subItem.lockNum}}{{subItem.type==1?'千克':'米'}} -->
+              <view>批次：{{subItem.batch}}</view>
+            </view>            
+          </view>
+        </view>
+        <!-- end子级 -->        
+      </view>
+    </view>
+  </view>
+  <!-- end列表内容 -->  
+   <view class="bottom-line " hidden="{{bottomHidden}}">————————我是有底线的————————</view>
+   <view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>  
+    
+</view>

@@ -1,0 +1,168 @@
+@import "../../wxSearchView/wxSearchView.wxss";
+/**app.wxss**/
+/* input,.picker{border:solid 1px #eee;background: #fff;padding:0.3rem;margin-top:0.5rem;height:1.4rem;line-height: 1.4rem;} */
+modal text{padding:6px 0 0 6px;}
+.clearfix:after{content: '';clear: both;display: block;height:1px;}
+page{background:#fafafa;font-size:14px;line-height: 1.5;position: relative;min-height:100%;box-sizing:border-box;}
+
+/*宽度*/
+.w{width:680rpx;margin:0 auto;}
+.full{width:100%;}
+
+/*定位*/
+.pr{position: relative;}
+.pa{position: absolute;}
+
+/*文字超出省略*/
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+/*对齐*/
+.tl{text-align: left;}
+.tc{text-align: center;}
+.tr{text-align: right;}
+
+/*间距*/
+.mt5{margin-top: 5rpx;}
+.mt10{margin-top: 10rpx;}
+.mt15{margin-top: 15rpx;}
+.mt20{margin-top: 20rpx;}
+.mt25{margin-top: 25rpx;}
+.mt30{margin-top: 30rpx;}
+.mt35{margin-top: 35rpx;}
+.mt40{margin-top: 40rpx;}
+
+/*背景*/
+.bg_f{background: #fff}
+
+/*边框*/
+.border_t{border-top:solid 1px #eee;}
+.border_b{border-bottom: solid 1px #eee;}
+
+/*浮动*/
+.fl{float:left;}
+.fr{float:right;}
+
+/*弹性盒模型*/
+.box {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.flex1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    box-flex: 1;
+    flex: 1;
+    overflow: hidden;
+    /* display: block; */
+    justify-content: space-around;
+}
+
+/*footer*/
+.footer_box{height:60px;width:750rpx;line-height: 60px;margin-top:20rpx;}
+.footer{font-size: 12px;bottom:0;width:750rpx;}
+
+/*无结果提示*/
+.null{margin-top: 100rpx}
+.null .txt1{color:#000;font-size:38rpx;margin-top: 20rpx;}
+.null .txt2{font-size:30rpx;}
+
+
+/* page{padding:90rpx 0 50px;} */
+.tabTit{height:90rpx;line-height: 90rpx;border-bottom: solid 1px #eee;position:fixed;top:84rpx;width: 750rpx;z-index: 1;background: #f5f5f5;}
+.tabTit .active{color:#1498F7;background: #fff;}
+.tabTit .active image{transform: rotate(180deg);background: none;}
+.tabTit image{width:26rpx;height:26rpx;vertical-align: middle;margin-top:32rpx;margin-left: 16rpx}
+.tabLayer{box-shadow: 0 5px 5px rgba(0,0,0,.15);width:750rpx;overflow: hidden;position: fixed;top:177rpx;z-index: 1;background: #fff;padding-bottom: 0rpx;border-bottom: solid 1px #eee;max-height: 500rpx;overflow-y: auto}
+.tabLayer .active{color:#1498F7;border-color:#1498F7;}
+.case{height:640rpx;margin:30rpx auto 0;background: #fff;border:solid 1px #f1f1f1;overflow:hidden;}
+.case .title{font-size: 33rpx;color:#000;margin-top: 5rpx;}
+.case .title,.case .tag{padding:0 5rem 0 15px;}
+.case .tag{font-size:28rpx;}
+.case .pic{width:100%;height:510rpx;}
+.case .headPic{right:10px;top:455rpx;}
+.case .headPic image{width:100rpx;height:100rpx;border-radius: 50%;border:solid 6rpx #fff;}
+.case .headPic text{display: block;font-size:28rpx;margin-top: -6rpx;}
+.tabTit-item{
+  border-right: 2rpx solid #ddd;
+  width: 250rpx;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.tabTit-item:last-child{
+  border-right: none;
+}
+.tabLayer-item{
+  text-align: left;
+  padding: 20rpx 28rpx;
+  border-bottom: 2rpx solid #ddd;
+  position: relative;
+}
+.tabLayer-item.active{
+  background-color: #fff;
+  color:#1498F7;
+}
+.tab-mask{
+  position: absolute;
+  top: 188rpx;left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,.15);
+}
+.search-box{
+  position: fixed;
+  top: 0;left: 0;
+  width: 100%;
+}
+.classify-tab{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #f5f5f5;
+  z-index: 5000;
+}
+.classify-item {
+  width: 250rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 2rpx solid #ddd;
+  
+}
+.classify-item.active{
+  border-bottom: 4rpx solid #1498F7;
+}
+.tabLayer-item-val{
+  margin-left: 40rpx;
+  color: #999;
+}
+/* ///end 头部筛选 */
+.td_1,.tabTit-item0{
+  width: 25%;
+}
+.td_2,.tabTit-item1{
+  width: 75%;
+  
+}
+/* .td_3,.tabTit-item2{
+  width: 50%;
+} */
+.td{
+  padding: 20rpx 20rpx;
+}
+.td_3{
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.list{
+  margin-top: 188rpx;
+}
+.item{
+  border-bottom: 2rpx solid #dedede;
+}
+

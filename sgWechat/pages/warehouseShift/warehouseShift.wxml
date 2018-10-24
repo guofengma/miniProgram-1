@@ -1,0 +1,182 @@
+<view class="section">  
+ 
+
+        <form  bindsubmit="formSubmit">
+        
+           <view class='picker-box'>
+                  <picker bindchange="bindShelfPickerChange" value="{{shelf_index}}" range="{{shelfList}}" range-key="name" data-current="{{idx}}" data-name="shelvesId" bindtap=''>
+                    <view class="picker flex-box">
+                       <view class='label-box '>
+                          <text>存放位置</text>
+                          <text class='red'>*</text>
+                      </view>
+                      <view class='picker-value'>
+                        <text wx:if="{{shelfName==''}}" class='picker-pld'>请选择</text>
+                        {{shelfName}}
+                        <input hidden name="shelfId" value='{{shelfId}}'></input>
+                        <input hidden name="shelfName" value='{{shelfName}}'></input>
+                        
+                        <image src='../../images/down.png'class="picker-icon"></image>
+                      </view>
+                      <!--扫一扫  -->
+                      <view class='scan-box' catchtap='scanPlace'>
+                        <image class='scan-img' src='/images/scan_sm.png'></image>
+                      </view>
+                    </view>
+                  </picker>
+                </view>
+
+          <!--盘库位置  -->
+          <view class='place-list'>
+              <view class='place ' wx:for="{{place_list}}" wx:key="" wx:for-index="idx" >
+                <view class='flex-box place-title'>
+                  <text class='place-index'>盘库明细({{idx+1}})</text>
+                  <view class='delete-btn' wx:if="{{idx>0}}" bindtap="delBind"  data-index="{{idx}}">删除</view>
+                </view>
+
+                 <view class='picker-box'>
+                  <picker bindchange="bindNumPickerChange" value="{{item.materialIndex}}" range="{{num_arr}}" range-key="num" data-current="{{idx}}">
+                    <view class="picker flex-box">
+                    <view class='label-box '>
+                          <text>原料编号</text>
+                          <text class='red'>*</text>
+                      </view>
+                      <view>
+                        <text wx:if="{{item.materialIndex==''}}" class='picker-pld'>请选择</text>
+                        <input style='display:none' name="numName"value=" {{item.materialNum}}"></input>
+                        <input value='{{item.materialId}}' name="num" style='display:none'></input>
+                        {{item.materialNum}}
+                        <image src='../../images/down.png'class="picker-icon"></image>
+                      </view>
+                    </view>
+                  </picker>
+                </view>  
+
+                <view class='flex-box input-box'>
+                      <view class='label-box flex-box'>
+                        <text class='input-label'>原料描述</text>
+                      </view>
+                      <text>{{item.materialName}}</text>
+                      <input name="sampleName" hidden value='{{item.materialName}}'></input>
+                </view>
+
+                 <view class='picker-box'>
+                  <picker bindchange="bindBatchPickerChange" value="{{item.batch.index}}" range="{{item.batch.selectList}}" range-key="name" data-current="{{idx}}">
+                    <view class="picker flex-box">
+                     <view class='label-box '>
+                          <text>盘库批次</text>
+                          <text class='red'>*</text>
+                      </view>
+                      <view>
+                        <text wx:if="{{item.batch.index==''}}" class='picker-pld'>请选择</text>
+                        {{item.batch.name}}<image src='../../images/down.png'class="picker-icon"></image>
+                      </view>
+                    </view>
+                  </picker>
+                </view>
+
+                 <view class='input-box flex-box'>
+                    <view class='label-box flex-box'>
+                      <text class='input-label'>当前数量</text>
+                    </view>
+                    <input class='input'  type='number'  disabled value='{{item.batch.count}}'></input>
+                    <text>{{unit}}</text>
+                </view>
+
+                
+                <view class='input-box flex-box'>
+                    <view class='label-box flex-box'>
+                    <view class='label-box '>
+                          <text>出库数量</text>
+                          <text class='red'>*</text>
+                      </view>
+                      <!-- <text class='input-tips'>已存放量:{{item.batch.count}}</text> -->
+                    </view>
+                    <input class='input' placeholder='请输出库数量' type='digit'   name="count{{idx}}" data-limit="{{item.batch.count}}"  bindinput='limitVal' bindblur='changeValue' data-index="{{idx}}" data-name="num" value='{{item.num}}'></input>
+                    <text>{{unit}}</text>
+                </view>
+
+              </view>
+          </view>
+          <!--盘库位置 end-->
+          
+
+          <view class='add-btn' bindtap="insert" wx:if="{{shelfId!==''}}" >
+             <image class='add-icon' src="/images/tian.png"></image>
+              <text>添加盘库信息</text>
+          </view>
+
+           <view class='picker-box'>
+                  <picker bindchange="bindInShelfPickerChange" value="{{inShelvesIndex}}" range="{{inShelfList}}" range-key="name"  >
+                    <view class="picker flex-box">
+                       <view class='label-box '>
+                          <text>入库位置</text>
+                          <text class='red'>*</text>
+                      </view>
+                      <view class='picker-value'>
+                        <text wx:if="{{inShelfId==''}}" class='picker-pld'>请选择</text>
+                        {{inShelfName}}
+                        <input hidden name="inShelfId" value='{{inShelfId}}'></input>
+                        <input hidden name="inShelfName" value='{{inShelfName}}'></input>
+                        
+                        <image src='../../images/down.png'class="picker-icon"></image>
+                      </view>
+                      <!-- <view class='scan-box' catchtap='scanPlace' data-index="{{idx}}">
+                        <image class='scan-img' src='/images/scan_sm.png'></image>
+                      </view> -->
+                    </view>
+                  </picker>
+                </view>
+
+          <view class='picker-box'>
+            <picker bindchange="bindPersonPickerChange" value="{{person_index}}" range="{{person_arr}}" range-key="name">
+              <view class="picker flex-box">
+               <view class='label-box '>
+                    <text>盘库交接人</text>
+                    <text class='red'>*</text>
+                </view>
+                <view>
+                  <text wx:if="{{person_index==''}}" class='picker-pld'>请选择</text>
+                   <input value='{{person_arr[person_index].value}}' name="person" style='display:none'></input>
+                  {{person_arr[person_index].name}}<image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view>
+
+           <view class='picker-box'>
+            <picker bindchange="bindReasonPickerChange" value="{{reason_index}}" range="{{reason_arr}}" range-key="name">
+              <view class="picker flex-box">
+              <view class='label-box '>
+                    <text>盘库原因</text>
+                    <text class='red'>*</text>
+                </view>
+                <view>
+                  <text wx:if="{{reason_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{reason_arr[reason_index].value}}' name="reason" style='display:none'></input>
+                  {{reason_arr[reason_index].name}}<image src='../../images/down.png'class="picker-icon"></image></view>
+              </view>
+            </picker>
+          </view>
+<!-- 
+          <view class='img-title'>图片</view>
+          <view class='img-box'>
+            <image bindtap="upimg" src="../../images/imgAdd.png" class='addImg'></image>
+            <view class='img-list flex-box'>
+              <block wx:for="{{img_arr}}" wx:key="index">  
+                <view class='logoinfo'>  
+                  <image class='delete-img' bindtap='deleteImg' data-index='{{index}}' src="../../images/cancel.png"></image>
+                  <image src='{{item}}' class='image-item' bindtap="previewImg" data-index='{{index}}'></image>  
+                </view>  
+              </block> 
+            </view>
+          </view> -->
+           <view class='submit-btn-box btn-box'>
+            <button  formType="submit" class='submit-btn btn blue lg'>确认盘库</button>
+          </view>
+
+           <view class='btn-box check-shelves' >
+            <button   class='btn default lg ' bindtap='goShelves'>查看货架量</button>
+          </view>
+      </form>
+</view>  

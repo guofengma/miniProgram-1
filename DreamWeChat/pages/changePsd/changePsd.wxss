@@ -1,0 +1,23 @@
+.section{
+   font-size: 30rpx; 
+   padding: 0 40rpx;
+}
+.form{
+  width: 100%;
+  box-sizing: border-box;
+ 
+}
+.list-item{
+   padding: 0rpx 28rpx;
+  border-bottom:2rpx solid #ddd;
+  height: 92rpx;
+  line-height: 92rpx;
+}
+.input{
+  height: 92rpx;
+  line-height: 92rpx;
+  width: 400rpx;
+}
+.label-box{
+  width: 140rpx;
+}

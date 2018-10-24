@@ -1,0 +1,108 @@
+<view class='head'>
+  <!-- 日期 -->
+   <scroll-view class='date-bar flex-box' scroll-x="true"  >
+    <view 
+    class="date-item {{item.isActive?'active':''}}" 
+    bindtap='changeDate' 
+    data-item="{{item}}"
+    data-index="{{index}}"
+    wx:for="{{dateList}}" 
+    wx:key=""
+    >
+      <view>{{item.date}}</view>
+      <view>{{item.week}}</view>
+      <view>{{item.count}}</view>
+    </view>
+   </scroll-view>
+    <!-- end 日期 -->
+</view>
+<view class="section">  
+    <!-- 集装箱列表 -->
+    <view class='no-data {{noData}}'>暂无数据</view>
+    <view class='container-list' style="min-height:{{scrollHeight-90}}px">
+     <view class='split-line' wx:if="{{list.am.length>0}}"></view>
+    <!-- 上午列表 -->
+      <view class='container-item' wx:for="{{list.am}}" wx:key="" >
+        <!-- 头部 -->
+        <view class='container-head flex-box'>
+          <view class='c-h-left'>
+            <image class='weather-icon' src="/images/am_icon.png"></image>
+            <text>上午</text>
+          </view>
+          <view class='c-h-right flex-box' id="{{item.id}}" bindtap="kindToggle">
+            <view class='c-h-r-item'>
+              <view>箱型</view>
+              <view class='ellipsis fs24'>{{item.type}}</view>
+            </view>
+            <view class='c-h-r-item center'>
+              <view>品名</view>
+              <view class='ellipsis fs24'>{{item.name}}</view>
+            </view>
+            <view class='c-h-r-item right' >
+              <image class="arrow-icon {{item.open?'show':''}}" src='/images/arrowSelect.png'></image>
+            </view>
+          </view>
+        </view>
+        <!-- end头部 -->
+        <!-- 主体 -->
+        <view class="container-body {{item.open?'show':''}}" bindtap='toDetail' data-item="{{item}}">
+          <view class='c-b-item flex-box' wx:for="{{item.detail}}" wx:key="" wx:for-item="subItem">
+            <view class='c-b-t-left flex-box'>
+              <view class='c-b-t-l-label'>箱号：</view>
+              <view>{{subItem.boxNum}}</view>
+            </view>
+            <view class='c-b-t-right flex-box'>
+              <view class='c-b-t-l-label'>箱数：</view>
+              <view>{{subItem.boxAmount}}</view>
+            </view>
+          </view>
+        </view>
+        <!-- end主体 -->
+      </view>
+      <!-- end上午列表 -->
+     
+      <!-- 下午列表 -->
+      <view class='split-line' wx:if="{{list.pm.length>0}}"></view>
+      <view class='container-item' wx:for="{{list.pm}}" wx:key="" >
+        <!-- 头部 -->
+        <view class='container-head flex-box'>
+          <view class='c-h-left pm'>
+            <image class='weather-icon' src="/images/pm_icon.png"></image>
+            <text>下午</text>
+          </view>
+          <view class='c-h-right flex-box' id="{{item.id}}" bindtap="kindToggle">
+            <view class='c-h-r-item'>
+              <view>箱型</view>
+              <view class='ellipsis fs24'>{{item.type}}</view>
+            </view>
+            <view class='c-h-r-item center'>
+              <view>品名</view>
+              <view class='ellipsis fs24'>{{item.name}}</view>
+            </view>
+            <view class="c-h-r-item right " >
+              <image class="arrow-icon {{item.open?'show':''}}" src='/images/arrowSelect.png'></image>
+            </view>
+          </view>
+        </view>
+        <!-- end头部 -->
+        <!-- 主体 -->
+        <view class="container-body {{item.open?'show':''}}" bindtap='toDetail' data-item="{{item}}">
+          <view class='c-b-item flex-box' wx:for="{{item.detail}}" wx:key="" wx:for-item="subItem">
+            <view class='c-b-t-left flex-box'>
+              <view class='c-b-t-l-label'>箱号：</view>
+              <view>{{subItem.boxNum}}</view>
+            </view>
+            <view class='c-b-t-right flex-box'>
+              <view class='c-b-t-l-label'>箱数：</view>
+              <view>{{subItem.boxAmount}}</view>
+            </view>
+          </view>
+        </view>
+        <!-- end主体 -->
+      </view>
+      <!-- end下午列表 -->
+    </view>
+    <!-- end集装箱列表 -->
+    <view class='bottom-line {{display}}' wx:if="{{noData=='hide'}}">————————我是有底线的————————</view>
+    
+</view>  

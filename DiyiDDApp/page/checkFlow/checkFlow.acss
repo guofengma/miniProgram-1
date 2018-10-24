@@ -1,0 +1,137 @@
+.flow-section{
+  font-size: 30rpx;
+}
+.flow-list{
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 40rpx;
+}
+.flow-item{
+  /* min-width: 100rpx; */
+  justify-content: flex-start;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-right: 30rpx;
+}
+.flow-item-icon{
+  position: relative;
+  top: 4rpx;
+  margin-right: 20rpx;
+}
+.flow-item-icon-img{
+  width: 32rpx;
+  height: 32rpx;
+
+
+}
+.form-item{
+  padding: 20rpx 27rpx;
+}
+.form-label{
+  line-height: 65rpx;
+}
+.radio-group{
+  width: 540rpx;
+}
+.radio{
+  width:180rpx;
+}
+.split-line{
+  width: 100%;
+  height: 15rpx;
+  background-color: #f8f8f8;
+}
+.flow-textarea{
+  width: 698rpx;
+	min-height: 254rpx;
+	background-color: #f8f8f8;
+	border-radius: 10px;
+  margin: 0 auto;
+  font-size: 30rpx;
+  padding: 20rpx 12rpx;
+}
+.add-img{
+  width: 93rpx;
+  height: 93rpx;
+}
+.btn{
+  width: 330rpx;
+}
+.btn.orange{
+  background-color: #ff3000;
+}
+
+/* 跟进流水 */
+.flow-log{
+  padding: 32rpx 30rpx;
+  background-color: #fff;
+  margin-top: 15rpx;
+  margin-bottom: 300rpx;
+  font-size: 24rpx;
+}
+
+.log-item-head{
+  justify-content: flex-start;
+  line-height: 50rpx;
+}
+.l-i-h-point{
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #0090ff;
+  color: #fff;
+  margin-right: 33rpx;
+}
+.log-item.red .l-i-h-point{
+  background-color: #f00;
+}
+.log-item.red .log-item-body{
+  border-color: #f00;
+}
+.l-i-h-name{
+  width: 390rpx;
+}
+.l-i-h-time{
+  color: #919191;
+  float: right;
+  width: 252rpx;
+}
+.log-item-body{
+  border-left: 4rpx solid #388ccc;
+  padding-left: 55rpx;
+  line-height: 58rpx;
+  margin-left: 25rpx;
+  font-size: 30rpx;
+}
+.l-i-b-title{
+  font-weight: bold;
+}
+.l-i-b-imgs>image{
+  width: 75rpx;
+  height: 75rpx;
+  margin-left: 19rpx;
+}
+.split-line{
+  width: 100%;
+  height: 15rpx;
+  background-color: 
+
+}
+.is-read{
+  color: #919191;
+}
+.is-read.blue{
+  color: #0090ff;
+}
+.log-item.red{
+  color: #f00;
+}
+.log-item.red .l-i-h-time{
+  color: #f00;
+}
+.l-i-b-imgs{
+  min-height: 75rpx;
+}
+/* 跟进流水 */

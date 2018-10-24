@@ -1,0 +1,101 @@
+<!--类型  -->
+<view class='classify-tab flex-box '>
+  <view class="classify-item {{classifyCurrent==index ? 'active' : ''}}" wx:for="{{classify}}" wx:key=""  data-idx="{{index}}" bindtap='classifySel' >{{item}}</view>
+</view>
+<!--选项卡-->
+<view class="tabTit box tc bg_f">
+    <view class="tabTit-item flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="" data-index="{{index}}" bindtap="filterTab"><text class='ellipsis'>{{item}}</text></view>
+</view>
+<!--筛选项-->
+<!--面料编号  -->
+<view class="tabLayer tc" hidden="{{tab[0]}}">
+    <view class="tabLayer-item {{fabric_current==0?'active':''}}" data-id="0" data-index="0" data-txt="面料编号" bindtap="filter">不限</view>
+    <view wx:for="{{fabric}}" wx:key="" class="tabLayer-item {{fabric_current==item.fabricId?'active':''}}" data-id="{{item.fabricId}}" data-index="0" data-txt="{{item.fabricNum}}" bindtap="filter">{{item.fabricNum}}<text class='tabLayer-item-val'>{{item.fabricName}}</text></view>
+</view>
+<!--end 面料编号  -->
+<!--规格  -->
+<view class="tabLayer tc" hidden="{{tab[1]}}">
+    <view class="tabLayer-item {{spec_current==0?'active':''}}" data-id="0" data-index="1" data-txt="规格" bindtap="filter">不限</view>
+    <view wx:for="{{spec}}" wx:key="" class="tabLayer-item {{spec_current==item.id?'active':''}}" data-id="{{item.id}}" data-index="1" data-txt="{{item.spec}}" bindtap="filter">{{item.spec}}</view>
+</view>
+<!--end 规格  -->
+
+<!--色别 -->
+<view class="tabLayer tc" hidden="{{tab[2]}}">
+    <view class="tabLayer-item {{color_current==0?'active':''}}" data-id="0" data-index="2" data-txt="色别" bindtap="filter">不限</view>
+    <view wx:for="{{color}}" wx:key="" class="tabLayer-item {{color_current==item.id?'active':''}}" data-id="{{item.id}}" data-index="2" data-txt="{{item.color}}" bindtap="filter">{{item.color}}</view>
+</view>
+<!--end 色别 -->
+<!--仓库 -->
+<view class="tabLayer tc" hidden="{{tab[3]}}">
+    <view class="tabLayer-item {{warehouse_current==0?'active':''}}" data-id="0" data-index="3" data-txt="仓库" bindtap="filter">不限</view>
+    <view wx:for="{{warehouse}}" wx:key="" class="tabLayer-item {{warehouse_current==item.id?'active':''}}" data-id="{{item.storehostId}}" data-index="3" data-txt="{{item.storehostName}}" bindtap="filter">{{item.storehostName}}</view>
+</view>
+<!--end 仓库 -->
+<!--货架 -->
+<view class="tabLayer tc" hidden="{{tab[4]}}">
+    <view class="tabLayer-item {{shelf_current==0?'active':''}}" data-id="0" data-index="4" data-txt="货架" bindtap="filter">不限</view>
+    <view wx:for="{{shelf}}" wx:key="" class="tabLayer-item {{shelf_current==item.id?'active':''}}" data-id="{{item.shelvesId}}" data-index="4" data-txt="{{item.shelvesName}}" bindtap="filter">{{item.shelvesName}}</view>
+</view>
+<!--end 货架 -->
+
+<view class="list-box">  
+  <view class='no-data {{noData}}'>暂无数据</view>
+     <view class="kind-list" style="min-height:{{scrollHeight}}px" >
+            <block wx:for="{{list}}" wx:key="id">
+                <view class="kind-list__item">
+                    <view id="{{item.id}}" class="weui-flex kind-list__item-hd " bindtap="kindToggle">
+                        <view class="weui-flex__item">
+                          <view class='detail-box'>
+                            <view class='warehouse-detail flex-box'>
+                              <view class='detail-left flex-box'>
+                                <text>{{item.fabricInfo.fabricNum}}</text>
+                                <text class='fabric-info'>{{item.fabricInfo.fabricName}} {{item.spec}} {{item.color}}</text>
+                                <view class='multi-shelf' wx:if="{{item.isMulti}}">
+                                  <text class='multi-txt'>多柜</text>
+                                 <image class="kind-list__img" src="{{item.open ? '../../images/arrow_blue.png' : '../../images/arrow_blue_left.png'}}"></image>
+                                </view>
+                                 <text wx:else>{{item.inventoryStorehosts[0].storehostName}}--{{item.inventoryStorehosts[0].shelvesName}}</text> 
+                                
+                              </view>
+
+                              <view class='detail-right flex-box'  wx:if="{{item.isMulti}}">
+                                <text class='detail-right-num'>{{item.bolt-item.lockBolt}}/{{item.realNum}}</text><!-- 匹数/数量 （总数-已准备量）-->
+                              </view>
+                              <view class='detail-right flex-box'wx:else >
+                                <text class='detail-right-num'>{{item.inventoryStorehosts[0].bolt-item.inventoryStorehosts[0].lockBolt}}/{{item.inventoryStorehosts[0].num-item.inventoryStorehosts[0].lockNum}}</text><!-- 匹数/数量 （总数-已准备量）-->
+                                <text>批次：{{item.inventoryStorehosts[0].batch}}</text>
+                              </view>
+
+                            </view>
+                          </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{item.inventoryStorehosts.length>1}}" class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                        <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                            <block wx:for="{{item.inventoryStorehosts}}" wx:for-item="subItem" wx:key="*this">
+                            <view class='weui-cell weui-cell_access sub-item flex-box'>
+                              <view class='sub-item-title'> 
+                                <text> {{subItem.storehostName}} </text>
+                                <text> {{subItem.shelvesName}} </text>
+                              </view><!--规格+色别+面料称呼 -->
+                              <view class='sub-item-value flex-box'>
+                                <text class='sub-item-count'>{{subItem.bolt-subItem.lockBolt}}/{{subItem.num-subItem.lockNum}}</text>
+                                <text>批次：{{subItem.batch}}</text>
+                              </view>
+                              
+                            </view>
+                               
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </block>
+       </view>
+       <view class='bottom-line {{display}}' >————————我是有底线的————————</view> 
+       <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+    </view>  
+</view>  

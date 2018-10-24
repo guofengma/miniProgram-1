@@ -1,0 +1,76 @@
+<view class="section"> 
+  <view class='no-data {{noData}}' style="min-height:{{scrollHeight}}px">暂无数据</view>
+    <!--合同信息  -->
+  <view class='head-info' wx:if="{{noData=='hide'}}">
+    <view class='info-item flex-box' wx:if="{{contractInfo.transportRemark!==null}}">
+      <text class='info-label'>运输要求:</text>
+      <text class="info-value" wx:if="{{contractInfo.transportRemark==null}}">/ </text>
+      <text class="info-value" wx:else>{{contractInfo.transportRemark}} </text>
+    </view>
+    <view class='info-item flex-box' wx:if="{{contractInfo.packRemark!==null}}">
+      <text class='info-label'>包装要求:</text>
+      <text class="info-value" wx:if="{{contractInfo.packRemark==null}}">/ </text>
+      <text class="info-value" wx:else>{{contractInfo.packRemark}} </text>
+    </view>
+    <view class='info-item flex-box' wx:if="{{contractInfo.dyeRemark!==null}}">
+      <text class='info-label'>染色要求:</text>
+      <text class="info-value" wx:if="{{contractInfo.dyeRemark==null}}">/ </text>
+      <text class="info-value" wx:else>{{contractInfo.dyeRemark}} </text>
+    </view>
+    <view class='info-item flex-box' wx:if="{{contractInfo.especiallyRemark!==null}}">
+      <text class='info-label'>特殊要求:</text>
+      <text class="info-value" wx:if="{{contractInfo.especiallyRemark==null}}">/ </text>
+      <text class="info-value" wx:else>{{contractInfo.especiallyRemark}} </text>
+    </view>
+  </view>
+  <!--end 合同信息  -->
+  <view class="order-list" style="min-height:{{scrollHeight}}px" >
+  <block wx:for="{{list}}" wx:key="key">
+  <form report-submit='true' bindsubmit="submitFormId" class='formId-form' bindtap='goDetail' data-id="{{item.id}}" data-type="{{item.fabricType}}" data-orderNum="{{item.orderNum}}" data-title="{{item.spec}} {{item.color}} " data-order="{{item}}">
+    <button formType="submit" class='formId-btn'>
+    <view class='order-item'    >
+      <view wx:if="{{item.status}}"><image class='finished-img' src='../../../images/finished.png'></image></view>
+      <view class='priority {{item.urgency}}'></view><!--优先级  -->
+      <view class='order-detail'>
+        <view class='progress {{item.urgency}}' style='width:{{item.progress}}px'></view>
+        <view class='detail-info'>
+          <view class='detail-top'>
+             <view>
+              <!-- <image src="../../../images/person.png" class='person-icon'></image> -->
+              <text>【跟】{{item.updateByUser.realName}}</text>
+            </view>
+            <text>{{item.partners.pname}}</text>
+          </view>
+          <view class='detail-middle flex-box'><!--规格+色别+面料称呼 -->
+            <view class='detail-middle-left'>
+              <text>{{item.fabricName}} {{item.spec}}  </text>
+              <view>{{item.color}}</view>
+            </view>
+            <view class='detail-middle-right'>
+              {{item.tecName}}
+              <view class='order-time'>{{item.estimateDate}}交</view>
+            </view>
+          </view>
+          <view class='detail-bottom'>
+            <view class='detail-bottom-left'>
+              <text>排单量 {{item.realityNum}} {{item.unit}}/</text>
+              <text>已完成 {{item.hasCompleteNum}}{{item.unit}}/</text>
+              <text>订单数量 {{item.estimateProduction}}{{item.unit}}</text>
+              <text class='last'>{{item.process}}%</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+       </button>
+</form>
+  </block>
+    
+  </view>
+   <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+  <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+    </view>  
+</view>  

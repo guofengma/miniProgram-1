@@ -1,0 +1,28 @@
+<view class="section">  
+   <view class='no-data {{noData}}' >暂无消息</view>
+   <!--list  -->
+   <view class='msg-list' style="min-height:{{scrollHeight}}px">
+      <block wx:for="{{list}}"  wx:key="id">
+          <view class='msg-item flex-box'>
+            <view>
+              <image src='../../images/info.png' class='info-icon'></image>
+            </view>
+            <view>
+                <view class='msg-title'>{{item.title}}</view>
+                <view class='msg-time'>{{item.createDate}}</view>
+                <view class='msg-content '>
+                    <view class='msg-value'>{{item.message}}</view>
+                </view>
+            </view>
+            <view wx:if="{{!item.status}}" class='red-point'></view>
+          </view>
+      </block>
+   </view>
+<!--end list  -->
+   <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+   <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+    </view> 
+</view>  

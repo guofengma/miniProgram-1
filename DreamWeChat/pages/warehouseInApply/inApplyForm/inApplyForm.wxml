@@ -1,0 +1,148 @@
+<view class="section">  
+   <form bindsubmit="formSubmit" class='check-form'>
+
+      <view class='form-item picker-box flex-box'>
+           <view>
+           <text class='picker-label'>物料分类</text>
+            <text class='red'>*</text>
+          </view>
+          <picker class='picker ' value="{{classify_index}}" range="{{classify_arr}}" bindchange='classifyPicker'  range-key="name">
+            <text wx:if="{{classify_index==''}}" class='picker-pld'>请选择分类</text>
+            <input class='picker-input' disabled value='{{classify_arr[classify_index].name}}' name="classifyName"></input>
+            <input hidden name="classifyId" value='{{classify_arr[classify_index].id}}'></input>
+            
+            <image class='picker-icon' src="/images/select.png"></image>
+          </picker>
+      </view>
+
+       <view class='form-item picker-box flex-box' >
+         <view>
+           <text class='picker-label'>物料编号</text>
+            <text class='red'>*</text>
+          </view>
+          <picker class='picker ' value="{{mNum_index}}" range="{{mNum_arr}}" bindchange='mNumPicker'  range-key="num">
+            <text wx:if="{{mNum_index==''}}" class='picker-pld'>请选择物料编号</text>
+            <input class='picker-input' disabled value='{{mNum_arr[mNum_index].num}}' name="mNum"></input>
+            <input hidden name="mNumId" value='{{mNum_arr[mNum_index].id}}'></input>
+            <image class='picker-icon' src="/images/select.png"></image>
+          </picker>
+      </view>
+
+      
+
+      <view class='form-item input-box flex-box' wx:if="{{!mNum_arr[mNum_index].auto}}" >
+        <text class='input-label lg'>物料信息</text>
+        <view class='input-val' wx:if="{{mNum_index!==''}}">
+          <view>物料名称：{{mNum_arr[mNum_index].name}}</view>
+          <view wx:if="{{mNum_arr[mNum_index].spec==null}}">规格：/</view>
+          <view wx:else>规格：{{mNum_arr[mNum_index].spec}}</view>
+          <view>单位：{{mNum_arr[mNum_index].unit}}</view>
+          <image src='{{mNum_arr[mNum_index].img}}' class='detail-img' data-index="{{mNum_index}}" binderror="imgError" bindtap='previewListImg' data-url="{{mNum_arr[mNum_index].img}}"></image>
+        </view>
+      </view>
+
+
+      <view class='materielForm' wx:else>
+        <view class='form-item input-box flex-box'>
+          <view>
+            <text class='input-label '>物料编号 </text>
+            <text class='red'>*</text>
+          </view>
+          <input name="materielNum"  placeholder='请输入物料编号'></input>
+        </view>
+
+        <view class='form-item input-box flex-box'>
+          <view>
+            <text class='input-label '>物料名称 </text>
+            <text class='red'>*</text>
+          </view>
+          <input name="materielName"  placeholder='请输入物料名称'></input>
+        </view>
+
+        <view class='form-item picker-box flex-box'>
+          <view>
+           <text class='picker-label'>领用单位</text>
+            <text class='red'>*</text>
+          </view>
+          <picker class='picker ' value="{{unit_index}}" range="{{unit_arr}}" bindchange='unitPicker'  range-key="name">
+            <text wx:if="{{unit_index==''}}" class='picker-pld'>请选择领用单位</text>
+            <input class='picker-input' disabled value='{{unit_arr[unit_index].name}}' name="unitName"></input>
+            <input hidden name="unitId" value='{{unit_arr[unit_index].id}}'></input>
+            <image class='picker-icon' src="/images/select.png"></image>
+          </picker>
+      </view> 
+
+        <view class='form-item input-box flex-box'>
+          <view>
+            <text class='input-label '>单价(单位/元) </text>
+          </view>
+          <input name="materielPrice"  placeholder='请输入物料单价'></input>
+        </view>
+
+         <view class='form-item input-box flex-box'>
+          <view>
+            <text class='input-label '>物料规格 </text>
+          </view>
+          <input name="materielSpec"  placeholder='请输入物料规格'></input>
+        </view>
+
+         <view class='form-item input-box flex-box'>
+          <view>
+            <text class='input-label '>供应商 </text>
+          </view>
+          <input name="partnerName"  placeholder='请输入供应商'></input>
+        </view>
+
+         <view class='img-title'>图片</view>
+          <view class='img-box'>
+            <image bindtap="upimg" src="/images/imgAdd.png" class='addImg'></image>
+            <view class='img-list flex-box'>
+              <block wx:for="{{img_arr}}" wx:key="index">  
+                <view class='logoinfo'>  
+                  <image class='delete-img' bindtap='deleteImg' data-index='{{index}}' src="/images/del.png"></image>
+                  <image src='{{item}}' class='image-item' bindtap="previewImg" data-index='{{index}}'></image>  
+                </view>  
+              </block> 
+            </view>
+             </view>
+
+      </view>
+
+       <view class='form-item picker-box flex-box'>
+          <view>
+           <text class='picker-label'>入库原因</text>
+            <text class='red'>*</text>
+          </view>
+          <picker class='picker ' value="{{reason_index}}" range="{{reason_arr}}" bindchange='reasonPicker'  range-key="name">
+            <text wx:if="{{reason_index==''}}" class='picker-pld'>请选择入库原因</text>
+            <input class='picker-input' disabled value='{{reason_arr[reason_index].name}}' name="reasonName"></input>
+            <input hidden name="reasonId" value='{{reason_arr[reason_index].id}}'></input>
+            <image class='picker-icon' src="/images/select.png"></image>
+          </picker>
+      </view> 
+
+      
+
+       <view class='form-item input-box flex-box last'>
+        <view>
+            <text class='input-label '>入库数量 </text>
+            <text class='red'>*</text>
+          </view>
+        <input name="numIn" type='digit' placeholder='请输入入库数量'></input>
+      </view>
+
+      
+
+      
+
+      <!-- <view class='form-item input-box flex-box '>
+        <text class='input-label '>备注</text>
+        <textarea class='' name="remarks" placeholder='输入备注情况'></textarea>
+      </view> -->
+
+      <view class='btn-box'>
+        <button class='btn lg default' formType="submit">提交</button>
+      </view>
+
+   </form>
+</view>  

@@ -1,0 +1,82 @@
+.add-vat-section{
+  font-size: 30rpx;
+}
+.vat-title{
+  background-color: #eaeaea;
+  font-size: 24rpx;
+  padding: 28rpx 16rpx;
+}
+.del-btn{
+  color: #1498F7;
+}
+.v-b-item{
+  position: relative;
+}
+.form-item{
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.form-input{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: right;
+  width: 400rpx;
+}
+.form-input.sm{
+  width: 200rpx;
+}
+.picker-view{
+  width: 500rpx;
+  text-align: right;
+}
+.picker-icon{
+   width: 30rpx;
+    height: 30rpx;
+    background-image: url("/images/picker_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 40rpx;
+    margin-left: 20rpx;
+    float: right;
+}
+.del-cloth-icon{
+  position: absolute;
+  top: 0rpx;left: 4rpx;
+  width: 34rpx;
+  height: 34rpx;
+  background-image: url("/images/clear_icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+.input-tips{
+  color: #919191;
+  margin-left: 10rpx;
+}
+.add-cloth-btn{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #0090ff;
+}
+.split-line{
+  width: 100%;
+	height: 15px;
+	background-color: #f8f8f8;
+}
+.add-vat-btn{
+  justify-content: center;
+  padding: 30rpx 0;
+  line-height: 40rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.add-vat-icon{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 12rpx;
+}
+.btn-box{
+  margin-top: 50rpx;
+}

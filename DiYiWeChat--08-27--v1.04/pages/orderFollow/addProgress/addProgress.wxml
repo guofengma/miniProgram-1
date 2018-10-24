@@ -1,0 +1,59 @@
+<view class='section'>
+  <view class='process-list flex-box' >
+      <!--流程循坏  -->
+       <block wx:for="{{process}}" wx:for-item="item" wx:key="id">
+        <view class='process-item'>
+          <icon type="{{item.iconType}}" size="14" color="{{item.iconColor}}" class='process-icon'/>
+          <text>{{item.flowName}}</text>
+        </view>
+      </block>
+      <!-- <view class='process-item'>
+         <icon type="success" size="14" color="#1498F7" class='process-icon'/>
+         <text>流程1</text>
+      </view>
+      <view class='process-item'>
+         <icon type="success" size="14" color="#1498F7" class='process-icon'/>
+         <text>流程2</text>
+      </view>
+      <view class='process-item'>
+         <icon type="cancel" size="14" color="#999" class='process-icon'/>
+         <text>流程3</text>
+      </view>
+      <view class='process-item'>
+         <icon type="cancel" size="14" color="#999" class='process-icon'/>
+         <text>流程4</text>
+      </view>
+      <view class='process-item'>
+         <icon type="cancel" size="14" color="#999" class='process-icon'/>
+         <text>流程5</text>
+      </view> -->
+      <!--流程循坏  -->
+    </view>
+    <form  bindsubmit="formSubmit" report-submit='true'>
+        <radio-group class="radio-group flex-box" bindchange="radioChange" name="status">
+          <text>状态</text>
+          <label class="radio" wx:for="{{items}}" wx:key="{{key}}">
+            <image src='{{item.checked?"../../../images/ok.png":"../../../images/circle.png"}}' class='radio-icon'></image>
+            <radio value="{{item.value}}" checked="{{item.checked}}" class='status-radio' id="{{item.id}}" />{{item.name}}
+          </label>
+        </radio-group>
+
+        <view class='remark-img'>
+          <textarea placeholder='备注给流程相关内容' name="remark"></textarea>
+          <image bindtap="upimg" src='../../../images/imgAdd.png' class='addImg'></image>
+          <view class='img-list flex-box'>
+             <block wx:for="{{img_arr}}" wx:key="index">  
+              <view class='logoinfo'>  
+                <image class='delete-img' bindtap='deleteImg' data-index='{{index}}' src="../../../images/cancel.png"></image>
+                <image src='{{item}}' class='image-item' bindtap="previewImg" data-index='{{index}}'></image>  
+              </view>  
+            </block> 
+          </view>
+         
+        </view>
+        <view class='submit-btn-box'>
+          <button  formType="submit" class='submit-btn'>提交</button>
+        </view>
+    </form>
+   
+</view>

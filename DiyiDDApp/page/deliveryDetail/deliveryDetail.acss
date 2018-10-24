@@ -1,0 +1,33 @@
+.info{
+  font-size: 30rpx;
+  
+}
+.info-item{
+  line-height: 48rpx;
+  padding: 12rpx 22rpx;
+  /* height: 80rpx; */
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.info-item.lg{
+  min-height: 80rpx;
+}
+.list{
+  font-size: 24rpx;
+  min-height: 600rpx;
+}
+.list-item{
+  padding: 22rpx 22rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.list-item.blue{
+ background-color: #b4deff;
+}
+.item-row{
+  line-height: 48rpx;
+}
+.fz30{
+  font-size: 30rpx;
+}
+.bold{
+  font-weight: 700;
+}

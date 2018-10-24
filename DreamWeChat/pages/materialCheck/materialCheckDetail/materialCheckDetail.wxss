@@ -1,0 +1,82 @@
+.section{
+  padding-bottom: 50rpx;
+}
+.arg-box{
+  padding: 40rpx 60rpx;
+  font-size: 28rpx;
+  line-height: 56rpx;
+  background-color: #fff;
+}
+.receive-box{
+  background-color: #fff;
+  margin-top: 14rpx;
+}
+.receive-title{
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+.receive-list{
+  padding: 0 14rpx;
+}
+.receive-item{
+  border: 1rpx solid #EDEDED;
+  padding: 20rpx 14rpx;
+  justify-content: flex-start;
+  margin-top: 10rpx;
+
+}
+.item-left-img{
+  width: 130rpx;
+  height: 120rpx;
+  
+}
+.item-right,.item-center{
+  flex-direction: column;
+  margin:10rpx 0;
+  margin-left: 28rpx;
+}
+.item-center{
+  width: 300rpx;
+}
+.item-right .red{
+  font-size: 30rpx;
+  color: #FC1A1C;
+}
+.btn-group{
+
+  width: 86%;
+  margin: 0 auto;
+}
+
+.modal-detail{
+  justify-content: center;
+  font-size: 26rpx;
+  
+}
+.picker-label{
+  line-height: 60rpx;
+  margin-top: 100rpx;
+  margin-bottom: 120rpx;
+}
+.picker{
+  position: relative;
+  margin-top: 100rpx;
+  margin-bottom: 120rpx;
+  
+}
+.picker-input{
+  width: 250rpx;
+  height: 60rpx;
+  border: 2rpx solid #dedede;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+.picker-icon{
+  width: 35rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 20rpx;
+}

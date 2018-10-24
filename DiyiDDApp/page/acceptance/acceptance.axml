@@ -1,0 +1,160 @@
+<view class="section">
+    <view class='head-box flex-box'>
+      <view>投坯匹数：{{boltLimit}}</view>
+      <view>验收匹数：{{checkBolt}}</view>
+      <view>差值： <text class="{{diffBolt<0?'red':''}}">{{diffBolt}}</text></view>
+    </view>  
+   <form onSubmit="formSubmit">
+   <!--成品  -->
+      <view >
+        <view class='input-box '>
+          <view class='input-item'>
+            <view class="label-box flex-box">
+              <text class="red">*</text>
+              <text class='input-label'>成品匹数</text>
+            </view>
+            <input class='input' 
+            placeholder='请输入成品匹数' 
+            name="boltOut" 
+            value='{{formData.acceptance.boltOut}}'
+             type='number'
+             onInput='changeValue' 
+             onBlur='calcBolt'
+             onFocus="boltFocus" 
+             data-father="acceptance"
+             data-name="boltOut"></input>
+          </view>
+          <view class='input-item '>
+            <view class="label-box flex-box">
+              <text class="red">*</text>
+              <text class='input-label'>成品数量</text>
+            </view>
+            <input class='input' placeholder='请输入成品数量' name="numOut" value='{{formData.acceptance.numOut}}' type='digit'></input>
+            <view class="unit">千克</view>
+          </view>
+        </view>
+      </view>
+      
+      <!--次品  -->
+      <view a:for="{{formData.inferiorList}}" >
+
+        <view class='input-box '>
+          <view class='input-item '>
+            <view class="label-box flex-box">
+              <text class="red">*</text>
+              <text class='input-label'>次品匹数</text>
+            </view>
+            <input class='input' 
+            placeholder='' 
+            name="inferiorBolt" 
+            value='{{formData.inferiorList[0].inferiorBolt}}' 
+            type='number'
+             onInput='changeValue'
+            onFocus="boltFocus"
+            onBlur='calcBolt' 
+            data-father="inferiorList[0]"
+            data-name="inferiorBolt"></input>
+          </view>
+          <view class='input-item '>
+            <view class="label-box flex-box">
+              <text class="red">*</text>
+              <text class='input-label'>次品数量</text>
+            </view>
+            <input class='input' placeholder='请输入次品数量' name="inferiorNum" value='{{formData.inferiorList[0].inferiorNum}}' type='digit'></input>
+            <view class="unit">千克</view>
+          </view>
+        </view>
+
+        <view class='textarea-box'>
+          <view class='textarea-item flex-box'>
+            <view class="label-box flex-box">
+              <text class="red">*</text>
+              <text class='textarea-label'>次品描述</text>
+            </view>
+              <textarea class='textarea' name="inferiorRemarks" placeholder='请输入次品描述' maxlength="-1" value="{{formData.inferiorList[0].inferiorRemarks}}"></textarea>
+          </view>
+        </view>
+
+        <view class='picker-box'>
+            <picker onChange="choseReason"  range="{{reasonSelect}}" range-key="reasonName" data-type="inferior">
+              <view class="picker flex-box">
+                 <view class="label-box flex-box">
+                    <text class="red">*</text>
+                    <text>处理意见</text>
+                 </view>
+                <view class='picker-item'>
+                  <text a:if="{{formData.inferiorReasonId==''}}" class='picker-pld'>请选择处理意见</text>
+                  <input value='{{formData.inferiorReasonId}}' name="inferiorReasonId" style='display:none'></input>
+                  {{formData.inferiorReason}}<image src='../../../images/picker_icon.png'class="picker-icon"></image></view>
+              </view>
+            </picker>
+          </view>
+
+      </view>
+
+      <!--损坏 -->
+      <view a:for="{{formData.destroyList}}" >
+
+        <view class='input-box '>
+          <view class='input-item '>
+            <view class="label-box flex-box">
+                <text class="red">*</text>
+                <text class='input-label'>损坏匹数</text>
+            </view>
+            <input class='input' 
+            placeholder='请输入损坏匹数'
+             name="destroyBolt" 
+             value='{{formData.destroyList[0].destroyBolt}}' 
+             type='number' 
+              onInput='changeValue'
+             onBlur='calcBolt' 
+              onFocus="boltFocus"
+              data-father="destroyList[0]" 
+             data-name="destroyBolt"></input>
+          </view>
+          <view class='input-item '>
+            <view class="label-box flex-box">
+                <text class="red">*</text>
+                <text class='input-label'>损坏数量</text>
+            </view>
+            <input class='input' placeholder='请输入损坏数量' name="destroyNum" value='{{formData.destroyList[0].destroyNum}}' type='digit'></input>
+            <view class="unit">千克</view>
+          </view>
+        </view>
+
+        <view class='textarea-box'>
+          <view class='textarea-item flex-box'>
+              <view class="label-box flex-box">
+                <text class="red">*</text>
+                <text class='textarea-label'>损坏描述</text>
+              </view>
+              <textarea class='textarea' name="destroyRemarks" placeholder="请输入损坏描述" maxlength="-1" value="{{formData.destroyList[0].destroyRemarks}}"></textarea>
+          </view>
+        </view>
+
+           <view class='picker-box'>
+            <picker onChange="choseReason"  range="{{reasonSelect}}" range-key="reasonName" data-type="destroy">
+              <view class="picker flex-box">
+                 <view class="label-box flex-box">
+                    <text class="red">*</text>
+                    <text>处理意见</text>
+                 </view>
+                <view class='picker-item'>
+                  <text a:if="{{formData.destroyReasonId==''}}" class='picker-pld'>请选择处理意见</text>
+                  <input value='{{formData.destroyReasonId}}' name="destroyReasonId" style='display:none'></input>
+                  {{formData.destroyReason}}<image src='../../../images/picker_icon.png'class="picker-icon"></image></view>
+              </view>
+            </picker>
+          </view>
+          
+      </view>
+      <view class='add-box flex-box btn-box' >
+        <button   class='btn sm' onTap='addInfo'  data-name="inferior">{{formData.inferiorBtn}}次品信息</button>
+        <button   class='btn sm' onTap='addInfo'  data-name="destroy">{{formData.destroyBtn}}损坏信息</button>
+      </view>
+      
+       <view class='btn-box'>
+            <button  formType="submit" class='btn'>提交</button>
+       </view>
+   </form>
+</view>  

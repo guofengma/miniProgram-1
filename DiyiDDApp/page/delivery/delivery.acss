@@ -1,0 +1,47 @@
+.list{
+  min-height: 100vh;
+  font-size: 24rpx;
+  width: 710rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+}
+.list-item{
+  min-height: 206rpx;
+  border: 1rpx solid #d7d7d7;
+  margin-bottom: 22rpx;
+}
+.item-right-row{
+  line-height: 38rpx;
+}
+.item-right-row.grey{
+  color: #919191;
+}
+.item-right-row.fz30{
+  font-size: 30rpx;
+}
+.colord1{
+  color: #1d1c1c;
+}
+.item-left{
+  width: 8rpx;
+	min-height: 206rpx;
+	background-color: #1ac1b2;
+}
+.item-left.red{
+	background-color: #ff0000;
+}
+.item-right{
+  padding: 8rpx 10rpx;
+  min-height: 206rpx;
+  width: 698rpx;
+  box-sizing: border-box;
+}
+.heigth40{
+  min-height: 80rpx;
+  overflow: hidden;
+}
+.item-right-row.heigth40{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -1,0 +1,85 @@
+
+.top-box{
+  width: 100%;
+  padding: 32rpx 36rpx;
+  box-sizing: border-box;
+
+}
+.top-right{
+}
+.logo{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius:50%;/*设置mode="center" 圆角才生效 */
+}
+.user-role{
+  font-size:28rpx;
+  display: inline-block;
+  /* width: 100rpx; */
+  padding: 0 8rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #469DF3;
+  border: 2rpx solid #469DF3;
+  border-radius: 6rpx;
+  text-align: center;
+  margin-left: 20rpx;
+}
+.company{
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+.message-box{
+  width: 100%;
+  height: 60rpx;
+   background-color: rgba(189,219,252,.5); 
+  border: 2rpx solid #eaeaea;
+  border-left: 0;
+  border-right: 0;
+  font-size: 28rpx;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+}
+.message{
+  padding: 0 32rpx;
+  display: flex;
+  line-height: 60rpx;
+}
+.message-icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+  margin-top: 8rpx;
+}
+.message-txt{
+}
+
+.menu-box{
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 40rpx;
+}
+.menu-item{
+  width: 320rpx;
+  height: 240rpx;
+  margin: 0 24rpx;
+  border: 2rpx solid #BADBFC;
+  margin-top: 36rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+    position: absolute;
+  top:0;left: 0;
+  z-index: 500; 
+}
+.item-icon{
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 12rpx;
+}
+.item-title{
+  font-size: 32rpx;
+}

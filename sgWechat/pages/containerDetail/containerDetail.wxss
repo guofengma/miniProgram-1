@@ -1,0 +1,68 @@
+.section{
+  font-size: 30rpx;
+}
+.detail-top{
+  line-height: 40rpx;
+	background-color: #f2f2f2;
+  padding: 40rpx 50rpx;
+}
+.d-t-item{
+  width: 100%;
+  word-break: break-all;
+  padding: 12rpx 0;
+  display: flex;
+
+}
+.d-t-item .label{
+  min-width: 100rpx;
+}
+.d-t-item .label.md{
+  min-width: 116rpx;
+}
+.d-t-item .label.lg{
+  min-width: 212rpx;
+}
+.d-t-item-right,.d-t-item-left{
+  width: 50%;
+   display: flex;
+}
+.d-t-item-right{
+  margin-left: 18rpx;
+}
+.d-t-item-right.lg{
+  width: 78%;
+}
+.d-l-item{
+  padding-top: 20rpx;
+  width: 750rpx;
+}
+.d-l-item-row{
+  padding: 0 50rpx;
+  line-height: 50rpx;
+  width: 100%;
+  word-break: break-all;
+  box-sizing: border-box;
+}
+.d-l-item-row .left,.d-l-item-row .right{
+  width: 50%;
+  display: flex;
+}
+.d-l-item-row .right{
+  margin-left: 18rpx;
+}
+.d-l-item-row .label{
+  min-width: 120rpx;
+}
+.d-l-item-row .remarks{
+  display: flex;
+}
+.split-line{
+  height: 17rpx;
+	background-color: #f2f2f2;
+  margin-top: 20rpx;
+}
+.detail-list{
+  max-width: 100%;
+  padding-bottom: 50rpx;
+  border-top: 2rpx solid #d7d7d7;
+}

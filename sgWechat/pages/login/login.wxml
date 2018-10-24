@@ -1,0 +1,35 @@
+<view class="container">  
+  <view class='login-title'>时光家纺贸易系统</view>
+  <view class='login-sub-title'>集成化高效信息管理系统</view>
+      
+  <view class="login-from">  
+    <form bindsubmit="formSubmit" report-submit='true'>
+      <!--账号-->  
+      <view class="inputView">  
+        <image class="nameImage input-icon" src="../../images/name.png"></image>  
+        <label class="loginLab">手机号</label>
+            <input class="inputText" placeholder="请输入手机号" bindinput="phoneInput"  name="phone"/>
+      </view>  
+    
+      <!--密码-->  
+      <view class="inputView">  
+        <image class="keyImage input-icon" src="../../images/key.png"></image>  
+        <label class="loginLab">密码</label> 
+            <input class="inputText" password="true" placeholder="请输入密码" bindinput="passwordInput" name="password"/> 
+      </view> 
+      <!--角色  -->
+      <!-- <radio-group class="radio-group flex-box" bindchange="radioChange" name="status">
+        <label class="radio" wx:for="{{roles}}" wx:key="{{key}}">
+        <image src='{{item.checked?"../../images/ok.png":"../../images/circle.png"}}' class='radio-icon'></image>
+          <radio value="{{item.value}}" checked="{{item.checked}}" class='role-radio' />{{item.name}}
+        </label>
+      </radio-group>  -->
+    
+      <!--按钮-->  
+      <view class="loginBtnView">  
+        <button class="loginBtn"  formType="submit" >登录</button>  <!-- open-type="getUserInfo" -->
+      </view> 
+    </form>
+     <!-- <view class='forget-psd'>忘记密码?联系管理员→</view> -->
+  </view>  
+</view>  

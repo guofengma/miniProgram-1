@@ -1,0 +1,71 @@
+<view class="vat-list">
+  <!-- 新增分缸按钮 -->
+  <view class="btn-box add" a:if={{canAddVat&&isGenDan&&status==0}}>
+    <button class="btn" type="default" onTap="addVat" id="{{id}}" data-title="{{title}} ">新增分缸</button>
+  </view>
+
+  <!-- 未完成列表 -->
+    <view class="no-vat" a:if={{unfinishList.length<1&&finishList.length<1}}>暂无分缸</view>
+  
+  <view class="unfinish-list">
+    <view 
+    class="unfinish-item"   
+    a:for={{unfinishList}} 
+    onLongTap="deleteVat" 
+    id="{{item.id}}" 
+    onTap="toCheckOrdetail" 
+    data-number="{{item.number}}" 
+    data-flowList="{{item.flowList}}"
+    data-boltIn="{{item.boltIn}}">
+      <view class="un-item-top flex-box">
+        <text class="vat-num">缸号：{{item.number}}</text>
+        <text>最新更新时间：{{item.updateDate}}</text>
+      </view>
+      <view class="un-item-center">
+        <text>{{item.boltIn}}匹/{{item.numIn}}千克</text>
+      </view>
+      <view class="un-item-bottom">
+        <view  a:for={{item.flowList}} a:for-item="flowItem" class="flow-item {{flowItem.checkType==0?`gery`:`blue`}}">
+          <text a:if={{index==0}}>{{flowItem.flowName}}</text>
+          <text a:else>-{{flowItem.flowName}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- end未完成列表 -->
+    
+   <!-- 已完成列表 -->
+   <view class="finish-list">
+     <view 
+      class="finish-item flex-box" 
+      a:for={{finishList}} 
+      onTap="toVatDetail"
+      onLongTap="toAcceptantce"
+      id="{{item.id}}" 
+      data-chengjianStatus="{{item.chengjianStatus}}"
+      data-number="{{item.number}}" 
+      data-flowList="{{item.flowList}}">
+       <view class="f-i-c-icon {{item.level}}" a:if={{item.level}}></view>
+       <text class="qc-txt" a:if={{item.level}}>{{item.level}}</text>
+
+       <view class="fin-item-content">
+          <view class="f-i-c-top flex-box">
+            <view class="vat-num">缸号：{{item.number}}<text class="red" a:if={{item.isHuixiu}}>【回 修】</text></view>
+            <view>{{item.updateDate}}</view>
+          </view>
+          <view class="f-i-c-bottom flex-box">
+            <text>成品：{{item.boltOut}}匹/{{item.numOut}}千克</text>
+            <text>次品：{{item.inferiorBolt}}匹/{{item.inferiorNum}}千克</text>
+          </view>
+       </view>
+       <view class="fin-item-right {{item.realityBreakage>breakage?'red':''}}">{{item.realityBreakage.toFixed(1)}}%</view>
+       
+     </view>
+   </view>
+  <!-- end已完成列表 --> 
+
+  <!-- 订单完成按钮 -->
+  <view class="btn-box" a:if={{canFinishOrder&&isGenDan&&status==0}}>
+    <button class="btn" type="default" onTap="finishOrder" id="{{id}}" disabled="{{(unfinishList.length==0&&finishList.length==0)||(unfinishList.length>0)}}">订单完成</button>
+  </view>
+</view>

@@ -1,0 +1,459 @@
+<view class="section">
+  <!-- tabs -->
+   <view class="navbar">  
+    <text a:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}"  onTap="navbarTap">{{item}}</text>  
+  </view> 
+  <!--end  tabs -->
+
+  <!--content  -->
+
+  <!-- 面料出库 -->
+  <view hidden="{{currentTab!==0}}" class="content">
+    <form onSubmit="saveForm">
+      <!-- 面料分类 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>面料分类</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{typeSelect}} range-key="name"  onChange="choseType">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!fabricForm.typeName}}>请选择面料分类</text>
+              <text>{{fabricForm.typeName}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- 面料分类 -->
+
+       <!-- 面料编号 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>面料编号</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{fabricSelect}} range-key="fabricInfo"  onChange="choseFabric">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!fabricForm.fabricNum}}>请选择面料编号</text>
+              <text>{{fabricForm.fabricNum}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- 面料编号 -->
+      <!-- 品名 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>品名</text>
+        </view>
+        <view class="form-value">
+          <input class="form-input" type="text" placeholder="" value='{{fabricForm.fabricName}}' disabled />
+        </view>
+      </view>
+      <!-- 品名 -->
+       <!-- 规格选择-->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>规格</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{specSelect}} range-key="spec"  onChange="choseSpec" data-name="spec" data-form="fabricForm">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!fabricForm.spec}}>请选择规格</text>
+              <text>{{fabricForm.spec}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- end规格选择 -->
+      <!-- 颜色选择-->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>颜色</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{colorSelect}} range-key="color"  onChange="choseColor" data-name="color" data-form="fabricForm">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!fabricForm.color}}>请选择颜色</text>
+              <text>{{fabricForm.color}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- end颜色选择 -->
+       <!-- 出库交接人 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>出库交接人</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{peopleSelect}} range-key="people"  onChange="chose" data-name="people" data-form="fabricForm">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!fabricForm.people}}>请选择出库交接人</text>
+              <text>{{fabricForm.people}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- 出库交接人 -->
+
+       <!-- 出库原因 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>出库原因</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{reasonSelect}} range-key="reason"  onChange="chose" data-name="reason" data-form="fabricForm">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!fabricForm.reason}}>请选择出库原因</text>
+              <text>{{fabricForm.reason}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- 出库原因 -->
+
+
+      <!--***************出库明细****************** -->
+      <view class="detail-list">
+        <view class="detail-item" a:for={{detailList}}>
+           <!-- head -->
+           <view class="d-t-head flex-box">
+             <text>出库明细（{{index+1}}）</text>
+             <text class="del-btn" a:if='{{index>0}}' onTap="deleteInfo" data-index="{{index}}"  >删除</text>
+           </view>
+           <!-- 出库仓库 -->
+            <view class="form-item flex-box">
+              <view class="form-label">
+                <text>出库仓库</text>
+              </view>
+              <view class="form-value">
+                <picker class="form-picker" range={{warehouseSelect}} range-key="storeName"  onChange="choseWarehouse" data-idx="{{index}}">
+                  <view class="picker-content">
+                    <text class="picker-pld" a:if={{!item.warehouse}}>请选择出库仓库</text>
+                    <text>{{item.warehouse}}</text>
+                    <view class="picker-icon"></view>
+                  </view>
+                </picker>
+              </view>
+            </view>
+            <!-- 出库仓库 -->
+
+             <!-- 出库位置 -->
+            <view class="form-item flex-box">
+              <view class="form-label">
+                <text>出库位置</text>
+              </view>
+              <view class="form-value">
+                <picker class="form-picker" range={{item.shelvesSelect}} range-key="shelvesName"  onChange="choseShelves" data-idx="{{index}}">
+                  <view class="picker-content">
+                    <text class="picker-pld" a:if={{!item.shelvesName}}>请选择出库位置</text>
+                    <text>{{item.shelvesName}}</text>
+                    <view class="picker-icon"></view>
+                  </view>
+                </picker>
+              </view>
+            </view>
+            <!-- 出库位置 -->
+
+            <!-- 出库批次 -->
+            <view class="form-item flex-box">
+              <view class="form-label">
+                <text>出库批次</text>
+              </view>
+              <view class="form-value">
+                <picker class="form-picker" range={{item.batchSelect}} range-key="batch" onChange="choseBatch" data-idx="{{index}}">
+                  <view class="picker-content">
+                    <text class="picker-pld" a:if={{!item.batch}}>请选择出库批次</text>
+                    <text>{{item.batch}}</text>
+                    <view class="picker-icon"></view>
+                  </view>
+                </picker>
+              </view>
+            </view>
+            <!-- 出库批次 -->
+
+             <!-- 出库匹数 -->
+            <view class="form-item flex-box tips" >
+              <view class="form-label label-tips">
+                <text>出库匹数</text>
+                <view class="input-tips">已存放量：{{item.bolt}}</view>
+                <view class="input-tips">已锁定量：{{item.lockBolt}}</view>                
+              </view>
+              <view class="form-value">
+                <input 
+                  class="form-input" 
+                  type='number' 
+                  placeholder="请输入出库匹数" 
+                  name="bolt_{{index}}" 
+                  value="{{item.boltOut}}"
+                  onInput="limitValue" 
+                  onBlur="setInputValue" 
+                  data-name="boltOut" 
+                  data-idx="{{index}}"
+                  data-limit="{{item.bolt-item.lockBolt}}"/>
+              </view>
+            </view>
+            <!-- 出库匹数 -->
+
+            <!-- 出库数量 -->
+            <view class="form-item flex-box tips" >
+              <view class="form-label label-tips">
+                <text>出库数量</text>
+                <view class="input-tips">已存放量：{{item.num}}</view>
+                <view class="input-tips">已锁定量：{{item.lockNum}}</view>   
+              </view>
+              <view class="form-value">
+                <input 
+                  class="form-input" 
+                  type='digit' 
+                  placeholder="请输入出库数量" 
+                  name="num_{{index}}" 
+                  value="{{item.numOut}}"
+                  onInput="limitValue" 
+                  onBlur="setInputValue" 
+                  data-name="numOut" 
+                  data-idx="{{index}}"
+                  data-limit="{{item.num-item.lockNum}}"/>
+              </view>
+            </view>
+            <!-- 出库数量 -->
+        </view>
+      </view>
+      <!--***************end出库明细****************** -->
+
+       <!-- 添加出库信息按钮 -->
+      <view class="add-info-btn flex-box" onTap="addInfo">
+        <image class='add-info-icon' src="/images/add_icon.png" mode="aspectFit"></image>
+         <text>添加出库信息</text>
+      </view>
+      <!-- end 添加出库信息按钮 -->
+
+     <!-- 图片 -->
+      <view class="add-img-box">
+        <image class="add-img" src="/images/imgAdd.png" mode="aspectFit"  onTap="choseImg"/>
+      </view>
+      <view class="imgs-preview flex-box">
+          <view class="img-box flex-box" a:for={{imgSrc}} >
+            <image class="preview-img" src="{{item}}" mode="aspectFit" onTap="previewImage"  data-index="{{index}}"  />
+            <image class="img-del-icon" src="/images/clear_icon.png" mode="aspectFit" onTap="deleteImage" data-index="{{index}}"/>
+          </view>
+      </view>
+    <!-- end图片 -->
+
+      <!-- 提交按钮 -->
+      <view class="btn-box" >
+        <button class="btn" type="default" formType="submit" >确认出库</button>
+      </view>
+      
+      
+      
+    </form>
+  </view>
+  <!-- end面料出库 -->
+
+  <!-- 坯布出库 -->
+  <view hidden="{{currentTab!==1}}" class="content">
+      <form onSubmit="saveForm">
+       <!-- 坯布编号 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>坯布编号</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{clothSelect}} range-key="clothInfo"  onChange="choseCloth">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!clothForm.clothNum}}>请选择坯布编号</text>
+              <text>{{clothForm.clothNum}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- 坯布编号 -->
+      <!-- 品名 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>品名</text>
+        </view>
+        <view class="form-value">
+          <input class="form-input" type="text" placeholder="" value='{{clothForm.clothName}}' disabled />
+        </view>
+      </view>
+      <!-- 品名 -->
+      
+       <!-- 规格输入 -->
+      <view class="form-item flex-box" >
+        <view class="form-label">
+          <text>规格</text>
+        </view>
+        <view class="form-value">
+          <input class="form-input" type="text" placeholder="" name="spec" value="{{clothForm.spec}}" disabled/>
+        </view>
+      </view>
+      <!-- 规格输入 -->
+
+      
+
+       <!-- 出库交接人 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>出库交接人</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{peopleSelect}} range-key="people"  onChange="chose" data-name="people" data-form="clothForm">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!clothForm.people}}>请选择出库交接人</text>
+              <text>{{clothForm.people}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- 出库交接人 -->
+
+       <!-- 出库原因 -->
+      <view class="form-item flex-box">
+        <view class="form-label">
+          <text>出库原因</text>
+        </view>
+        <view class="form-value">
+          <picker class="form-picker" range={{reasonSelect}} range-key="reason"  onChange="chose" data-name="reason" data-form="clothForm">
+            <view class="picker-content">
+              <text class="picker-pld" a:if={{!clothForm.reason}}>请选择出库原因</text>
+              <text>{{clothForm.reason}}</text>
+              <view class="picker-icon"></view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <!-- 出库原因 -->
+
+
+      <!--***************出库明细****************** -->
+      <view class="detail-list">
+        <view class="detail-item" a:for={{detailList}}>
+           <!-- head -->
+           <view class="d-t-head flex-box">
+             <text>出库明细（{{index+1}}）</text>
+             <text class="del-btn" a:if='{{index>0}}' onTap="deleteInfo" data-index="{{index}}"  >删除</text>
+           </view>
+           <!-- 出库仓库 -->
+            <view class="form-item flex-box">
+              <view class="form-label">
+                <text>出库仓库</text>
+              </view>
+              <view class="form-value">
+                <picker class="form-picker" range={{warehouseSelect}} range-key="storeName"  onChange="choseWarehouse" data-idx="{{index}}">
+                  <view class="picker-content">
+                    <text class="picker-pld" a:if={{!item.warehouse}}>请选择出库仓库</text>
+                    <text>{{item.warehouse}}</text>
+                    <view class="picker-icon"></view>
+                  </view>
+                </picker>
+              </view>
+            </view>
+            <!-- 出库仓库 -->
+
+             <!-- 出库位置 -->
+            <view class="form-item flex-box">
+              <view class="form-label">
+                <text>出库位置</text>
+              </view>
+              <view class="form-value">
+                <picker class="form-picker" range={{item.shelvesSelect}} range-key="shelvesName"  onChange="choseShelves" data-idx="{{index}}">
+                  <view class="picker-content">
+                    <text class="picker-pld" a:if={{!item.shelvesName}}>请选择出库位置</text>
+                    <text>{{item.shelvesName}}</text>
+                    <view class="picker-icon"></view>
+                  </view>
+                </picker>
+              </view>
+            </view>
+            <!-- 出库位置 -->
+
+            <!-- 出库批次 -->
+            <view class="form-item flex-box">
+              <view class="form-label">
+                <text>出库批次</text>
+              </view>
+              <view class="form-value">
+                <picker class="form-picker" range={{item.batchSelect}} range-key="batch" onChange="choseBatch" data-idx="{{index}}">
+                  <view class="picker-content">
+                    <text class="picker-pld" a:if={{!item.batch}}>请选择出库批次</text>
+                    <text>{{item.batch}}</text>
+                    <view class="picker-icon"></view>
+                  </view>
+                </picker>
+              </view>
+            </view>
+            <!-- 出库批次 -->
+            <!-- 出库匹数 -->
+            <view class="form-item flex-box tips">
+              <view class="form-label label-tips">
+                <text>出库匹数</text>
+                <view class="input-tips">已存放量：{{item.bolt}}</view>
+                <view class="input-tips">已锁定量：{{item.lockBolt}}</view>
+              </view>
+              <view class="form-value">
+                <input class="form-input" type='number' placeholder="请输入出库匹数" name="bolt_{{index}}" value="{{item.boltOut}}" onInput="limitValue" onBlur="setInputValue" data-name="boltOut" data-idx="{{index}}" data-limit="{{item.bolt-item.lockBolt}}"/>
+              </view>
+            </view>
+            <!-- 出库匹数 -->
+            <!-- 出库数量 -->
+            <view class="form-item flex-box tips">
+              <view class="form-label label-tips">
+                <text>出库数量</text>
+                <view class="input-tips">已存放量：{{item.num}}</view>
+                <view class="input-tips">已锁定量：{{item.lockNum}}</view>
+              </view>
+              <view class="form-value">
+                <input class="form-input" type='digit' placeholder="请输入出库数量" name="num_{{index}}" value="{{item.numOut}}" onInput="limitValue" onBlur="setInputValue" data-name="numOut" data-idx="{{index}}" data-limit="{{item.num-item.lockNum}}"/>
+              </view>
+            </view>
+            <!-- 出库数量 -->
+        </view>
+      </view>
+      <!--***************end出库明细****************** -->
+
+       <!-- 添加出库信息按钮 -->
+      <view class="add-info-btn flex-box" onTap="addInfo">
+        <image class='add-info-icon' src="/images/add_icon.png" mode="aspectFit"></image>
+         <text>添加出库信息</text>
+      </view>
+      <!-- end 添加出库信息按钮 -->
+
+     <!-- 图片 -->
+      <view class="add-img-box">
+        <image class="add-img" src="/images/imgAdd.png" mode="aspectFit"  onTap="choseImg"/>
+      </view>
+      <view class="imgs-preview flex-box">
+          <view class="img-box flex-box" a:for={{imgSrc}} >
+            <image class="preview-img" src="{{item}}" mode="aspectFit" onTap="previewImage"  data-index="{{index}}"  />
+            <image class="img-del-icon" src="/images/clear_icon.png" mode="aspectFit" onTap="deleteImage" data-index="{{index}}"/>
+          </view>
+      </view>
+    <!-- end图片 -->
+
+      <!-- 提交按钮 -->
+      <view class="btn-box" >
+        <button class="btn" type="default" formType="submit" >确认出库</button>
+      </view>
+      
+      
+      
+    </form>
+  </view>
+  
+  <!-- end坯布出库 -->
+
+  <!--end content  -->
+  
+    
+</view>

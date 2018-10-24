@@ -1,0 +1,24 @@
+.section{
+  text-align: center;
+  padding-top: 40rpx; 
+  font-size: 30rpx; 
+}
+.icon-box{
+}
+.success-icon{
+  width: 140rpx;
+  height: 140rpx;
+}
+.success-title{
+  font-size: 60rpx;
+  margin: 28rpx 0;
+}
+.finished-time{
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+.content,.head{
+  font-size: 40rpx;
+  line-height: 60rpx;
+}

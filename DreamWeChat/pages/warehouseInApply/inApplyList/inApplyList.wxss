@@ -1,0 +1,155 @@
+/**index.wxss**/
+
+.msg-list {
+}
+
+.msg-item {
+  /* width: 718rpx; */
+  min-height: 200rpx;
+  border-bottom: 1rpx solid rgb(233, 233, 233);
+  position: relative;
+  left:0;
+  top:0;
+  overflow: hidden;
+  margin: 12rpx 0rpx;
+  border: 2rpx solid #ddd;
+}
+
+.msg {
+  /* position: absolute; */
+  width: 100%;
+  min-height: 200rpx;
+  left:0;
+  top:0;
+  z-index: 100;
+  background-color: #FFF;
+  border-right: 2rpx solid #ddd;
+}
+
+.header-img {
+  position: absolute;
+  width: 110rpx;
+  height: 110rpx;
+  left: 20rpx;
+  top: 20rpx;
+  border-radius: 10%;
+}
+
+.user-name {
+  position: absolute;
+  left: 150rpx;
+  top: 20rpx;
+}
+
+.msg-text {
+  position: absolute;
+  left: 150rpx;
+  bottom: 20rpx;
+  font-size: 80%;
+  color: rgb(127, 127, 127);
+}
+
+.msg-menu {
+  position: absolute;
+  width: 100%;
+  height: 150rpx;
+  left:0;
+  top:0;
+  z-index: 0;
+}
+
+.menu-item {
+  position: absolute;
+  width: 150rpx;
+  height: 148rpx;
+  top:1rpx;
+  right: 0;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.menu-item.disagree {
+  
+  right: 150rpx;
+  
+}
+.chose-icon{
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.item-status{
+  width:84rpx;
+  min-height:202rpx;
+  font-size: 24rpx;
+  padding: 70rpx 12rpx;
+  box-sizing: border-box;
+  text-align: center;
+  background-color:#D6D6D6;
+  color: #fff;
+}
+.item-status.green{
+  background-color:#77E273;
+}
+.item-status.red{
+  background-color:#F91414;
+}
+.item-detail{
+  width: 634rpx;
+  min-height: 200rpx;
+  padding: 12rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+.detail-img{
+  width: 132rpx;
+  height: 120rpx;
+}
+.detail-center{
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  width: 356rpx;
+}
+.detail-center-top{
+  color: #c8c8c8;
+}
+.detail-center-middle{
+  font-size: 36rpx;
+}
+.detail-center-bottom{
+  font-size: 22rpx;
+  margin-top: 30rpx;
+}
+.detail-right{
+  width: 110rpx;
+}
+.detail-right-top text{
+  word-break: break-all;
+}
+.detail-right-bottom{
+  margin-top: 30rpx;
+}
+.detail-right-bottom text{
+  word-break: break-all;
+}
+.person-img{
+  width: 28rpx;
+  height: 28rpx;
+  position: relative;
+  top: 4rpx;right: 3rpx;
+}
+
+.float-btn-box{
+  position: fixed;
+  bottom: 70rpx;
+  right: 38rpx;
+  z-index: 5000;
+}
+.float-btn{
+  width: 114rpx;
+  height: 114rpx;
+}

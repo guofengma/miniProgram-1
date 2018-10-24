@@ -1,0 +1,329 @@
+.detail-content{
+  background-color: #f8f8f8;
+}
+.detail-content::after{
+  content:"";
+  display: table;
+  clear: both;
+}
+/* 相关人员 */
+.related-personnel{
+  background-color:#fff;
+  font-size:30rpx;
+}
+.r-p-item{
+  min-height:88rpx;
+  line-height: 88rpx;
+  border-bottom:1rpx solid #d7d7d7;
+  padding:0rpx 23rpx;
+}
+.picker{
+  width:380rpx;
+  position:relative;
+}
+.edit-box{
+  width:80rpx;
+  position:relative;
+}
+.edit-txt,.stop-txt{
+  color:#0090ff;
+}
+.picker-icon{
+    position: absolute;
+    top: 30rpx;
+    right: 10rpx;
+    width: 30rpx;
+    height: 30rpx;
+    background-image: url("/images/picker_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.btn-box{
+  position:fixed;
+  bottom:0rpx;
+  left:0rpx;
+  width: 100%;
+  background-color: #fff;
+  padding: 30rpx 0;
+}
+.personnel-list{
+  justify-content:flex-start;
+  padding: 20rpx 0;
+  flex-wrap: wrap;
+}
+.personnel-icon{
+  display:inline-block;
+  width: 50rpx;
+	height: 50rpx;
+	background-color: #0090ff;
+	border-radius: 10rpx;
+  color:#fff;
+  margin-right:28rpx;
+  /* margin-top:18rpx; */
+  text-align:center;
+  line-height:54rpx;
+}
+.personnel-name{
+  line-height: 50rpx;
+}
+.personnel-handle{
+  position:relative;
+  min-width: 120rpx;
+  /* background-color: #f00; */
+}
+.personnel-picker{
+  width: 100%;
+}
+.add-personnel-icon{
+  width:41rpx;
+  height:41rpx;
+  background:url(/images/add_icon.png) no-repeat;
+  background-size: 100%,100%;
+  position:absolute;
+  top:20rpx;
+  right:30rpx;
+}
+/* end相关人员 */
+
+/* 合同信息 */
+.a-collapse {
+  background-color: #f8f8f8;
+  color: #000;
+}
+
+
+.a-collapse-title::before{
+  content:"";
+  display: block;
+  clear: both;
+}
+
+.a-collapse-title {
+  position: relative;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 60rpx 0 30rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+  margin-top: 15rpx;
+   border-bottom: 1px solid #ddd;
+}
+
+.a-collapse-title-arrow {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  background-image: url("/images/picker_icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.a-collapse-title-arrow-up {
+  transform: rotate(180deg);
+}
+
+.a-collapse-content {
+  padding: 20rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+}
+.require-item{
+  min-height: 48rpx;
+  line-height: 48rpx;
+}
+.detail-table{
+  font-size: 24rpx;
+}
+.detail-table .th,
+.detail-table .td{
+  display: inline-block;
+  width: 140rpx;
+  text-align: center;
+  color: #333;
+  line-height: 48rpx;
+}
+.detail-table .th{
+  color: #000;
+}
+.detail-table .th.lg,
+.detail-table .td.lg{
+  width:180rpx;
+}
+.detail-table .th.sm,
+.detail-table .td.sm{
+  width: 100rpx;
+}
+.detail-table .td.xlg{
+  width: 380rpx;
+}
+.detail-table .table-head{
+  color: #000;
+  font-weight: bold;
+  line-height: 60rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.detail-table .table-body .tr.last{
+  border-top: 1rpx solid #d7d7d7;
+}
+
+
+
+/* end合同信息 */
+
+/* 合同流水 */
+.contract-log{
+  padding: 32rpx 30rpx;
+  background-color: #fff;
+  margin-top: 15rpx;
+  margin-bottom: 300rpx;
+}
+
+.log-item-head{
+  justify-content: flex-start;
+  line-height: 50rpx;
+}
+.l-i-h-point{
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #0090ff;
+  color: #fff;
+  margin-right: 33rpx;
+}
+.l-i-h-name{
+  width: 350rpx;
+}
+.l-i-h-time{
+  color: #919191;
+  float: right;
+  width: 250rpx;
+  text-align: right;
+}
+.log-item-body{
+  border-left:4rpx solid #388ccc;
+  padding-left: 55rpx;
+  line-height: 58rpx;
+  margin-left: 25rpx;
+  font-size: 30rpx;
+}
+.l-i-b-title{
+  font-weight: bold;
+}
+.l-i-b-imgs>image{
+  width: 75rpx;
+  height: 75rpx;
+  margin-left: 19rpx;
+}
+.split-line{
+  width: 100%;
+  height: 15rpx;
+  background-color: 
+
+}
+.is-read{
+  color: #919191;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+}
+.is-read.blue{
+  color: #0090ff;
+}
+.log-item.red{
+  color: #f00;
+}
+.log-item.red .l-i-h-time{
+  color: #f00;
+}
+.log-item.red .log-item-body{
+  border-color: #f00;
+}
+.log-item.red .l-i-h-point{
+  background-color: #f00;
+}
+
+/* end合同流水 */
+/* 留言框 */
+.message-board{
+  padding: 20rpx 26rpx;
+  position: fixed;
+  bottom: 0rpx;left: 0;
+  background-color: #fff;
+  z-index: 8888;
+
+}
+.msg-input{
+  width: 450rpx;
+	height: 72rpx;
+	/* background-color: #eeeeee; */
+	border-radius: 10rpx;
+  color: #919191;
+  /* text-align: center; */
+  margin-right: 28rpx;
+  margin-left: 28rpx;
+  
+  
+}
+.msg-img-icon{
+  width: 39rpx;
+	height: 35rpx;
+  background: url(/images/add_img.png) no-repeat;
+  background-size: 100%;
+  margin-top: 20rpx;
+
+}
+.imgs-preview{
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /* margin-top: 23rpx; */
+  margin-top: 0;
+}
+.imgs-box{
+  width: 75rpx;
+  height: 75rpx;
+  position: relative;
+  margin-left: 20rpx;
+  margin-top: 23rpx;
+  
+}
+.preview-img{
+  width: 75rpx;
+  height: 75rpx;
+}
+
+.del-icon{
+  position: absolute;
+  top: -5rpx;
+  right: -2rpx;
+  z-index: 5555;
+  width: 30rpx;height: 30rpx;
+
+}
+.msg-send-icon{
+  width: 130rpx;
+  height: 55rpx;
+  background: url(/images/send_btn.png) no-repeat;
+  background-size: 100%;
+  margin-top: 15rpx;
+  
+}
+.personnel-view{
+  position: fixed;
+  top: 0;left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+.personnel-item{
+  line-height: 68rpx;
+  height: 68rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+  font-size: 30rpx;
+}
+/* end留言框 */
+

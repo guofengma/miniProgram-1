@@ -1,0 +1,259 @@
+page {
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0);
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color:#000;
+}
+
+.page {
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  font-size: 24rpx;
+  padding: 32rpx;
+  flex: 1;
+}
+
+.page-description {
+  margin-bottom: 32rpx;
+}
+
+.page-section {
+  background: #fff;
+  margin-bottom: 32rpx;
+}
+
+.page-section-title {
+  padding: 16rpx 32rpx;
+}
+
+.page-section-demo {
+  padding: 32rpx;
+}
+
+.page-section-btns {
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.page-section-btns > view {
+  flex: 1;
+  height: 84rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #49a9ee;
+}
+.page-section-btns > view + view {
+  border-left: 1px solid #ddd;
+}
+
+button {
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+}
+
+.bc_blue {
+  background-color: #49A9EE;
+}
+
+.bc_red {
+  background-color: #F04134;
+}
+
+.bc_yellow {
+  background-color: #FFBF00;
+}
+
+.bc_green {
+  background-color: #00A854;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  height: 88rpx;
+  align-items: center;
+}
+
+.form-row-label {
+  width: 180rpx;
+  font-size: 34rpx;
+  margin-right: 10rpx;
+  text-align: left;
+  color: #000;
+}
+
+.form-row-content {
+  flex: 1;
+  font-size: 34rpx;
+}
+
+.form-line {
+  height: 1px;
+  background-color: #ddd;
+  margin-left: 30rpx;
+}
+
+.input {
+  color: #000;
+  font-size: 34rpx;
+  width: 100%;
+  padding: 4rpx 0;
+  border: 0;
+  line-height: 1;
+}
+
+/*浮动*/
+.fl{float:left;}
+.fr{float:right;}
+/*弹性盒子  */
+.flex-box{
+  display: flex;
+  justify-content: space-between;
+}
+.red{
+  color: #f00;
+}
+/*文字超出省略*/
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+.bottom-line{
+  font-size: 28rpx;
+  color:#999;
+  text-align: center;
+  margin: 80rpx 0;
+  margin-top: 40rpx;
+}
+.no-data{
+  text-align: center;
+  font-size: 30rpx;
+  width: 200rpx;height: 30rpx;
+  line-height: 30rpx;
+  position: absolute;
+  top: 50%;left: 50%;
+  margin-left: -100rpx;
+  margin-top: -15rpx;
+  color: #919191;
+}
+/* 按钮 */
+.btn-box{
+  background-color: #fff;
+  padding: 30rpx 0rpx;
+}
+.btn{
+  width:628rpx;
+  height:88rpx;
+  text-align:center;
+  line-height:88rpx;
+  background-color: #0090ff;
+	border-radius: 10px;
+  color:#fff;
+  margin:0 auto;
+}
+/* 添加图片的预览 */
+.add-img-box{
+  margin-top: 20rpx;
+  padding-left: 30rpx;
+}
+.add-img{
+  width: 200rpx;
+  height: 200rpx;
+}
+.add-img.sm{
+  width: 93rpx;
+  height: 93rpx;
+}
+.imgs-preview{
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 35rpx;
+}
+.imgs-box{
+  position: relative;
+  padding: 0 20rpx;
+ 
+}
+.img-del-icon{
+  position: absolute;
+  top: -18rpx;right:3rpx;
+  width: 40rpx;height: 40rpx;
+}
+.img-box{ 
+  position: relative;
+  margin-right: 30rpx;
+   margin-top: 30rpx;
+  
+  
+}
+.preview-img{
+  width: 200rpx;
+  height: 200rpx;
+ 
+}
+/* end 添加图片的预览 */
+
+/*模态框  */
+.modal-box{
+  position: absolute;
+  top: 0;left: 0;
+  z-index: 100;
+  /* background-color: rgba(0,0,0,0.5); */
+    width:100%;
+    min-height: 100vh;
+}
+.modal{
+  position: absolute;
+  left:0;
+  top: 50%;
+  z-index: 200;
+  width:100%;
+  margin-top: -300rpx;
+  word-break: break-all;
+}
+.mask{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height:200%;
+  z-index: 100;
+  background:rgba(0,0,0,0.5);
+}
+.modal-content{
+  width:70%;
+  min-height: 456rpx;
+  margin: 0 auto;
+  background: #fff;
+  font-size: 30rpx;
+  font-family: "微软雅黑";
+  border-radius: 10rpx;
+}
+.modal-content.sm{
+  width: 60%;
+}
+.modal-body{
+  padding: 40rpx;
+}
+.modal-body-item{
+  line-height: 52rpx;
+}
+.modal-foot{
+  text-align: center;
+  margin-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+/*end模态框  */
+/* 分割线 */
+.split-line{
+  width: 100%;
+  height: 15rpx;
+  background-color: #f8f8f8;
+}
+

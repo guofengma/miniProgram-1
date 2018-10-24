@@ -1,0 +1,30 @@
+<view  class='section progress-list'>
+<view class='no-data {{noData}}'>暂无数据</view>
+<!--循环list  -->
+  <block wx:for="{{list}}" wx:key="id" wx:for-index="idx">
+    <view class='progress-item'>
+      <view class='progress-title'>{{item.flowName}} </view>
+      <view class='progress-info'>
+        <view class='info-item flex-box'>
+          <text class="info-title">时间</text>
+          <text class='info-value'>{{item.checkDate}}</text>
+        </view>
+        <view class='info-item flex-box'>
+          <text class="info-title">验收结果</text>
+          <text class='info-value'>{{item.result}}</text>
+        </view>
+        <view class='info-item flex-box'>
+          <text class="info-title">备注</text>
+          <text class='info-value'>{{item.remarks}}</text>
+        </view>
+        <view class='info-item flex-box img-box'>
+          <block wx:for="{{item.imgList}}" wx:for-item="subItem"  wx:key="{{img}}">
+              <image src="{{subItem}}" class='info-img' data-index="{{idx}}" bindtap="previewImg" data-src='{{subItem}}'></image>
+          </block>
+        </view>
+      </view>
+    </view>
+  </block>
+<!--循环list end  -->
+  
+</view>

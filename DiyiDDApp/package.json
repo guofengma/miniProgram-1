@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "dingtalk-jsapi": "^2.0.73"
+  }
+}

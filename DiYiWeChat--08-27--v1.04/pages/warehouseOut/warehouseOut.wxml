@@ -1,0 +1,375 @@
+<view class="section">  
+  <view class="navbar">  
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
+  </view> 
+
+    <!--面料出库 -->
+    <view hidden="{{currentTab!==0}}" class='box' >
+        <form  bindsubmit="formSubmit">
+          <view class='picker-box'>
+            <picker bindchange="bindClassifyPickerChange" value="{{classify_index}}" range="{{classify_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>面料分类</text>
+                <view>
+                  <text wx:if="{{classify_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{classify_arr[classify_index].value}}' name="classify" style='display:none'></input>
+                  {{classify_arr[classify_index].name}}
+                  <image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view>
+          <view class='picker-box'>
+            <picker bindchange="bindNumPickerChange" value="{{num_index}}" range="{{num_arr}}" range-key="num">
+              <view class="picker flex-box">
+                <text>面料编号</text>
+                <view>
+                  <text wx:if="{{num_index==''}}" class='picker-pld'>请选择</text>
+                  <input style='display:none' name="numName"value=" {{num_arr[num_index].num}}"></input>
+                  <input value='{{num_arr[num_index].value}}' name="num" style='display:none'></input>
+                  {{num_arr[num_index].num}}
+                  <image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view>
+          <view class='flex-box input-box'>
+                <view class='label-box flex-box'>
+                  <text class='input-label'>品名</text>
+                </view>
+                <text>{{num_arr[num_index].name}}</text>
+          </view>
+
+          <view class='picker-box'>
+            <picker bindchange="bindSpecPickerChange" value="{{spec_index}}" range="{{spec_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>规格</text>
+                <view>
+                  <text wx:if="{{spec_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{spec_arr[spec_index].value}}' name="spec" style='display:none'></input>
+                  {{spec_arr[spec_index].name}}
+                  <image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view>
+
+          <view class='picker-box'>
+            <picker bindchange="bindColorPickerChange" value="{{color_index}}" range="{{color_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>色别</text>
+                <view>
+                  <text wx:if="{{color_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{color_arr[color_index].value}}' name="color" style='display:none'></input>
+                  {{color_arr[color_index].name}}
+                  <image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view>
+
+          <view class='picker-box'>
+            <picker bindchange="bindPersonPickerChange" value="{{person_index}}" range="{{person_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>出库交接人</text>
+                <view>
+                  <text wx:if="{{person_index==''}}" class='picker-pld'>请选择</text>
+                   <input value='{{person_arr[person_index].value}}' name="person" style='display:none'></input>
+                  {{person_arr[person_index].name}}<image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view>
+           <view class='picker-box'>
+            <picker bindchange="bindReasonPickerChange" value="{{reason_index}}" range="{{reason_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>出库原因</text>
+                <view>
+                  <text wx:if="{{reason_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{reason_arr[reason_index].value}}' name="reason" style='display:none'></input>
+                  {{reason_arr[reason_index].name}}<image src='../../images/down.png'class="picker-icon"></image></view>
+              </view>
+            </picker>
+          </view>
+          <!--出库位置  -->
+          <view class='place-list'>
+              <view class='place ' wx:for="{{place_list}}" wx:key="" wx:for-index="idx" >
+                <view class='flex-box place-title'>
+                  <text class='place-index'>出库明细({{idx+1}})</text>
+                  <view class='delete-btn' wx:if="{{idx>0}}" bindtap="delBind"  data-index="{{idx}}">删除</view>
+                </view>
+                <view class='picker-box'>
+                  <picker bindchange="bindWarehousePickerChange" value="{{warehouse_arr[idx].index}}" range="{{warehouse_arr[idx].option}}" range-key="name" data-current="{{idx}}">
+                    <view class="picker flex-box">
+                      <text>出库仓库</text>
+                      <view>
+                        <text wx:if="{{warehouse_arr[idx].index==''}}" class='picker-pld'>请选择</text>
+                        <input style='display:none' name="warehouseName{{idx}}" value='{{warehouse_arr[idx].option[warehouse_arr[idx].index].name}}'></input>
+                        <input value='{{warehouse_arr[idx].option[warehouse_arr[idx].index].value}}' name="warehouse{{idx}}" style='display:none'></input>
+                        {{warehouse_arr[idx].option[warehouse_arr[idx].index].name}}<image src='../../images/down.png'class="picker-icon"></image>
+                      </view>
+                    </view>
+                  </picker>
+                </view>
+
+                <view class='picker-box'>
+                  <picker bindchange="bindPlacePickerChange" value="{{place_index[idx].index}}" range="{{place_arr[idx].option}}" range-key="name" data-current="{{idx}}">
+                    <view class="picker flex-box">
+                      <text>出库位置</text>
+                      <view>
+                        <text wx:if="{{place_arr[idx].index==''}}" class='picker-pld'>请选择</text>
+                        <input value='{{place_arr[idx].option[place_arr[idx].index].value}}' name="place{{idx}}" style='display:none'></input>
+                        {{place_arr[idx].option[place_arr[idx].index].name}}<image src='../../images/down.png'class="picker-icon"></image></view>
+                    </view>
+                  </picker>
+                </view>
+
+                  <view class='picker-box'>
+                  <picker bindchange="bindBatchPickerChange" value="{{batch_arr[idx].index}}" range="{{batch_arr[idx].option}}" range-key="name" data-current="{{idx}}">
+                    <view class="picker flex-box">
+                      <text>出库批次</text>
+                      <view>
+                        <text wx:if="{{batch_arr[idx].index==''}}" class='picker-pld'>请选择</text>
+                        <input value='{{batch_arr[idx].option[batch_arr[idx].index].value}}' name="batch{{idx}}" style='display:none'></input>
+                        {{batch_arr[idx].option[batch_arr[idx].index].name}}<image src='../../images/down.png'class="picker-icon"></image>
+                      </view>
+                    </view>
+                  </picker>
+                </view>
+
+                 <view class='input-box flex-box'>
+                    <view class='label-box flex-box'>
+                      <text class='input-label'>出库匹数</text>
+                      <text class='input-tips'>已存放量:{{batch_arr[idx].option[batch_arr[idx].index].p_count}}</text>
+                      <text class='input-tips'>准备量:{{batch_arr[idx].option[batch_arr[idx].index].lockBolt}}</text>
+                      
+                    </view>
+                    <input class='input' placeholder='请输入出库匹数' type='number'   name="p_count{{idx}}" data-limit="{{batch_arr[idx].option[batch_arr[idx].index].p_count}}"  data-lock="{{batch_arr[idx].option[batch_arr[idx].index].lockBolt}}" bindinput='limitVal'></input>
+                </view>
+                <view class='input-box flex-box'>
+                    <view class='label-box flex-box'>
+                      <text class='input-label'>出库数量</text>
+                      <text class='input-tips'>已存放量:{{batch_arr[idx].option[batch_arr[idx].index].count}}</text>
+                      <text class='input-tips'>准备量:{{batch_arr[idx].option[batch_arr[idx].index].lockNum}}</text>
+                      
+                    </view>
+                    <input class='input' placeholder='请输入出库数量' type='digit'   name="count{{idx}}" data-limit="{{batch_arr[idx].option[batch_arr[idx].index].count}}" data-lock="{{batch_arr[idx].option[batch_arr[idx].index].lockNum}}" bindinput='limitVal'></input>
+                </view>
+
+                
+                
+              </view>
+          </view>
+          
+
+           
+          <!--出库位置 end-->
+          
+
+          <view class='add-btn' bindtap="insert">
+             <image class='add-icon' src="../../../images/tian.png"></image>
+              <text>添加出库信息</text>
+          </view>
+
+          <view class='img-title'>图片</view>
+          <view class='img-box'>
+            <image bindtap="upimg" src="../../images/imgAdd.png" class='addImg'></image>
+            <view class='img-list flex-box'>
+              <block wx:for="{{img_arr}}" wx:key="index">  
+                <view class='logoinfo'>  
+                  <image class='delete-img' bindtap='deleteImg' data-index='{{index}}' src="../../images/cancel.png"></image>
+                  <image src='{{item}}' class='image-item' bindtap="previewImg" data-index='{{index}}'></image>  
+                </view>  
+              </block> 
+            </view>
+          
+          </view>
+          <view class='submit-btn-box'>
+            <button  formType="submit" class='submit-btn'>确认出库</button>
+          </view>
+      </form>
+    </view>
+    <!--面料出库end  -->
+
+
+<!--坯布出库  -->
+     <view hidden="{{currentTab!==1}}" class='box' >
+        <form  bindsubmit="formSubmit">
+          <view class='picker-box'>
+            <picker bindchange="bindNumPickerChange" value="{{num_index}}" range="{{num_arr}}" range-key="num">
+              <view class="picker flex-box">
+                <text>坯布编号</text>
+                <view>
+                  <text wx:if="{{num_index==''}}" class='picker-pld'>请选择</text>
+                  <input style='display:none' name="numName"value=" {{num_arr[num_index].num}}"></input>
+                  <input value='{{num_arr[num_index].value}}' name="num" style='display:none'></input>
+                  {{num_arr[num_index].num}}
+                  <image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view>
+          <view class='flex-box input-box'>
+                <view class='label-box flex-box'>
+                  <text class='input-label'>品名</text>
+                </view>
+                <text>{{num_arr[num_index].name}}</text>
+          </view>
+           <view class='flex-box input-box'>
+                <view class='label-box flex-box'>
+                  <text class='input-label'>规格</text>
+                </view>
+                <input class='input' value='{{num_arr[num_index].spec}}' name="spec" disabled></input>
+          </view>
+          <!-- <view class='picker-box'>
+            <picker bindchange="bindSpecPickerChange" value="{{spec_index}}" range="{{spec_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>规格</text>
+                <view>
+                  <text wx:if="{{spec_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{spec_arr[spec_index].value}}' name="spec" style='display:none'></input>
+                  {{spec_arr[spec_index].name}}
+                  <image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view> -->
+
+           <!-- <view class='picker-box'>
+            <picker bindchange="bindColorPickerChange" value="{{color_index}}" range="{{color_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>色别</text>
+                <view>
+                  <text wx:if="{{color_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{color_arr[color_index].value}}' name="color" style='display:none'></input>
+                  {{color_arr[color_index].name}}
+                  <image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker> 
+          </view> -->
+          <view class='picker-box'>
+            <picker bindchange="bindPersonPickerChange" value="{{person_index}}" range="{{person_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>出库交接人</text>
+                <view>
+                  <text wx:if="{{person_index==''}}" class='picker-pld'>请选择</text>
+                   <input value='{{person_arr[person_index].value}}' name="person" style='display:none'></input>
+                  {{person_arr[person_index].name}}<image src='../../images/down.png'class="picker-icon"></image>
+                </view>
+              </view>
+            </picker>
+          </view>
+           <view class='picker-box'>
+            <picker bindchange="bindReasonPickerChange" value="{{reason_index}}" range="{{reason_arr}}" range-key="name">
+              <view class="picker flex-box">
+                <text>出库原因</text>
+                <view>
+                  <text wx:if="{{reason_index==''}}" class='picker-pld'>请选择</text>
+                  <input value='{{reason_arr[reason_index].value}}' name="reason" style='display:none'></input>
+                  {{reason_arr[reason_index].name}}<image src='../../images/down.png'class="picker-icon"></image></view>
+              </view>
+            </picker>
+          </view>
+          <!--出库位置  -->
+          <view class='place-list'>
+              <view class='place ' wx:for="{{place_list}}" wx:key="" wx:for-index="idx" >
+                <view class='flex-box place-title'>
+                  <text class='place-index'>出库明细({{idx+1}})</text>
+                  <view class='delete-btn' wx:if="{{idx>0}}" bindtap="delBind"  data-index="{{idx}}">删除</view>
+                </view>
+                <view class='picker-box'>
+                  <picker bindchange="bindWarehousePickerChange" value="{{warehouse_arr[idx].index}}" range="{{warehouse_arr[idx].option}}" range-key="name" data-current="{{idx}}">
+                    <view class="picker flex-box">
+                      <text>出库仓库</text>
+                      <view>
+                        <text wx:if="{{warehouse_arr[idx].index==''}}" class='picker-pld'>请选择</text>
+                        <input style='display:none' name="warehouseName{{idx}}" value='{{warehouse_arr[idx].option[warehouse_arr[idx].index].name}}'></input>
+                        <input value='{{warehouse_arr[idx].option[warehouse_arr[idx].index].value}}' name="warehouse{{idx}}" style='display:none'></input>
+                        {{warehouse_arr[idx].option[warehouse_arr[idx].index].name}}<image src='../../images/down.png'class="picker-icon"></image>
+                      </view>
+                    </view>
+                  </picker>
+                </view>
+
+                <view class='picker-box'>
+                  <picker bindchange="bindPlacePickerChange" value="{{place_index[idx].index}}" range="{{place_arr[idx].option}}" range-key="name" data-current="{{idx}}">
+                    <view class="picker flex-box">
+                      <text>出库位置</text>
+                      <view>
+                        <text wx:if="{{place_arr[idx].index==''}}" class='picker-pld'>请选择</text>
+                        <input value='{{place_arr[idx].option[place_arr[idx].index].value}}' name="place{{idx}}" style='display:none'></input>
+                        {{place_arr[idx].option[place_arr[idx].index].name}}<image src='../../images/down.png'class="picker-icon"></image></view>
+                    </view>
+                  </picker>
+                </view>
+
+                  <view class='picker-box'>
+                  <picker bindchange="bindBatchPickerChange" value="{{batch_arr[idx].index}}" range="{{batch_arr[idx].option}}" range-key="name" data-current="{{idx}}">
+                    <view class="picker flex-box">
+                      <text>出库批次</text>
+                      <view>
+                        <text wx:if="{{batch_arr[idx].index==''}}" class='picker-pld'>请选择</text>
+                        <input value='{{batch_arr[idx].option[batch_arr[idx].index].value}}' name="batch{{idx}}" style='display:none'></input>
+                        {{batch_arr[idx].option[batch_arr[idx].index].name}}<image src='../../images/down.png'class="picker-icon"></image>
+                      </view>
+                    </view>
+                  </picker>
+                </view>
+
+                <view class='input-box flex-box'>
+                    <view class='label-box flex-box'>
+                      <text class='input-label'>出库匹数</text>
+                      <text class='input-tips'>已存放量:{{batch_arr[idx].option[batch_arr[idx].index].p_count}}</text>
+                      <text class='input-tips'>准备量:{{batch_arr[idx].option[batch_arr[idx].index].lockBolt}}</text>
+                      
+                    </view>
+                    <input class='input' placeholder='请输入出库匹数' type='number'   name="p_count{{idx}}" data-limit="{{batch_arr[idx].option[batch_arr[idx].index].p_count}}"  data-lock="{{batch_arr[idx].option[batch_arr[idx].index].lockBolt}}" bindinput='limitVal'></input>
+                </view>
+                 <view class='input-box flex-box'>
+                    <view class='label-box flex-box'>
+                      <text class='input-label'>出库数量</text>
+                      <text class='input-tips'>已存放量:{{batch_arr[idx].option[batch_arr[idx].index].count}}</text>
+                      <text class='input-tips'>准备量:{{batch_arr[idx].option[batch_arr[idx].index].lockNum}}</text>
+                      
+                    </view>
+                    <input class='input' placeholder='请输入出库数量' type='digit'   name="count{{idx}}" data-limit="{{batch_arr[idx].option[batch_arr[idx].index].count}}" data-lock="{{batch_arr[idx].option[batch_arr[idx].index].lockNum}}" bindinput='limitVal'></input>
+                </view>
+
+                 
+                 
+              </view>
+          </view>
+          
+
+           
+          <!--出库位置 end-->
+          
+
+          <view class='add-btn' bindtap="insert">
+             <image class='add-icon' src="../../../images/tian.png"></image>
+              <text>添加出库信息</text>
+          </view>
+
+          <view class='img-title'>图片</view>
+           <view class='img-box'>
+            <image bindtap="upimg" src="../../images/imgAdd.png" class='addImg'></image>
+            <view class='img-list flex-box'>
+              <block wx:for="{{img_arr}}" wx:key="index">  
+                <view class='logoinfo'>  
+                  <image class='delete-img' bindtap='deleteImg' data-index='{{index}}' src="../../images/cancel.png"></image>
+                  <image src='{{item}}' class='image-item' bindtap="previewImg" data-index='{{index}}'></image>  
+                </view>  
+              </block> 
+            </view>
+          
+          </view>
+          <view class='submit-btn-box'>
+            <button  formType="submit" class='submit-btn'>确认出库</button>
+          </view>
+      </form>
+    </view>
+<!--坯布出库 end -->
+    
+    
+</view>  

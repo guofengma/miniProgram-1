@@ -1,0 +1,166 @@
+/**index.wxss**/
+
+.msg-list {
+}
+
+.msg-item {
+  /* width: 718rpx; */
+  /* height: 255rpx; */
+  border-bottom: 1rpx solid rgb(233, 233, 233);
+  position: relative;
+  left:0;
+  top:0;
+  overflow: hidden;
+  margin: 12rpx 0rpx;
+  border: 2rpx solid #ddd;
+}
+
+.msg {
+  /* position: absolute; */
+  width: 100%;
+  /* height: 220rpx; */
+  left:0;
+  top:0;
+  z-index: 100;
+  background-color: #FFF;
+  border-right: 2rpx solid #ddd;
+}
+
+.header-img {
+  position: absolute;
+  width: 110rpx;
+  height: 110rpx;
+  left: 20rpx;
+  top: 20rpx;
+  border-radius: 10%;
+}
+
+.user-name {
+  position: absolute;
+  left: 150rpx;
+  top: 20rpx;
+}
+
+.msg-text {
+  position: absolute;
+  left: 150rpx;
+  bottom: 20rpx;
+  font-size: 80%;
+  color: rgb(127, 127, 127);
+}
+
+.msg-menu {
+  position: absolute;
+  width: 100%;
+  height: 150rpx;
+  left:0;
+  top:0;
+  z-index: 0;
+}
+
+.menu-item {
+  position: absolute;
+  width: 150rpx;
+  height: 148rpx;
+  top:1rpx;
+  right: 0;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.menu-item.disagree {
+  
+  right: 150rpx;
+  
+}
+.chose-icon{
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.item-status{
+  width:84rpx;
+  /* height:270rpx; */
+  /* font-size: 24rpx; */
+  font-size: 32rpx;
+  /* padding: 100rpx 12rpx; */
+  padding: 46rpx 12rpx;
+  box-sizing: border-box;
+  text-align: center;
+  background-color:#D6D6D6;
+  color: #fff;
+}
+.item-status.green{
+  background-color:#77E273;
+}
+.item-status.red{
+  background-color:#F91414;
+}
+.item-detail{
+  width: 662rpx;
+  /* height: 160rpx; */
+  /* padding: 12rpx; */
+  box-sizing: border-box;
+  align-items: center;
+}
+.item-detail-main{
+  padding: 12rpx;
+  border-bottom: 2rpx solid #eaeaea;
+  
+}
+.detail-img{
+  width: 140rpx;
+  height: 132rpx;
+}
+.detail-center{
+  flex-direction: column;
+  min-height: 132rpx;
+  /* justify-content: flex-start; */
+  width: 344rpx;
+  /* margin-left: 10rpx; */
+}
+.detail-center-top{
+  color: #c8c8c8;
+}
+.detail-center-middle{
+  font-size: 34rpx;
+}
+.detail-center-bottom{
+  font-size: 22rpx;
+  word-break: break-all;
+  /* margin-top: 24rpx; */
+}
+.detail-right{
+  width: 120rpx;
+}
+.detail-right-top text{
+  word-break: break-all;
+}
+.person-img{
+  width: 28rpx;
+  height: 28rpx;
+  position: relative;
+  top: 4rpx;right: 3rpx;
+}
+
+.float-btn-box{
+  position: fixed;
+  bottom: 70rpx;
+  right: 38rpx;
+  z-index: 5000;
+}
+.float-btn{
+  width: 114rpx;
+  height: 114rpx;
+}
+.detail-right-bottom{
+  margin-top: 66rpx;
+}
+.detail-right-bottom text{
+  word-break: break-all;
+}
+
+

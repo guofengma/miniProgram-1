@@ -1,0 +1,54 @@
+<!--index.wxml-->
+<view class="section">
+  <view class='no-data {{noData}}'>
+     <image class='no-data-img' src='/images/noData.png'></image>
+     <view class='no-data-txt'>暂无数据</view>
+  </view>
+  <view style='height:{{height}}px;' scroll-y='{{scrollY}}' class='msg-list' bindscroll = 'onScroll'>
+       <view wx:for="{{msgList}}" wx:key="id"  class='msg-item {{item.statusClass}}' > <!--red  -->
+            <view id='{{item.id}}' class='msg flex-box' >
+                <view class='item-status'>
+                  <text>{{item.applyUser.code}}</text>
+                </view>
+                <view class='item-detail flex-box' bindtap='goDetail' data-id="{{item.realId}}">
+                    <view class='detail-center flex-box' >
+                      <text class='detail-center-top'>{{item.applyNum}}</text>
+                      <text class='detail-center-middle'>{{item.useReason}}</text>
+                      <text class='detail-center-bottom'>数量{{item.realNum}}件</text>
+                    </view>
+                    <view class='detail-right flex-box' >
+                      <!-- <view class='detail-right-top'>
+                        <image src="/images/person.png" class='person-img'></image>
+                        <text>小王</text>
+                      </view>
+                      <view class='detail-middle'>
+                        <button class='get-btn' bindtap="goConfirm">领取</button>
+                      </view> -->
+                      <view class='detail-right-bottom'>
+                        <text>{{item.predictBackDate}}</text>
+                      </view>
+                    </view>
+                </view>
+            </view>
+            <view class='msg-menu'>
+                <!-- <view id='{{item.id}}' class='menu-item  flex-box' bindtap='onAgreeTap' >
+                  <image src='/images/cancel.png' class='chose-icon'></image>
+                  <text> 取消</text>
+                </view> -->
+                 <view id='{{item.id}}' class='menu-item  flex-box' bindtap='onDisagreeTap' >
+                  <image src='/images/reissue.png' class='chose-icon'></image>
+                  <text>重新发起</text>
+                </view> 
+            </view>
+       </view>
+   </view>
+
+  <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+  <view class="body-view">  
+    <loading hidden="{{hidden}}" bindchange="loadingChange">  
+          加载中...  
+    </loading>  
+  </view>
+  
+</view>
+

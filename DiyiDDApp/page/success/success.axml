@@ -1,0 +1,16 @@
+<view class="section"> 
+  <view class='icon-box'><image src='/images/ok.png' class='success-icon'></image></view>
+   <view class='success-title'>{{title}}</view>
+   <view>
+   <text class="head">{{numlabel}}{{fabricNum}}</text>
+   <block a:for="{{warehouse}}" >
+    <view class="content">
+      <text>{{title}}{{item.warehouse}}-{{shelvesName}}</text>
+      <text>{{item.num}}{{unit}}</text>
+    </view>
+   
+    
+   </block>
+   <view class='finished-time'>完成时间:{{time}}</view>
+   </view>
+</view>  

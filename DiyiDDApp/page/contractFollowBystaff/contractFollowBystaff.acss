@@ -1,0 +1,274 @@
+/* 搜索框样式 */
+.search-box{
+  background-color: #fff;
+  position: fixed;
+  z-index: 5000;
+}
+.search-content{
+  width: 700rpx;
+	height: 72rpx;
+  line-height: 72rpx;
+	background-color: #eeeeee;
+	border-radius: 10rpx;
+  margin: 20rpx 25rpx;
+  text-align: center;
+  color: #919191;
+  
+}
+.search-icon{
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: 8rpx;right: 90rpx;
+}
+.search-pld{
+  font-size: 24rpx;
+ 
+}
+/* end 搜索框样式 */
+.padding-view{
+  padding-top: 100rpx;
+}
+
+/* 折叠面板样式 */
+.a-collapse {
+  /* border-top: 1px solid #ddd; */
+  background-color: #fff;
+  color: #000;
+  /* padding-top: 92rpx; */
+  /* margin-bottom: 60rpx; */
+}
+
+.a-collapse-title,
+.a-collapse-content {
+  /* border-bottom: 1px solid #ddd; */
+}
+
+.a-collapse-title {
+  position: relative;
+  width: 710rpx;
+	min-height: 240rpx;
+  margin: 0rpx auto;
+  background-color: #fff;
+  border-radius: 10rpx;
+  border: 1rpx solid #919191;
+  margin-top: 30rpx;
+} 
+.a-collapse-title.true{
+  border-radius: 10rpx 10rpx 0 0;
+}
+.right-arrow{
+  position: absolute;
+  top: 130rpx;
+  right: 30rpx;
+  width: 30rpx;
+  height: 30rpx; 
+  padding-left: 30rpx;
+}
+.a-collapse-title-arrow {
+  /* position: absolute;
+  top: 130rpx;
+  right: 30rpx; */
+  width: 30rpx;
+  height: 30rpx;
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg width='16' height='26' viewBox='0 0 16 26' xmlns='http://www.w3.org/2000/svg'><path d='M2 0L0 2l11.5 11L0 24l2 2 14-13z' fill='%23C7C7CC' fill-rule='evenodd'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  transform: rotate(90deg);
+  padding-left: 40rpx;
+}
+.a-collapse-title-arrow-up {
+  transform: rotate(270deg); 
+}
+
+.a-collapse-content {
+  margin: 0 auto;
+  width: 710rpx;
+}
+.a-c-title-head{
+  display:flex;
+  justify-content: space-between;
+  height:64rpx;
+  line-height:64rpx;
+  background-color:#919191;
+  color:#fff;
+  font-size:24rpx;
+  padding:0 16rpx;
+  border-radius:10rpx 10rpx 0 0;
+}
+.a-c-title-head.red{
+  background-color:#ff0000;
+}
+.a-c-title-head.orange{
+  background-color:#ff8400;
+}
+.a-c-title-head.green{
+  background-color:#1ac1b2;
+}
+.a-c-title-head.grey{
+  background-color:#919191;
+}
+.tag-list>view{
+  display:inline-block;
+  width: 84rpx;
+	height: 36rpx;
+	background-color: #ffffff;
+	border-radius: 8rpx;
+	border: solid 1rpx transparent;
+  font-size:18rpx;
+  line-height:36rpx;
+  margin-left:14rpx;
+  text-align:center;
+}
+.a-c-title-body{
+  padding:0 10rpx;
+  
+}
+.a-c-t-body-top{
+  color:#919191;
+  margin-top:12rpx;
+  width: 100%;
+}
+.a-c-t-body-center{
+  font-size:30rpx;
+  margin-top:20rpx;
+  margin-bottom:30rpx;
+  width: 550rpx;
+}
+.a-c-t-body-bottom{
+
+}
+.a-c-t-body-bottom .order-time{
+  min-width: 160rpx;
+  height: 42rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.a-c-t-body-bottom .order-time.red{
+  background-color: #f00;
+  color: #fff;
+  padding:8rpx;
+}
+.a-c-c-item{
+  width:708rpx;
+  border: solid 1px #919191;
+  border-top: none;
+}
+.left-priority{
+  width:8rpx;
+  height:190rpx;
+  background-color: #919191;
+}
+.left-priority.red{
+  background-color:#ff0000;
+}
+.left-priority.orange{
+  background-color:#ff8400;
+}
+.left-priority.green{
+  background-color:#1ac1b2;
+}
+.left-priority.emergent{
+  background-color:#ff0000;
+}
+.left-priority.stop{
+  background-color:#eeeeee;
+}
+.right-box{
+  width:700rpx;
+  height:190rpx;
+  position:relative;
+}
+.right-box.emergent{
+  background-color: #ffe4e4;
+}
+.right-box.stop{
+  background-color: #eeeeee;
+}
+.progress-bar{
+  position:absolute;
+  top:0;left:0;
+  width:60rpx;
+  height:190rpx;
+  background-color:#fefcc8;
+}
+
+.progress-bar.emergent{
+  background-color: #F7A8A8;
+}
+.progress-bar.stop{
+  background-color: #EEEEEE;
+}
+.right-content{
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  padding:10rpx 20rpx;
+  box-sizing: border-box;
+}
+.finish-box{
+  position: absolute;
+  top: 40rpx;
+  right: 42rpx;
+}
+.finish-img{
+  width: 111rpx;
+  height: 111rpx;
+}
+.a-c-c-top {
+  font-size:18rpx;
+  margin-bottom:14rpx;
+}
+.a-c-c-center{
+  justify-content:flex-start;
+  font-size:18rpx;
+  line-height:32rpx;
+}
+.a-c-c-center .left{
+  width:325rpx;
+  margin-right:45rpx;
+}
+.a-c-c-center .bold{
+  font-size: 30rpx;
+  line-height:32rpx;
+}
+.a-c-c-bottom{
+  font-size: 20rpx;
+  margin-top: 13rpx;
+}
+.a-c-c-bottom .last,.detail-bottom-left .last{
+  margin-left: 8rpx;
+}
+.not-order{
+  width: 710rpx;
+  text-align: center;
+  font-size: 30rpx;
+  height: 163rpx;
+  line-height: 163rpx;
+  border: solid 1px #919191;
+  border-top: none;
+  color: #919191;
+}
+.stop-txt{
+
+}
+.a-c-c-bottom .right{
+  min-width: 120rpx;
+  text-align: center;
+}
+.a-c-c-bottom .right.red{
+  background-color: #f00;
+  color: #fff;
+  padding: 8rpx 8rpx;
+}
+.a-c-c-bottom .right.orange{
+  color: #ff8400;
+}
+.check-finish{
+  color: #919191;
+  margin-top: 42rpx;
+  text-align: center;
+  margin-bottom: 29rpx;
+}
+/* end 折叠面板样式 */

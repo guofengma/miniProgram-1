@@ -1,0 +1,21 @@
+<view class="section list">  
+    <view class='list-item flex-box'>
+        <text class='item-label'>姓名</text>
+        <text class='item-value'>{{realName}}</text>
+    </view>
+    <view class='list-item flex-box'>
+        <text class='item-label'>登录账号</text>
+        <text class='item-value'>{{username}}</text>
+    </view>
+     <view class='list-item flex-box'>
+        <navigator url='../changePsd/changePsd' class='nav'>修改密码</navigator>
+        <image src='../../images/arrow_black.png' class='nav-icon'></image>
+    </view>
+
+    <view class='btn-box'>
+        <button  class='logout' bindtap='logout'>退出登录</button>
+    </view>
+    <view class='btn-box'>
+      <button class='goBack' bindtap='goBack'>返回上一页</button>
+    </view>
+</view>  

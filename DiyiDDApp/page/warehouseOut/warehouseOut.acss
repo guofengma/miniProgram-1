@@ -1,0 +1,109 @@
+/*  */
+.section{
+  font-size: 30rpx;
+}
+.navbar{  
+  background: #fff;
+  position: fixed;
+  top: 0;left: 0;
+  width:100%;
+  border-bottom: 2rpx solid #ddd;
+  border-top: 2rpx solid #ddd;
+  z-index: 99;
+}  
+.navbar .item{ 
+  display: inline-block; 
+  position: relative;  
+  flex: auto;  
+  text-align: center;  
+  line-height: 80rpx; 
+  width: 50%;
+  background-color:#fff;
+  color: #333; 
+}  
+.navbar .item.active{  
+  color: #fff;  
+  background-color: #1498F7;
+}
+.content{
+  padding-top: 80rpx;
+}
+/* 表单 */
+.form-item{
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+  padding: 0 20rpx;
+}
+.form-item.tips{
+  height: 100rpx;
+  line-height: 46rpx;
+  padding: 16rpx 20rpx;
+}
+.form-item.tips .form-label{
+  display: flex;
+  flex-direction: column;
+  
+}
+.input-tips{
+  line-height: 30rpx;
+  font-size: 24rpx;
+  color: #aaa;
+}
+.form-label{
+  width: 200rpx;
+}
+.form-value{
+  text-align: right;
+}
+.form-input{
+   height: 79rpx;
+  line-height: 79rpx;
+  padding: 0;
+}
+.picker-content{
+  height: 80rpx;
+  width: 500rpx;
+}
+.picker-icon{
+   width: 30rpx;
+    height: 30rpx;
+    background-image: url("/images/picker_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 30rpx;
+    margin-left: 20rpx;
+    float: right;
+}
+.picker-pld{
+  color: #ccc;
+}
+
+.add-info-btn{
+  justify-content: center;
+  padding: 20rpx 0;
+  line-height: 40rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+  color: #1498F7;
+  
+}
+.add-info-icon{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 12rpx;
+}
+.d-t-head{
+  background-color: #eaeaea;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  color: #999;
+}
+.del-btn{
+  color: #1498F7;
+}
+.input-tips{
+
+}
+/* end 表单 */

@@ -1,0 +1,134 @@
+.head{
+  width: 100%;
+  position: fixed;
+  top: 0;left: 0;
+  z-index: 9999;
+}
+.section{
+  width: 100%;
+}
+.date-bar{
+  /* width: 1050rpx; */
+  width: 100%;
+  white-space:nowrap;
+  overflow-x: auto;
+  text-align: center;
+  font-size: 24rpx;
+ 
+  z-index: 9999;
+  background-color: #fff;
+}
+.date-item{
+  width: 150rpx;
+  /* height: 153rpx; */
+  line-height: 46rpx;
+  padding: 6rpx 0;
+  display: inline-block;
+
+}
+.date-item.active{
+  background-color: #139ae9;
+  color: #fff;
+}
+/* 列表 */
+.container-list{
+  margin-top: 150rpx;
+}
+.container-item{
+}
+.container-head{
+  height: 133rpx;
+  font-size: 30rpx;
+  border-bottom: 2rpx solid #d7d7d7;
+  position: relative;
+  z-index: 100;
+  
+}
+.c-h-left{
+  background-color: #139ae9;
+  color: #fff;
+  line-height: 133rpx;
+  width: 172rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  
+}
+.c-h-left.pm{
+  background-color: #f8cd4c;
+}
+.weather-icon{
+  width: 47rpx;
+	height: 47rpx;
+  margin-right: 6rpx;
+  position: relative;
+  top: 12rpx;
+}
+.c-h-right{
+  width: 578rpx;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: center;
+  line-height: 56rpx;
+}
+.arrow-icon{
+  width: 40rpx;
+  height: 40rpx;
+}
+.arrow-icon.show{
+  transform: rotate(180deg);
+}
+.c-h-r-item{
+  width:180rpx;
+}
+.c-h-r-item.center{
+  width:218rpx;
+}
+.c-h-r-item.right{
+  width:100rpx;
+}
+.container-body{
+  padding: 0 10rpx;
+}
+.fs24{
+  font-size: 24rpx;
+}
+.c-b-item{
+  line-height: 40rpx;
+  font-size: 30rpx;
+  padding:  20rpx;
+  border-bottom: 2rpx solid #d7d7d7;
+  word-break: break-all;
+  
+}
+.c-b-t-l-label{
+  min-width:98rpx; 
+}
+.container-body{
+  overflow: hidden;
+  position: relative;
+  z-index: 50;
+  height: 0;
+  margin-top:0;
+  opacity:0;
+  -webkit-transform:translateY(-10%);
+  transform:translateY(-10%);
+  -webkit-transition:.3s;
+  transition:.3s}
+.container-body:after,.container-body:before{display:none}
+.container-body.show{
+  height: auto;
+  opacity:1;
+  -webkit-transform:translateY(0);
+  transform:translateY(0)}
+  .split-line{
+    height: 17rpx;
+    background-color: #f2f2f2;
+  }
+  .c-b-t-left{
+    width: 60%;
+    justify-content: flex-start;
+  }
+   .c-b-t-right{
+    width: 40%;
+    justify-content: flex-start;
+  }

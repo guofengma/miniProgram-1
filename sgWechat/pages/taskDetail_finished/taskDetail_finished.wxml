@@ -1,0 +1,60 @@
+<view class="section">  
+   <view class='detail-box'>
+
+      <view class='detail-row'>
+          <view class='detail-item'>
+              <text class='detail-label'>订单号：</text>
+              <text class='detail-value'>{{info.orderNum}}</text>
+          </view>
+          <view class='detail-item'>
+              <text class='detail-label'>产品编号：</text>
+              <text class='detail-value'>{{info.productNum}}</text>
+          </view>
+      </view>
+
+      <view class='detail-row'>
+          <view class='detail-item'>
+              <text class='detail-label'>工艺编号：</text>
+              <text class='detail-value'>{{info.tecNum}}</text>
+          </view>
+          <view class='detail-item'>
+              <text class='detail-label'>生产步骤：</text>
+              <text class='detail-value'>{{info.flowName}}</text>
+          </view>
+      </view>
+
+       <view class='detail-row'>
+          <view class='detail-item'>
+              <text class='detail-label'>预计完成时间：</text>
+              <text class='detail-value blue'>{{info.completeDate}}</text>
+          </view>
+          <view class='detail-item'>
+              <text class='detail-label'>数量：</text>
+              <text class='detail-value'>{{info.num}}</text>
+          </view>
+      </view>
+
+   </view>
+
+   <view class='detail-box'>
+    <view class='detail-row'>
+      <view class='detail-item'>
+          <text class='detail-label'>制作要求：</text>
+          <text class='detail-value'>{{info.remarks}}</text>
+      </view>
+    </view>
+   </view>
+
+    <view class='detail-box progress'>
+    <view class='detail-row'>
+      <view class='detail-item'>
+          <text class='detail-label'>完成时间：</text>
+          <text class='detail-value blue'>{{info.completeDate}}</text>
+      </view>
+    </view>
+   </view>
+
+ 
+
+
+</view>  

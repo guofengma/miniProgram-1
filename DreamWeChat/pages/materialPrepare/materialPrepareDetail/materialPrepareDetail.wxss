@@ -1,0 +1,202 @@
+/**index.wxss**/
+
+.msg-list {
+}
+
+.msg-item {
+  /* width: 718rpx; */
+ min-height:178rpx;
+  border-bottom: 1rpx solid rgb(233, 233, 233);
+  position: relative;
+  left:0;
+  top:0;
+  overflow: hidden;
+  margin: 22rpx 0rpx;
+  border: 2rpx solid #ddd;
+}
+.msg-item.hh{
+  min-height: 262rpx;
+}
+
+.msg {
+  /* position: absolute; */
+  width: 100%;
+  min-height:178rpx;
+  /* left:0;
+  top:0; */
+  z-index: 100;
+  background-color: #FFF;
+  border-right: 2rpx solid #ddd;
+}
+
+.header-img {
+  position: absolute;
+  width: 110rpx;
+  height: 110rpx;
+  left: 20rpx;
+  top: 20rpx;
+  border-radius: 10%;
+}
+
+.user-name {
+  position: absolute;
+  left: 150rpx;
+  top: 20rpx;
+}
+
+.msg-text {
+  position: absolute;
+  left: 150rpx;
+  bottom: 20rpx;
+  font-size: 80%;
+  color: rgb(127, 127, 127);
+}
+
+.msg-menu {
+  position: absolute;
+  width: 100%;
+  height: 305rpx;
+  left:0;
+  top:0;
+  z-index: 0;
+}
+
+.menu-item {
+  position: absolute;
+  width: 150rpx;
+  height: 148rpx;
+  top:75rpx;
+  right: 0;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.menu-item.disagree {
+  
+  right: 150rpx;
+  
+}
+.menu-item.cancel {
+  
+  /* right: 100rpx; */
+  
+}
+.chose-icon{
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.item-status{
+  width:84rpx;
+  height:162rpx;
+  font-size: 24rpx;
+  padding: 50rpx 12rpx;
+  box-sizing: border-box;
+  text-align: center;
+  background-color:#D6D6D6;
+  color: #fff;
+}
+.item-status.green{
+  background-color:#77E273;
+}
+.item-status.red{
+  background-color:#F91414;
+}
+.item-detail{
+  /* width: 634rpx; */
+  min-height: 178rpx;
+  padding: 12rpx;
+  box-sizing: border-box;
+  /* align-items: center; */
+  border-bottom: 2rpx solid #eaeaea;
+  flex-wrap: wrap;
+}
+.detail-img{
+  width: 132rpx;
+  height: 120rpx;
+}
+
+.detail-right{
+   width: 556rpx; 
+   /* margin-left: 20rpx; */
+   flex-direction: column;
+   justify-content: start;
+}
+.detail-right-top{
+  /* justify-content: flex-start; */
+}
+.detail-right-top text:last-child{
+  margin-right: 100rpx;
+}
+
+.detail-right-bottom{
+  /* margin-top: 30rpx; */
+}
+.detail-right-bottom .red{
+  color: #FF3B3A;
+  font-size: 28rpx;
+}
+.btn-box{
+  width: 90%;
+  margin: 40rpx auto;
+}
+.btn.false{
+  opacity: .5;
+}
+
+/*主容器*/  
+.stepper {  
+    width:364rpx;  
+    height: 100rpx;  
+    /*给主容器设一个边框*/  
+    border: 2rpx solid #ddd;  
+    border-radius: 4rpx;  
+      margin:68rpx auto;
+      margin-bottom: 8rpx;    
+}  
+  
+/*加号和减号*/  
+.stepper text {  
+    width: 80rpx;  
+    line-height: 100rpx;  
+    text-align: center;  
+    float: left;  
+}  
+  
+/*数值*/  
+.stepper input {  
+    width: 190rpx;  
+    height: 100rpx;  
+    float: left;  
+    margin: 0 auto;  
+    text-align: center;  
+    font-size: 28rpx;  
+    /*给中间的input设置左右边框即可*/  
+    border-left: 2rpx solid #ddd;  
+    border-right: 2rpx solid #ddd;  
+}  
+  
+/*普通样式*/  
+.stepper .normal{  
+    color: black;  
+}  
+  
+/*禁用样式*/  
+.stepper .disabled{  
+    color: #ccc;  
+} 
+.pld-txt{
+  color: #999;
+  margin-left: 82rpx;
+  margin-bottom: 50rpx;
+}
+.spec-txt{
+  width: 500rpx;
+  display: inline-block;
+  min-height: 68px;
+}
+
+

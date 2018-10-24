@@ -1,0 +1,80 @@
+<!--搜索框  -->
+<view class='search-box'>
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input"   placeholder="请输入物品名称" bindchange="wxSearchTab" value='{{searchValue}}'/>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="section">
+<view class='main flex-box' style='min-height:{{windowHeight}}px;'>
+
+   <!--左侧菜单栏  -->
+   <view class='menu' style='min-height:{{windowHeight}}px;'>
+      <!-- <image class='menu-bg' src="/images/aside_bg.png" ></image> -->
+      <view class='menu-list'>
+        <block wx:for="{{menuList}}" wx:key="">
+          <view class="menu-item {{currentTab==index ? 'active' : ''}}  {{item.search}}" data-idx="{{index}}" bindtap='choseClassify' data-id="{{item.id}}">{{item.name}}</view>
+        </block>
+      </view>
+   </view>
+   <!--左侧菜单栏  end-->
+
+   <!--右侧列表  -->
+   <block wx:for="{{menuList}}" wx:key="" wx:for-item="parentItem" wx:for-index="parentIndex">
+       <view class='list' hidden='{{currentTab!==parentIndex}}'>
+        <block wx:for="{{list[currentTab]}}" wx:key="">
+          <view class='list-item flex-box'>
+            <view class='item-left'>
+              <image class='item-img' src='{{item.img}}' binderror="imgError" data-index="{{index}}" data-parent="{{parentIndex}}"></image>
+            </view>
+            <view class='item-right flex-box'>
+            <view class='item-right-top'>{{item.materiel.materielNum}}</view>
+              <view class='item-right-middle flex-box'>
+                <view>
+                  <text>{{item.materiel.materielName}}</text>
+                  <text class='spec' wx:if="{{item.materiel.spec==null}}">/</text>
+                  <text class='spec' wx:else>{{item.materiel.spec}}</text><!-- 规格 -->
+                </view>
+                <view><text class='shelves'>{{item.shelves.shelvesName}}</text></view>
+              </view>
+              <view class='item-right-bottom flex-box'>
+                <view>{{item.num-item.lockNum}}{{item.materiel.rzUnitEntity.unitName}}</view>
+                <!-- 主容器 -->  
+                <view class="stepper">  
+                    <!-- 减号 -->  
+                    <text class="{{item.minusStatus}}" bindtap="bindMinus" data-search="{{item.search}}" data-warehouseid="{{item.id}}" data-materielid="{{item.materielId}}" data-index="{{index}}" data-value="{{list[parentIndex][index].realNum}}" data-parent="{{parentIndex}}">-</text>  
+                    <!-- 数值 -->  
+                    <input type="digit" bindchange="bindManual" data-search="{{item.search}}"  data-warehouseid="{{item.id}}" data-materielid="{{item.materielId}}" value="{{list[parentIndex][index].realNum}}"  data-index="{{index}}" data-parent="{{parentIndex}}"/>  
+                    <!-- 加号 -->  
+                    <text class="{{item.plusStatus}}" bindtap="bindPlus" data-search="{{item.search}}"  data-warehouseid="{{item.id}}" data-materielid="{{item.materielId}}" data-value="{{list[parentIndex][index].realNum}}"  data-index="{{index}}" data-parent="{{parentIndex}}">+</text>  
+                </view>  
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+   </block>
+  
+
+   <!--右侧列表  -->
+   <view class='no-data {{noData}}'>暂无数据</view>
+
+   <view class="body-view">  
+    <loading hidden="{{hidden}}" bindchange="loadingChange">  
+          加载中...  
+    </loading>  
+  </view>
+</view> 
+
+<view class='footer flex-box'>
+  <view class='footer-left'>物料{{materielKinds}}种，总计数量{{materielTotal}}件</view>
+  <view class='footer-right {{materielTotal>0}}' bindtap='goConfirm' data-list="{{list}}" >提交</view>
+</view>
+  
+   
+   
+</view>  

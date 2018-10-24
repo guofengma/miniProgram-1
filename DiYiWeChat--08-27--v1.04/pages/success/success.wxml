@@ -1,0 +1,16 @@
+<view class="section"> 
+  <view class='icon-box'><image src='../../images/ok.png' class='success-icon'></image></view>
+   <view class='success-title'>{{label}}成功</view>
+   <view>
+   <text>{{numlabel}}{{num}}</text>
+   <block wx:for="{{warehouse}}" wx:key="">
+   <view>
+     <text>{{label}}{{item.name}}</text>
+     <text>{{item.count}}{{unit}}</text>
+   </view>
+   
+    
+   </block>
+   <view class='finished-time'>完成时间:{{time}}</view>
+   </view>
+</view>  

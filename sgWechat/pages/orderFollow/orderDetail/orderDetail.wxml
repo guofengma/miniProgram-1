@@ -1,0 +1,74 @@
+<view class="page">
+    
+    <view class="page__bd page__bd_spacing">
+        <view class="kind-list">
+        <!--循坏data中的list  -->
+            <block wx:for="{{list}}" wx:key="id">
+                <view class="kind-list__item">
+                <!--标题  -->
+                    <view id="{{item.id}}" class="weui-flex kind-list__item-hd " bindtap="kindToggle">
+                        <view class="weui-flex__item">
+                            <view class='progress {{item.urgency}}' style='width:{{item.data.progressLine}}px'></view>
+                             <!-- <view class='finished' wx:if="{{item.data.status==2}}"><image class='finished-img' src="/images/finished.png"></image></view> -->
+                            <view class='detail-box'>
+                              <view class='detail-info'>
+
+                               <view class='detail-top '>
+                                  <text>负责人：{{item.data.productInfoObj.fuzerenName}}</text>
+                                </view>
+                                <view class='detail-middle'>
+                                  <text>产品编号：{{item.data.productInfoObj.productNum}}</text>
+                                </view>
+                                <view class='detail-bottom ' wx:if="{{item.data.status==2}}">
+                                  已完成
+                                </view>
+                                <view class='detail-bottom ' wx:else>
+                                当前阶段：{{item.data.nowFlow}}
+                                </view>
+
+                              </view>
+                              
+                            </view>
+                        </view>
+                        <image class="kind-list__img" src="{{item.open ? '/images/arrow_down.png' : '/images/arrow_left.png'}}"></image>
+                    </view>
+                <!--标题  -->
+                    <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                        <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                        <!--循坏子集dataList  -->
+                          <view class='info-item flex-box' wx:for="{{item.data.orderProductFlowList}}" wx:key="id" wx:for-item="subItem">
+                                <view class=''>
+                                  <text class='info-label'>流程：</text>
+                                  <text class='info-value'>{{subItem.flowElement.flowName}}</text>
+                                </view>
+                                 <view class=''>
+                                  <text class='info-label'>流程负责人：</text>
+                                  <text class='info-value'>{{subItem.leaderUser.realName}} </text>
+                                </view>
+                                 <view class=''>
+                                  <text class='info-label'>完成数量：</text>
+                                  <text class='info-value'>{{subItem.completeNum}}</text>
+                                </view>
+                            
+                          </view>
+                        <!--循坏子集dataList end -->
+                        </view>
+                    </view>
+
+                </view>
+            </block>
+        <!--循坏data中的list  end -->
+            
+        </view>
+    </view>
+
+    <view class='no-data {{noData}}' style="min-height:{{scrollHeight}}px">暂无数据</view>
+    <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+    <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+    </view> 
+    
+</view> 
+

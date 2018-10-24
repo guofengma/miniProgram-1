@@ -1,0 +1,127 @@
+<!--index.wxml-->
+<view class="section">
+  <!-- <view class='no-data {{noData}}'>暂无数据</view> -->
+  <view style='height:{{height}}px;' scroll-y='{{scrollY}}' class='msg-list' bindscroll = 'onScroll'>
+       <view wx:for="{{msgList}}" wx:key="id"  class="msg-item {{item.status==0?'hh':''}}" animation='{{item.wrapAnimation}}' > 
+            <view id='{{item.id}}' class='msg '  data-status="{{item.status}}" data-id="{{item.applyMaterialId}}" bindlongpress="onCancelTap" data-status="{{item.status}}">
+                <!-- <view class='item-status'>
+                  <text>等待审核</text>
+                </view> -->
+                <view class='item-detail flex-box'>
+                    <view class='detail-left'>
+                        <image src='{{item.img}}' class='detail-img' data-index="{{index}}" binderror="imgError" bindtap='previewImg' data-url="{{item.img}}"></image>
+                    </view>
+
+                    <view class='detail-right flex-box'>
+                      <view class='detail-right-top flex-box '>
+                        <text>{{item.materielName}}--{{item.shelvesName}}</text>
+                         <text wx:if="{{item.spec==null}}" class='ellipsis spec-txt'>/</text>
+                         <text wx:else class='ellipsis spec-txt'>{{item.spec}}</text><!-- 规格 -->
+                      </view>
+                       <view>￥{{item.price}}</view>
+                      <view class='detail-right-bottom flex-box'>
+                        <text>{{item.num}}{{item.unitName}}</text>
+                        <view wx:if="{{item.status==2}}">
+                          <text class='red' >已拒绝</text>
+                          <text class='red' wx:if="{{item.remarks!==null&&item.remarks!==''}}">（{{item.remarks}})</text>
+                        </view>
+                        
+                        <text class='red' wx:if="{{item.status==1}}">准备{{item.realNum}}{{item.unitName}}</text>
+                      </view>
+                    </view>
+
+                </view>
+                <view class='right-btn-box flex-box' wx:if="{{item.status==0}}">
+                  <view class='disagree-btn right-btn grey' id='{{item.id}}' bindtap='onDisagreeTap' data-id="{{item.applyMaterialId}}">拒绝</view>
+                  <view class='agree-btn right-btn ' id='{{item.id}}' bindtap='onAgreeTap' data-id="{{item.applyMaterialId}}" data-count="{{item.num}}">出库</view>
+                </view>
+            </view>
+            <!-- <view class='msg-menu'> -->
+                 <!-- <view id='{{item.id}}' class='menu-item agree flex-box' bindtap='onAgreeTap' data-id="{{item.applyMaterialId}}" wx:if="{{item.status==0}}" data-count="{{item.num}}">
+                  <image src='/images/agree.png' class='chose-icon'></image>
+                  <text> 出库</text>
+                </view>
+                <view id='{{item.id}}' class='menu-item disagree flex-box' bindtap='onDisagreeTap' data-id="{{item.applyMaterialId}}" wx:if="{{item.status==0}}">
+                  <image src='/images/disagree.png' class='chose-icon'></image>
+                  <text>拒绝</text>
+                </view>  -->
+
+                 <!-- <view  wx:if="{{item.status!==0}}" id='{{item.id}}' class='menu-item cancel flex-box' bindtap='onCancelTap' data-id="{{item.applyMaterialId}}" >
+                  <image src='/images/disagree.png' class='chose-icon'></image>
+                  <text>取消</text>
+                </view>  -->
+            <!-- </view> -->
+       </view>
+
+       <!--按钮  -->
+       <view class='btn-box'>
+        <button class='btn ld blue {{ready}}' data-ready="{{ready}}"  bindtap='bindReady' >准备就绪</button>
+       </view>
+   </view>
+
+ 
+  
+</view>
+<!--模态框 出库  -->
+<view class='modal {{showAmountModal.showModal}}'  >
+    <form bindsubmit="formSubmit">
+      <view class='modal-content'>
+        <view class='modal-title'>
+          <image src="/images/modal_title.png" class='modal-title-bg'></image>
+          <text class='modal-title-txt'>出库数量</text>
+          
+        </view>
+        <view class='modal-detail'>
+
+          <!-- <input class='modal-input' placeholder='请输入数量' name="count" value='{{count}}' type='digit'></input> -->
+            <!-- 主容器 -->  
+          <view class="stepper">  
+            <!-- 减号 -->  
+            <text class="{{minusStatus}}" bindtap="bindMinus" >-</text>  
+            <!-- 数值 -->  
+            <input type="number" bindchange="bindManual" value="{{count}}"  type='digit' name="count" />  
+            <!-- 加号 -->  
+            <text class="normal"   bindtap="bindPlus">+</text>  
+          </view> 
+
+        </view>
+        <view class='pld-txt'>*请输入实际出库数量</view>
+
+       <view class='modal-btn-group '>
+          <view class='modal-btn-item fr'>
+              <button formType="submit" class='modal-btn submit-btn' >确定</button>
+            </view>
+        </view>
+       
+      </view>
+    </form>
+ </view>
+ <view class='mask {{showAmountModal.showMask}}' bindtap='hideModal' ></view>
+ <!--模态框 出库 end-->
+
+ <!--模态框 拒绝 -->
+<view class='modal {{showRejectModal.showModal}}'  >
+    <form bindsubmit="formRejectSubmit">
+      <view class='modal-content'>
+        <view class='modal-title'>
+          <image src="/images/modal_title.png" class='modal-title-bg'></image>
+          <text class='modal-title-txt'>拒绝出库</text>
+          
+        </view>
+        <view class='modal-detail'>
+          <textarea class='modal-textarea' placeholder='请输入备注' name="remarks" value='{{remarks}}'></textarea>
+        </view>
+
+        <view class='modal-btn-group '>
+          <view class='modal-btn-item fr'>
+              <button formType="submit" class='modal-btn submit-btn' >确定</button>
+            </view>
+        </view>
+       
+      </view>
+    </form>
+ </view>
+ <view class='mask {{showRejectModal.showMask}}' bindtap='hideModal' ></view>
+ <!--模态框  拒接 end-->
+
+

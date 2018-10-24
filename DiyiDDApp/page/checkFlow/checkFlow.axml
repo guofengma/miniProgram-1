@@ -1,0 +1,101 @@
+<view class="flow-section">
+  <!-- 跟进表单 -->
+  <view class="flow-form">
+    <!-- 流程 -->
+    <view class="flow-list flex-box">
+      <view class="flow-item flex-box" a:for={{flowList}}>
+        <view class="flow-item-icon">
+          <image a:if={{item.isHuixiu==1}} class="flow-item-icon-img" src="/images/flow_icon_03.png" mode="aspectFit" />
+          <image a:elif={{item.checkType==0}} class="flow-item-icon-img" src="/images/flow_icon_01.png" mode="aspectFit" />
+          <image a:else class="flow-item-icon-img" src="/images/flow_icon_02.png" mode="aspectFit" />
+          
+        </view>
+        <view class="flow-item-name">{{item.flowName}}</view>
+      </view>
+    </view>
+    <!-- end流程 -->
+    <!-- <input type="text" placeholder="请输入文字" value="{{inputValue}}" onConfirm="changeValue"/> -->
+    <!-- 表单内容 -->
+    <form onSubmit="saveForm"  onReset="formReset">
+      <!-- 状态 -->
+      <view class="form-item flex-box">
+        <view class="form-label">状态</view>
+        <view class="form-input">
+          <radio-group class="radio-group" onChange="radioChange" name="checkType" value="{{cType}}">
+            <label class="radio" a:for="{{checkType}}">
+              <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <!-- end状态 -->
+      <view class="split-line"></view>
+      <!-- 备注 -->
+      <view class="form-item">
+        <view class="form-input">
+          <textarea class="flow-textarea" name="remarks" auto-height placeholder="备注该流程相关内容" maxlength="-1" value="{{remarks}}" onBlur="setRemarks"/>
+        </view>
+      </view>
+      <!-- end备注 -->
+      <!-- 图片 -->
+      <view class="add-img-box">
+        <image class="add-img" src="/images/imgAdd.png" mode="aspectFit"  onTap="choseImg"/>
+      </view>
+      <view class="imgs-preview flex-box">
+          <view class="img-box flex-box" a:for={{imgSrc}} >
+            <image class="preview-img" src="{{item}}" mode="aspectFit" onTap="previewImage"  data-index="{{index}}" data-type="1" />
+            <image class="img-del-icon" src="/images/clear_icon.png" mode="aspectFit" onTap="deleteImage" data-index="{{index}}"/>
+          </view>
+      </view>
+      <!-- end图片 -->
+
+      <!-- 按钮 -->
+      <view class="btn-box flex-box" >
+        <button class="btn orange" type="default" onTap="saveType" data-type="1" formType="submit" >回 修</button>
+        <button class="btn " type="default" onTap="toCheck" a:if={{isCheck}}>验 收</button>
+        
+        <button class="btn " type="default" onTap="saveType" a:else  data-type="2" formType="submit">下一步</button>
+        
+      </view>
+      <!-- end按钮 -->
+      
+      
+      
+    </form>
+    <!-- end表单内容 -->
+    
+  </view>
+  <!-- end跟进表单 -->
+ <view class="split-line"></view>
+  <!-- 跟进流水 -->
+  <view class="flow-log">
+    <view class="log-item  {{item.checkType=='1'?'':'red'}}" a:for={{flowLog}}>
+      <view class="log-item-head flex-box">
+        <view class="l-i-h-point">{{item.nameFirst}}</view>
+        <view class="l-i-h-name">{{item.createByUserName}}</view>
+        <view class="l-i-h-time">{{item.createDate}}</view>
+      </view>
+      <view class="log-item-body">
+        <view class="l-i-b-title ">{{item.remarks}}</view>
+        <!-- <view class="l-i-b-content">{{item.remarks}}</view> -->
+        <view class="l-i-b-imgs">
+          <image 
+          a:for={{item.imgList}} 
+          a:for-item="imgItem" 
+          a:for-index="imgIndex" 
+          src="{{imgItem}}" 
+          mode="aspectFit" 
+          data-list="{{item.imgList}}" 
+          data-type="2" 
+          onTap="previewImage" 
+          data-index="{{imgIndex}}"/>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+  <!-- end跟进流水 -->
+  
+  
+    
+</view>

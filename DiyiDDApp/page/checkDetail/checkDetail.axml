@@ -1,0 +1,181 @@
+<view>
+  <form onSubmit="saveForm" a:if="{{detail}}" class="top-form">
+    <!-- 克重 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>克重:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab active" >{{detail.weightStr}}</view>
+        <view a:if={{detail.weight.status!==1}}>{{detail.weightStr}}{{detail.weight.remarks}}</view>
+      </view>
+    </view>
+    <!-- end克重 -->
+    <!-- 门幅 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>门幅:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab active" >{{detail.widthStr}}</view>
+        <view a:if={{detail.width.status!==1}}>{{detail.widthStr}}{{detail.width.remarks}}</view>
+      </view>
+    </view>
+    <!-- end门幅 -->
+    <!-- 手感 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>手感:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab active" a:if={{detail.handle==2}}>偏软</view>
+        <view class="value-tab active" a:if={{detail.handle==1}}>正常</view>
+        <view class="value-tab active" a:if={{detail.handle==3}}>偏硬</view>        
+      </view>
+    </view>
+    <!-- end手感 -->
+    <!-- 弹力 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>弹力:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab active" a:if={{detail.elastica==2}}>松</view>
+        <view class="value-tab active" a:if={{detail.elastica==1}}>正常</view>
+        <view class="value-tab active" a:if={{detail.elastica==3}}>紧</view>
+      </view>
+    </view>
+    <!-- end弹力 -->
+    <!-- 竖向缩水 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>竖向缩水:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab active" a:if={{detail.verticalShrink==1}}>正常</view>
+        <view class="value-tab active" a:if={{detail.verticalShrink==2}}>偏大</view>
+      </view>
+    </view>
+    <!-- end竖向缩水 -->
+    <!-- 横向缩水 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>横向缩水:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab active" a:if={{detail.transverseShrink==1}}>正常</view>
+        <view class="value-tab active" a:if={{detail.transverseShrink==2}}>偏大</view>
+      </view>
+    </view>
+    <!-- end横向缩水 -->
+    <!-- 色牢度 -->
+    <view class="form-item flex-box border-none">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>色牢度:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab active" a:if={{detail.colorFateness==1}}>正常</view>
+        <view class="value-tab active" a:if={{detail.colorFateness==2}}>不正常</view>
+      </view>
+    </view>
+    <!-- end色牢度 -->
+    <!-- 色牢度相关图片 -->
+    <view class="form-item color-img-box flex-box">
+      <view class="color-img-item" a:if={{detail.img40}} >
+        <view class="img-box-sm">
+          <image 
+          class="preview-img-sm" 
+          src="{{detail.img40}}" 
+          mode="aspectFit" 
+          onTap="previewImage" 
+          data-type="2" 
+          data-index="0"
+          data-list="{{detail.img40}}"/>
+          <!-- <view a:else>无</view>           -->
+        </view>
+        <view class="color-img-txt">测试温度40°</view>
+      </view>
+      <view class="color-img-item" a:if={{detail.img90}} >
+        <view class="img-box-sm">
+          <image 
+          class="preview-img-sm" 
+          src="{{detail.img90}}" 
+          mode="aspectFit" 
+          onTap="previewImage" 
+          data-type="2" 
+          data-index="0"          
+          data-list="{{detail.img90}}"/>
+          <!-- <view a:else>无</view> -->
+        </view>
+        <view class="color-img-txt">测试温度90°</view>
+      </view>
+    </view>
+    <!-- end色牢度相关图片 -->
+    <!-- 其他情况 -->
+    <view class="form-item  ">
+      <view class="form-label">
+        <!-- <text class="red">*</text> -->
+        <text>其他情况:</text>
+      </view>
+      <view class="form-value others flex-box" a:if={{detail.othersName}}>
+        <view  a:for={{detail.othersName}} class="value-tab lg active">{{item}}</view>
+      </view>
+      <view a:else>无</view>
+      
+    </view>
+    <!-- end其他情况 -->
+    <!-- 特殊备注 -->
+    <view class="form-item flex-box border-none">
+      <view class="form-label">
+        <!-- <text class="red">*</text> -->
+        <text class="red-label">特殊备注:</text>
+      </view>
+      <view class="form-value flex-box" a:if={{detail.remarks}}>
+        <textarea class="form-textarea  red" placeholder="特殊备注" maxlength="-1" auto-height name="remarks" value="{{detail.remarks}}"/>
+      </view>
+      <view a:else>无</view>
+    </view>
+    <!-- end特殊备注 -->
+    <!-- 图片 -->
+    <view class="imgs-preview flex-box">
+      <view class="img-box flex-box" a:for={{detail.img}} >
+        <image class="preview-img" src="{{item}}" mode="aspectFit" onTap="previewImage" data-index="{{index}}" data-type="1" data-list={{detail.img}} />
+      </view>
+    </view>
+    <!-- end图片 -->
+    <!-- 验货报告 -->
+    <view class="form-item flex-box border-none">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text >验货报告</text>
+      </view>
+    </view>
+    <!-- end验货报告 -->
+    <!-- 图片 -->
+    <view class="imgs-preview flex-box">
+      <view class="img-box flex-box" a:for={{detail.report}} >
+        <image class="preview-img" src="{{item}}" mode="aspectFit" onTap="previewImage" data-index="{{index}}" data-type="1" data-list={{detail.report}} />
+      </view>
+    </view>
+    <!-- end图片 -->
+    <!-- 完成按钮 -->
+    
+  </form>
+  <!-- 入库信息 -->
+  <view class="fabricOqa-info">
+    <view>入库信息</view>
+    <view>面料品名：{{fabricOqa.fabricName}}</view> 
+    <view>面料颜色：{{fabricOqa.fabricColor}}</view>    
+    <view>面料规格：{{fabricOqa.fabricSpec}}</view> 
+    <view>面料批次：{{fabricOqa.batch}}</view>    
+    <view>入库位置：{{fabricOqa.storehostName}}-{{fabricOqa.shelvesName}}</view>    
+    <view>面料数量：{{fabricOqa.bolt}}匹/{{fabricOqa.num}}{{fabricOqa.fabricTypeId==1?'千克':'米'}}</view>                          
+  </view>
+</view>

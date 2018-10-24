@@ -1,0 +1,50 @@
+.progress-title{
+  width: 80rpx;
+  float: left;
+  padding: 68rpx 20rpx;
+  box-sizing: border-box;
+  background-color: #1E87F0;
+  color: #fff;
+  line-height: 66rpx;
+  min-height:330rpx;
+  font-size: 32rpx;
+  
+}
+.progress-item{
+  margin-bottom: 40rpx;
+  border-bottom: 2rpx solid #ddd;
+  overflow: hidden;
+  
+}
+.progress-info{
+  overflow: hidden;
+  min-height:330rpx;
+  font-size: 28rpx;
+}
+.info-item{
+  border-top: 2rpx solid #ddd;
+  padding: 16rpx 24rpx;
+  
+}
+.img-box{
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.info-img{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 16rpx;
+}
+.no-data{
+  margin: 400rpx auto;
+  text-align: center;
+  font-size: 32rpx;
+  color: #999;
+  display: none;
+}
+.no-data.hide{
+  display: none;
+}
+.no-data.show{
+  display: block;
+}

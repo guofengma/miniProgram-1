@@ -1,0 +1,95 @@
+<view class="section">  
+   <view class='detail-box'>
+
+      <view class='detail-row'>
+          <view class='detail-item'>
+              <text class='detail-label'>订单号：</text>
+              <text class='detail-value'>{{info.orderNum}}</text>
+          </view>
+          <view class='detail-item'>
+              <text class='detail-label'>产品编号：</text>
+              <text class='detail-value'>{{info.productNum}}</text>
+          </view>
+      </view>
+
+      <view class='detail-row'>
+          <view class='detail-item'>
+              <text class='detail-label'>工艺编号：</text>
+              <text class='detail-value'>{{info.tecNum}}</text>
+          </view>
+          <view class='detail-item'>
+              <text class='detail-label'>生产步骤：</text>
+              <text class='detail-value'>{{info.flowName}}</text>
+          </view>
+      </view>
+
+       <view class='detail-row'>
+          <view class='detail-item'>
+              <text class='detail-label'>预计完成时间：</text>
+              <text class='detail-value blue'>{{info.predictCompleteDate}}</text>
+          </view>
+          <view class='detail-item'>
+              <text class='detail-label'>数量：</text>
+              <text class='detail-value'>{{info.num}}</text>
+          </view>
+      </view>
+
+   </view>
+
+   <view class='detail-box'>
+    <view class='detail-row'>
+      <view class='detail-item'>
+          <text class='detail-label'>制作要求：</text>
+          <text class='detail-value' wx:if="{{info.remarks==null}}">/</text>
+          <text class='detail-value' wx:else>{{info.remarks}}</text>
+          
+      </view>
+    </view>
+   </view>
+
+    <view class='detail-box progress' wx:if="{{info.status==0}}">
+    <view class='detail-row'>
+      <view class='detail-item'>
+          <text class='detail-label'>制作进度</text>
+          <view class='slider-box flex-box'>
+            <text>{{progress}}</text>
+            <slider bindchange="changeSlider" min="0" max="{{maxNum}}" value="{{progress}}" selected-color="#1e87f0" color='#ddd;' />
+            <text>{{maxNum}}</text>
+          </view>
+          <!-- <form bindsubmit="formSubmit" >
+            <view class='flex-box form-box'>
+              <view class="stepper">  
+                <text class="{{minusStatus}}" bindtap="bindMinus" >-</text>  
+                <input type="digit" bindchange="bindManual" value="{{progress}}" name="progress"  />  
+                <text class="{{plusStatus}}" bindtap="bindPlus" data-index="{{index}}" >+</text>  
+              </view>
+
+              <view class='btn-box'>
+                  <button class='btn blue sm'  formType="submit">提交</button>
+              </view> 
+            </view>
+           
+          </form> -->
+         
+      </view>
+    </view>
+   </view>
+
+   <view class='canvas-box'  wx:if="{{info.status==0}}" bindtap='comfirmfinish' data-percent="{{percent}}">
+     <canvas class="cir" style="width:212px; height:212px;" canvas-id="canvasArc">  </canvas>  
+     <view class="cc" wx:if='{{percent==100}}' bindtap='comfirmfinish'>确认完成</view> 
+     <view class="cc" wx:else>{{percent}}%</view>  
+      
+   </view>
+   
+   <view class='detail-box progress' wx:else>
+    <view class='detail-row'>
+      <view class='detail-item'>
+          <text class='detail-label'>完成时间：</text>
+          <text class='detail-value blue'>{{info.completeDate}}</text>
+      </view>
+    </view>
+   </view>
+
+
+</view>  

@@ -1,0 +1,84 @@
+.check-form{
+  font-size: 30rpx;
+  box-sizing: border-box;
+}
+.form-item{
+  border-bottom: 2rpx solid #dedede;
+ padding: 0 24rpx;
+  line-height: 96rpx;
+  
+}
+.form-item.last{
+  border: none;
+}
+.picker{
+  position: relative;
+  color: #3c3c3c;
+}
+.picker-input{
+  height: 96rpx;
+  text-align: right;
+  margin-right: 46rpx;
+}
+.picker-icon{
+  width: 35rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 38rpx;
+}
+.picker-pld{
+  position: absolute;
+  top: 0rpx;
+  right: 46rpx;
+  color: #808080;
+}
+.input-label,.picker-label{
+  width: 190rpx;
+  margin-left: 20rpx;
+}
+.input-label.lg{
+  line-height: 198rpx;
+}
+.input-val{
+  line-height: 50rpx;
+  color: #808080;
+  margin: 22rpx 0;
+}
+input,textarea{
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: right;
+  /* margin-right: 60rpx; */
+  
+}
+textarea{
+  height: 160rpx;
+  line-height: 60rpx;
+  padding-top: 20rpx;
+  text-align: right;
+
+}
+.btn-box:before{
+  content: "";
+  display: block;
+  clear: both;
+}
+.btn-box{
+  /* background-color: #E9E9E9; */
+  height: 138rpx;
+  margin: 0;
+  padding: 40rpx 20rpx;
+  /* padding-top: 480rpx; */
+}
+.btn{
+ border: 2rpx solid #dedede;
+}
+.checkbox-group{
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 550rpx;
+}
+.checkbox{
+  margin-left: 20rpx;
+}

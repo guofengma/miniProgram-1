@@ -1,0 +1,101 @@
+page{  
+  height: 100%;  
+}  
+  
+.container {  
+  height: 100%;  
+  display: flex;  
+  flex-direction: column;  
+  padding: 40rpx 0;  
+  box-sizing: border-box;  
+}   
+  
+.login-title{
+  font-size: 48rpx;
+}  
+.login-sub-title{
+  font-size: 28rpx;
+  color: #999;
+  line-height: 52rpx;
+}
+/*表单内容*/  
+.login-from {  
+  margin-top: 40rpx;  
+  flex: auto;  
+  height:100%;
+  width: 600rpx;  
+}  
+  
+.inputView {  
+  background-color: #fff;  
+  line-height: 88rpx; 
+  border: 2rpx solid #ddd;
+  margin: 40rpx 0; 
+}  
+/*输入框*/  
+.nameImage, .keyImage {  
+  margin-left: 28rpx;  
+  width: 32rpx;  
+  height: 32rpx;
+  position: relative;
+  top: 6rpx;
+}  
+  
+.loginLab {  
+  margin: 30rpx 30rpx 30rpx 10rpx;  
+  color: #545454;  
+  font-size: 28rpx  
+}  
+.inputText {  
+  flex: block;  
+  float: right;  
+  text-align: right;  
+  margin-right: 44rpx;  
+  margin-top: 22rpx;  
+  color: #666;  
+  font-size: 28rpx;
+  width:306rpx; 
+} 
+
+.radio-group{
+  width: 85%;
+  font-size: 34rpx;
+  margin: 0 auto;
+} 
+.radio-icon{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 6rpx;
+  right: 8rpx;
+  border-radius: 50%;
+}
+.role-radio{
+  display: none;
+}
+/*按钮*/  
+.loginBtnView {  
+  width: 100%;  
+  height: auto;  
+ 
+  
+}  
+  
+.loginBtn {  
+  margin-top: 70rpx;  
+   background-color: #1498F7; 
+  color: #fff; 
+} 
+.forget-psd{
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+} 
+.formId-form{
+  float: right;
+}
+.formId-btn{
+  height: 90rpx;
+  width: 410rpx;
+}

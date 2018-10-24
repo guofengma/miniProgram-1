@@ -1,0 +1,133 @@
+<!--index.wxml-->
+<view class="section">
+ <view class='top-box flex-box'>
+  <view class='top-left'>
+    <view>
+      <view class='user-name'>
+        <text>{{realName}}</text>
+        <block wx:for="{{roleList}}" wx:key="id">
+           <text class='user-role'>{{item}}</text>
+        </block>
+      </view>
+      <view class='company'>浙江缔衣纺织有限公司</view>
+    </view>
+  </view>
+  <view class='top-right'>
+    <image src='../../images/logo.png' class='logo' mode='center'></image>
+  </view>
+ </view>
+
+  <view class='message-box'  bindtap='goMessage'>
+    <view class='message'>
+      <image src='../../images/message.png' class='message-icon'></image>
+      <text  class='message-txt'>{{unReadStr}}</text>
+    </view>
+    <view class='message-right'><image src="../../images/message2.png" class='message-icon'></image></view>
+ </view> 
+
+ <!--菜单列表  -->
+ <view class='menu-box flex-box'>
+    <block wx:for="{{menuList}}" wx:key="menuId">
+       <form report-submit='true' bindsubmit="submitFormId" data-src="{{item.url}}">
+        <button formType="submit" class='formId-btn'>
+          <form report-submit='true' bindsubmit="submitFormId" >
+            <button formType="submit" class='formId-btn'>
+             <form report-submit='true' bindsubmit="submitFormId" >
+              <button formType="submit" class='formId-btn'>
+                <form report-submit='true' bindsubmit="submitFormId" >
+                  <button formType="submit" class='formId-btn'>
+                    <form report-submit='true' bindsubmit="submitFormId" >
+                      <button formType="submit" class='formId-btn'>
+                       <form report-submit='true' bindsubmit="submitFormId" >
+                         <button formType="submit" class='formId-btn'>
+                          <form report-submit='true' bindsubmit="submitFormId" >
+                          <button formType="submit" class='formId-btn'>
+                          <form report-submit='true' bindsubmit="submitFormId" >
+                          <button formType="submit" class='formId-btn'>
+                <view class='menu-item' data-src="{{item.url}}">
+                  <image src="../../images/{{item.icon}}" class='item-icon'></image>
+                  <text class='item-title'>{{item.name}}</text>
+                </view>
+                        </button>
+                        </form>
+                        </button>
+                        </form>
+                       </button>
+                      </form>
+                    </button>
+                  </form>
+                 </button>
+                </form>
+               </button>
+              </form>
+           </button>
+          </form>
+       </button>
+      </form>
+    </block>
+  <!-- <view class='menu-item' bindtap='goNext' data-src="../orderFollow/orderList/orderList">
+    <image src="../../images/sign.png" class='item-icon'></image>
+    <text class='item-title'>订单跟进</text>
+  </view>
+  <view class='menu-item' bindtap='goNext' data-src="../orderTracking/orderTrackingList/orderTrackingList" >
+    <image src="../../images/itemList.png" class='item-icon'></image>
+    <text class='item-title'>订单跟踪</text>
+  </view>
+  <view class='menu-item' bindtap='goNext' data-src="../warehouseIn/warehouseIn">
+    <image src="../../images/in.png" class='item-icon'></image>
+    <text class='item-title'>入库管理</text>
+  </view>
+  <view class='menu-item' bindtap='goNext' data-src="../warehouseOut/warehouseOut">
+    <image src="../../images/out.png" class='item-icon'></image>
+    <text class='item-title'>出库管理</text>
+  </view> -->
+  <!-- <view class='menu-item' bindtap='goNext' data-src='../contractFollow/contractFollow' >
+    <image src="../../images/itemList.png" class='item-icon'></image>
+    <text class='item-title'>合同进程</text>
+  </view> -->
+  <!-- <view class='menu-item' bindtap='goNext' data-src="../inventory/inventory">
+    <image src="../../images/inventory.png" class='item-icon'></image>
+    <text class='item-title'>当前库存</text>
+  </view> -->
+ <form report-submit='true' bindsubmit="submitFormId" data-src="../user/user">
+    <button formType="submit" class='formId-btn'>
+     <form report-submit='true' bindsubmit="submitFormId" >
+      <button formType="submit" class='formId-btn'>
+        <form report-submit='true' bindsubmit="submitFormId" >
+          <button formType="submit" class='formId-btn'>
+            <form report-submit='true' bindsubmit="submitFormId" >
+              <button formType="submit" class='formId-btn'>
+                <form report-submit='true' bindsubmit="submitFormId" >
+                  <button formType="submit" class='formId-btn'>
+                  <form report-submit='true' bindsubmit="submitFormId" >
+                    <button formType="submit" class='formId-btn'>
+                      <form report-submit='true' bindsubmit="submitFormId" >
+                        <button formType="submit" class='formId-btn'>
+                          <form report-submit='true' bindsubmit="submitFormId" >
+                            <button formType="submit" class='formId-btn'>
+                             <view class='menu-item'  data-src="../user/user">
+                                <image src="../../images/people.png" class='item-icon'></image>
+                                <text class='item-title'>个人中心</text>         
+                              </view> 
+                              </button>
+                            </form>
+                          </button>
+                      </form>
+                    </button>
+                  </form>
+                  </button>
+                </form>
+              </button>
+            </form>
+          </button>
+        </form>
+      </button>
+     </form>
+    </button>
+  </form>
+ 
+ </view>
+
+ <!--菜单列表  end-->
+ 
+</view>

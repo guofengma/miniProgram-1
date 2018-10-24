@@ -1,0 +1,73 @@
+<view class="section"> 
+ <!--详情头部  -->
+  <view class='detail-top'>
+    <view class='d-t-item'>
+      <view class='label'>箱型：</view>
+      <view class='value'>{{info.type}}</view>
+    </view>
+    <view class='d-t-item'>
+      <view class='label'>品名：</view>
+      <view class='value'>{{info.name}}</view>
+    </view>
+    <view class='d-t-item'>
+      <view class='label md'>目的地：</view>
+      <view class='value'>{{info.destination}}</view>
+    </view>
+    <view class='d-t-item flex-box'>
+      <view class='d-t-item-left'>
+        <view class='label'>件数：</view>
+        <view class='value'>{{info.amount}}</view>
+      </view>
+      <view class='d-t-item-right lg'>
+        <view class='label'>时间：</view>
+        <view class='value'>{{info.createDate}}</view>
+      </view>
+    </view>
+    <view class='d-t-item flex-box'>
+      <view class='d-t-item-left'>
+        <view class='label lg'>毛重（KGS）：</view>
+        <view class='value'>{{info.amount}}</view>
+      </view>
+      <view class='d-t-item-right'>
+        <view class='label lg'>尺码（CBM）：</view>
+        <view class='value'>{{info.size}}</view>
+      </view>
+    </view>
+  </view>
+ <!--end详情头部  -->
+ <!-- 详情列表 -->
+ <view class='detail-list'>
+  <view class='d-l-item' wx:for="{{info.detail}}" wx:key="">
+    <view class='d-l-item-row flex-box'>
+      <view class='left'>
+        <view class='label'>箱号：</view>
+        <view class='value'>{{item.boxNum}}</view>
+      </view>
+      <view class='right'>
+        <view class='label'>箱数：</view>
+        <view class='value'>{{item.boxAmount}}</view>
+      </view>
+    </view>
+     <view class='d-l-item-row flex-box'>
+      <view class='left'>
+        <view class='label'>重量：</view>
+        <view class='value'>{{item.weight}}</view>
+      </view>
+      <view class='right'>
+        <view class='label'>立方数：</view>
+        <view class='value'>{{item.cube}}</view>
+      </view>
+    </view>
+    <view class='d-l-item-row'>
+      <view class='remarks'>
+        <view class='label'>备注：</view>
+        <view class='value'>{{item.remarks}}</view>
+      </view>
+    </view>
+    <view class='split-line'></view>
+  </view>
+ </view>
+ <!-- end详情列表 -->
+ 
+  
+</view>  

@@ -1,0 +1,53 @@
+/**app.wxss**/
+page{
+  color: #333;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.flex-box{
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom-line{
+  font-size: 28rpx;
+  color:#999;
+  text-align: center;
+  margin: 40rpx 0;
+  display: block;
+}
+.bottom-line.hide{
+  display: none;
+}
+.bottom-line.show{
+  display: block;
+}/*文字超出省略*/
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+/*用于传formId  */
+.formId-btn{
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+  position: relative;
+   width: 360rpx;
+  height: 300rpx;
+  background-color: transparent;
+
+}
+.formId-btn::after{
+border: none;
+}

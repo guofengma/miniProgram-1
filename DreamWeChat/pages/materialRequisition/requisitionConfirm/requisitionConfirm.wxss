@@ -1,0 +1,99 @@
+.list-title{
+  text-align: center;
+  font-size: 30rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  background-color: #FCFCFC;
+}
+.list{
+  width: 100%;
+  padding: 24rpx 18rpx;
+  box-sizing: border-box;
+  padding-bottom: 0rpx;
+}
+.list-item{
+  padding: 20rpx;
+  min-height: 166rpx;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2rpx solid #E9E9E9;
+  justify-content: flex-start;
+  margin-bottom: 10rpx;
+  position: relative;
+  
+}
+.list-item.red{
+  color: red;
+  border: 2rpx solid red;
+}
+.del-box{
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+
+}
+.del-icon{
+  width: 36rpx;
+  height: 36rpx;
+}
+.item-left{
+  margin-right: 20rpx;
+
+}
+.item-img{
+  width: 132rpx;
+  height: 120rpx;
+}
+.item-right{
+  width: 400rpx;
+  flex-direction: column;
+  
+}
+.item-right .spec{
+  font-size: 24rpx;
+  margin-left: 60rpx;
+}
+.item-right .pname{
+  font-size: 28rpx;
+}
+.item-right-bottom{
+  line-height: 56rpx;
+}
+.list-calc{
+  height: 95rpx;
+  line-height: 95rpx;
+  text-align: right;
+  font-size: 28rpx;
+}
+.calc-txt{
+  margin:0  30rpx;
+}
+
+.other-box{
+  padding: 40rpx;
+  font-size: 28rpx;
+}
+.other-item{
+  margin: 12rpx;
+}
+.other-title{
+  line-height: 60rpx;
+  margin-left: 10rpx;
+}
+.use-textarea,.picker-val{
+  width: 656rpx;
+  height: 196rpx;
+  border: 2rpx solid #EBEBEB;
+  border-radius: 8rpx;
+  padding: 10rpx;
+}
+.picker{
+   height: 60rpx;
+}
+.picker-val{
+ height: 60rpx;
+ line-height: 60rpx;
+}
+.picker-val.pld{
+  color: #999;
+}

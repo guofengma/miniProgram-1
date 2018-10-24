@@ -1,0 +1,151 @@
+<view class="section">
+   
+  <!-- 物流信息 -->
+ <view class="info">
+  <view class="info-item">联系人：{{deliveryInfo.linkUser.realName}}</view>
+  <view class="info-item">联系电话：{{deliveryInfo.linkUser.mobile}}</view>
+  <view class="info-item">收货地址：{{deliveryInfo.customerAddress.address}}</view>
+  <view class="info-item">偏好物流：      
+    <text a:if="{{deliveryInfo.customerAddress.logistics==''}}">无</text>
+    <text a:else>{{deliveryInfo.customerAddress.logistics}}</text>
+  </view>
+  <view class="info-item">备注：      
+    <text a:if="{{deliveryInfo.remarks==''}}">无</text>
+    <text a:else>{{deliveryInfo.remarks}}</text>
+  </view>
+</view>
+  <!-- end 物流信息 -->
+  
+  <!-- 表单 -->
+  <form onSubmit="saveForm" >
+    <!-- 发包数量 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>发包数量:</text>
+      </view>
+      <view class="form-value flex-box">
+       <input class="form-input" type="number" placeholder="请输入包数" name="amount"  onInput="onInput" data-name="amount" value="{{form.amount}}"/>
+      </view>
+    </view>
+    <!-- end发包数量 -->
+
+     
+    <!-- 物流信息 -->
+    <view class="form-item flex-box noBorder">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>物流信息:</text>
+      </view>
+      <view class="form-value flex-box">
+        <textarea 
+        class="form-textarea" 
+        type="text" 
+        placeholder="请输入物流公司和物流编号" 
+        name="logistics"  
+        maxlength="-1" 
+        auto-height  
+        onInput="onInput" 
+        data-name="logistics" 
+        value="{{form.logistics}}" />
+      </view>
+    </view>
+    <!-- end物流信息 -->
+
+     
+    <!-- 图片 -->
+    <view class="border">
+      <view class="add-img-box">
+        <image class="add-img sm" src="/images/imgAdd.png" mode="aspectFit" onTap="choseImg"/>
+      </view>
+      <view class="imgs-preview flex-box">
+        <view class="img-box flex-box" a:for={{imgSrc}} >
+          <image class="preview-img" src="{{item}}" mode="aspectFit" onTap="previewImage" data-index="{{index}}" data-type="1" />
+          <image class="img-del-icon" src="/images/clear_icon.png" mode="aspectFit" onTap="deleteImage" data-index="{{index}}"/>
+        </view>
+      </view>
+    </view>
+    
+    <!-- end图片 -->
+
+     
+    <!-- 车牌号 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <!-- <text class="red">*</text> -->
+        <text>车牌号:</text>
+      </view>
+      <view class="form-value flex-box">
+        <input 
+        class="form-input" 
+        type="text" 
+        placeholder="请输入车牌号" 
+        name="licensePlateNumber" 
+        onInput="onInput" 
+        data-name="licensePlateNumber" 
+        value="{{form.licensePlateNumber}}"/>
+      </view>
+    </view>
+    <!-- end车牌号 -->
+
+     
+    <!-- 备注 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <!-- <text class="red">*</text> -->
+        <text>备注:</text>
+      </view>
+      <view class="form-value flex-box">
+        <textarea 
+        class="form-textarea" 
+        placeholder="请输入备注信息" 
+        maxlength="-1" 
+        auto-height 
+        name="remarks"
+        onInput="onInput" 
+        data-name="remarks" 
+        value="{{form.remarks}}"
+        />
+      </view>
+    </view>
+    <!-- end备注 -->
+
+     
+    <!-- 完成按钮 -->
+    <view class="btn-box ">
+      <button class="btn " type="default" formType="submit">发货</button>
+    </view>
+  </form>
+  <!-- end表单 -->  
+    
+</view>
+
+<!--模态框 -->
+<view class="modal-box" a:if={{modalShow}}>
+<view class='modal' >
+  <form bindsubmit="formSubmitAgree">
+    <view class='modal-content'>
+      <view class="modal-body">
+        <view class="modal-body-item"> 
+          面料信息:
+          <text a:for="{{deliveryInfo.fabricNames}}" class="modal-body-item-right"> 
+            {{item}}；
+          </text>
+        </view>
+        <view class="modal-body-item"> 发货数量：{{deliveryInfo.bolt}}匹</view>
+        <view class="modal-body-item"> 联系方式：{{deliveryInfo.linkUser.mobile}}</view>
+        <view class="modal-body-item"> 收货地址：{{deliveryInfo.customerAddress.address}}</view>        
+        <view class="modal-body-item">发包数量：{{confirmInfo.amount}}包</view>
+        <view class="modal-body-item"> 物流信息：{{confirmInfo.logistics}}</view>
+        <view class="modal-body-item"> 车牌号：{{confirmInfo.licensePlateNumber}}</view>   
+        <view class="modal-body-item"> 备注：{{confirmInfo.remarks}}</view>                     
+      </view>
+      <view class="modal-foot">
+        <button type="default" class="btn sm" onTap="confirmDeliver">确认发货</button>
+      </view>
+    </view>
+  </form>
+</view>
+<view class='mask ' a:if={{modalShow}} onTap="hideModal"></view>
+</view>
+<!--模态框 end--> 

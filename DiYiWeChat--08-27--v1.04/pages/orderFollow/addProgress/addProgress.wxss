@@ -1,0 +1,81 @@
+.process-list{
+  font-size: 28rpx;
+  padding: 8rpx 24rpx;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  color: #1498F7;
+}
+.process-icon{
+  position: relative;
+ top: 4rpx;
+  margin-right: 8rpx;
+}
+.process-item{
+  margin-right: 12rpx;
+  width: 22%;
+  text-align: center;
+  margin-top: 12rpx;
+}
+.finish-list{
+  min-height: 900rpx;
+}
+.finish-btn{
+  background-color: #1498F7;
+  color: #fff;
+  margin-top: 40rpx;
+}
+
+
+.radio-group{
+justify-content: space-around;
+font-size:32rpx; 
+  display: flex;
+border-bottom: 2rpx solid #ddd; 
+border-top: 2rpx solid #ddd; 
+padding: 12rpx;
+}
+.radio-icon{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 6rpx;
+  right: 8rpx;
+  border-radius: 50%;
+}
+.status-radio{
+  display: none;
+}
+.remark-img{
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+}
+.addImg{
+  width: 200rpx;
+  height: 200rpx;
+}
+.img-list{
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.image-item{
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 28rpx;
+  margin-top: 12rpx;
+}
+.logoinfo{
+  position: relative;
+}
+.delete-img{
+  position: absolute;
+  top: -18rpx;right: 6rpx;
+  width: 52rpx;
+  height: 52rpx;
+}
+.submit-btn-box{
+  width: 100%;
+}
+.submit-btn{
+  background-color: #1E87F0;
+  color: #fff;
+}

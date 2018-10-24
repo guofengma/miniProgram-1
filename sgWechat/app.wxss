@@ -1,0 +1,226 @@
+/**app.wxss**/
+/*宽度*/
+.w{width:680rpx;margin:0 auto;}
+.full{width:100%;}
+
+/*定位*/
+.pr{position: relative;}
+.pa{position: absolute;}
+
+/*文字超出省略*/
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+/*对齐*/
+.tl{text-align: left;}
+.tc{text-align: center;}
+.tr{text-align: right;}
+
+/*间距*/
+.mt5{margin-top: 5rpx;}
+.mt10{margin-top: 10rpx;}
+.mt15{margin-top: 15rpx;}
+.mt20{margin-top: 20rpx;}
+.mt25{margin-top: 25rpx;}
+.mt30{margin-top: 30rpx;}
+.mt35{margin-top: 35rpx;}
+.mt40{margin-top: 40rpx;}
+
+/*颜色  */
+.red{
+  color: #f22;
+}
+
+/*背景*/
+.bg_f{background: #fff}
+
+/*边框*/
+.border_t{border-top:solid 1px #eee;}
+.border_b{border-bottom: solid 1px #eee;}
+
+/*浮动*/
+.fl{float:left;}
+.fr{float:right;}
+/*弹性盒子  */
+.flex-box{
+  display: flex;
+  justify-content: space-between;
+}
+
+/*模态框  */
+.modal{
+  position: absolute;
+  left:0;
+  top: 50%;
+  z-index: 200;
+  width:100%;
+  margin-top: -300rpx;
+}
+.mask{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height:100%;
+  z-index: 100;
+  background:rgba(0,0,0,0.5);
+}
+.modal-content{
+  width:70%;
+  height: 456rpx;
+  margin: 0 auto;
+  background: #fff;
+  font-size: 30rpx;
+  font-family: "微软雅黑";
+  border-radius: 10rpx;
+}
+
+.modal-title{
+  width: 100%;
+  height: 74rpx;
+  border-radius: 10rpx 10rpx 0 0;
+  position: relative;
+}
+.modal-title-bg{
+  width: 100%;
+  height: 74rpx;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.modal-title-txt{
+  position: absolute;
+  top: 0rpx;left: 0rpx;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  line-height: 74rpx;
+  font-size: 30rpx;
+}
+.modal-textarea{
+  border: 2rpx solid #ddd;
+  width: 440rpx;
+  height: 200rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin: 40rpx auto;
+  border-radius: 6rpx;
+}
+.modal-btn-group{
+  justify-content: center;
+}
+.modal-btn-item{
+  margin: 0 36rpx;
+}
+.modal-btn{
+  width: 168rpx;
+  /* height: 66rpx; */
+  /* line-height: 66rpx; */
+  background-color: #fff;
+  border-radius: 0;
+}
+.submit-btn{
+  
+}
+.showMask,.showModal{
+  display: block;
+}
+.hideMask,.hideModal{
+  display: none;
+}
+/*模态框 end  */
+/*按钮  */
+.btn-box{
+  margin-top: 46rpx;
+}
+.btn{
+  font-size: 30rpx;
+}
+.btn.lg{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+}
+.btn.sm{
+  width: 300rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+}
+.btn.blue{
+  background-color: #5AAEF6;
+  color: #fff;
+}
+.btn.default{
+  background-color: #fff;
+  color: #000;
+}
+.btn.grey{
+  background-color: #E9E9E9;
+  color: #000;
+}
+/*用于传formId  */
+.formId-btn{
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+  position: relative;
+   width: 360rpx;
+  height: 300rpx;
+  background-color: transparent;
+
+}
+.formId-btn::after{
+border: none;
+}
+/*分割线  */
+.margin-line{
+  width: 100%;
+  height: 20rpx;
+  background-color: #E9E9E9;
+}
+
+page{
+  color: #000;
+  font-size: 24rpx;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.no-data{
+  margin: 400rpx auto;
+  text-align: center;
+  font-size: 32rpx;
+  color: #999;
+  display: none;
+}
+.no-data.hide{
+  display: none;
+}
+.no-data.show{
+  display: block;
+}
+
+.bottom-line{
+  font-size: 28rpx;
+  color:#999;
+  text-align: center;
+  margin: 40rpx 0;
+  display: block;
+}
+.bottom-line.hide{
+  display: none;
+}
+.bottom-line.show{
+  display: block;
+}

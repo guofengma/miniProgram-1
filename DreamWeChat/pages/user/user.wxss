@@ -1,0 +1,27 @@
+
+.list{
+  border-top:2rpx solid #ddd;
+  padding: 0 40rpx;
+  font-size: 30rpx;
+}
+.list-item{
+  padding: 0rpx 28rpx;
+  border-bottom:2rpx solid #ddd;
+  height: 92rpx;
+  line-height: 92rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+.item-value{
+  color: #999;
+}
+.nav{
+  width: 700rpx;
+}
+.nav-icon{
+  width: 26rpx;
+  height: 44rpx;
+}
+.item-label{
+  width: 140rpx;
+}

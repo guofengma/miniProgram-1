@@ -1,0 +1,158 @@
+<view class="detail-content">
+  <!-- 相关人员 -->
+  <view class="related-personnel">
+    <view class="r-p-item predict-date flex-box " a:if={{contractStatus!==2}}>
+        <view class="picker" onTap="datePicker">
+          交货时间：{{predictDate}}
+          <view class="picker-icon" a:if={{isEdit}}></view>
+        </view>
+      <view class="edit-box">
+        <text class="edit-txt"  onTap="edit" a:if={{!isEdit&&canEdit}}>编辑</text>
+        <view class="stop-txt" onTap="stopContract"  a:if={{isEdit&&canPause}}>{{contractStatus==3?`开启`:`暂停`}}</view>
+      </view>
+    </view>
+
+    <view class="r-p-item flex-box" a:for={{personnel}}>
+      <view class="personnel-list flex-box">
+        <text class="personnel-icon">{{item.label}}</text>
+        <view class="personnel-name"
+         a:for={{item.names}} 
+         a:for-item="subItem"
+          a:for-index="subIndex" 
+          id='{{subItem.id}}'
+          data-name="{{subItem.name}}" 
+          data-index="{{subIndex}}" 
+          data-parentIndex="{{index}}" 
+          data-isEdit="{{isEdit}}"
+          onLongTap="deletePerson"
+         >
+          {{subItem.name}}
+          <text a:if={{subIndex<(item.names.length-1)}}>、</text>
+        </view>
+      </view>
+      <view class="personnel-handle" onTap="changeIndex" data-index="{{index}}">
+        <text a:if={{!isEdit}}>共计{{item.count}}人</text>
+        <picker class="personnel-picker"  a:if={{isEdit}} range={{personList}} range-key="username" onChange="chosePerson" data-index="{{index}}" >
+          <view  class="add-personnel-icon picker" ></view>
+        </picker>
+        <!-- <view a:if={{isEdit}} class="add-personnel-icon picker" onTap="changeIndex" data-index="{{index}}"></view> -->
+        
+      </view>
+    </view>
+   
+  </view>
+  <!-- 保存按钮 -->
+  <view class="btn-box" a:if={{isEdit}}>
+    <button class="btn" type="default" onTap="savePersonnel">保 存</button>
+  </view>
+  <!-- end相关人员 -->
+
+  <!-- 合同信息 -->
+  <view class="a-collapse">
+    <view a:for={{collapseData.panels}}>
+      <view
+        class="a-collapse-title"
+        onTap="{{collapseData.onTitleTap}}"
+        data-index={{index}}
+      >
+        {{item.title}}
+        <view class="{{item.expanded ? 'a-collapse-title-arrow a-collapse-title-arrow-up' : 'a-collapse-title-arrow'}}" />
+      </view>
+      <!-- 子级内容 -->
+      <view class="a-collapse-content" a:if={{item.expanded}}>
+        <!-- 生产要求 -->
+       <view a:if={{item.title=='生产要求'}} class="require" >
+         <view class="require-item">{{item.content.transportRemark}}</view>
+         <view class="require-item">{{item.content.packRemark}}</view>
+         <view class="require-item">{{item.content.dyeRemark}}</view>
+         <view class="require-item">{{item.content.especiallyRemark}}</view>
+       </view>
+        <!-- end生产要求 -->
+        <!-- 订货明细 -->
+        <view a:else class="detail-table">
+            <view class="table-head">
+              <text class="th lg">面料名称</text>
+              <text class="th sm">规格</text>
+              <text class="th sm">色别</text>
+              <text class="th ">采购数量(kg)</text>
+              <text class="th ">缺口数量(kg)</text>
+            </view>
+            <view class="table-body">
+              <view class="tr" a:for={{item.content}} a:for-item="subItem">
+                  <text class="td lg">{{subItem.fabricName}}</text>
+                  <text class="td sm">{{subItem.fabricSpec}}</text>
+                  <text class="td sm">{{subItem.fabricColorName}}</text>
+                  <text class="td ">{{subItem.fabricCount}}</text>
+                  <text class="td ">{{subItem.gapNum}}</text>
+              </view>
+              <view class="tr last">
+                <text class="td xlg">总计</text>
+                <text  class="td ">{{item.fabricSum}}</text>
+                <text  class="td ">{{item.gapNumSum}}</text>
+              </view>
+             
+            </view>
+        </view>
+        <!-- end订货明细 -->
+        
+       
+      </view>
+       <!-- 子级内容 -->
+    </view>
+  </view>
+  <!-- end合同信息 -->
+
+  <!-- 合同流水 -->
+  <view class="contract-log">
+    <view class="log-item {{item.titleStr}}" a:for={{contractLog}}>
+      <view class="log-item-head flex-box {{item.titleStr}}">
+        <view class="l-i-h-point">{{item.createByUserName.slice(0,1)}}</view>
+        <view class="l-i-h-name">{{item.createByUserName}}<text class="is-read {{item.readStatus}}" a:if="{{item.userIds!==null}}">{{item.readStr}}</text></view>
+        <view class="l-i-h-time ">{{item.createDate}}</view>
+      </view>
+      <view class="log-item-body {{item.titleStr}}">
+        <view class="l-i-b-title">{{item.title}}</view>
+        <view class="l-i-b-content">{{item.remarks}}</view>
+        <view class="l-i-b-imgs">
+          <image 
+          a:for="{{item.imgList}}" 
+          a:for-item="imgItem"
+          a:for-index="imgIndex"            
+          src="{{imgItem}}"  
+          mode="aspectFit"  
+          data-list="{{item.imgList}}" 
+          data-index="{{imgIndex}}" 
+          onTap="previewImage"/>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+  <view class="split-line"></view>
+  <!-- end 合同流水 -->
+  
+  <!-- 底部固定功能模块 -->
+  <view class="message-board" a:if={{contractStatus!==2&&!isEdit}}>
+    <view class="msg-top flex-box">
+        <view class="msg-img-icon" onTap="choseImg"></view> 
+        <input class="msg-input" type="text" placeholder="通过@提醒特定成员" auto-focus value="{{message}}" onInput="messageInput"  />
+        <view class="msg-send-icon" onTap="sendMessage"></view>             
+    </view>
+    <view class="imgs-preview flex-box">
+      <view class="imgs-box flex-box" a:for={{imgSrc}} >
+        <image class="preview-img" src="{{item}}" mode="aspectFit" onTap="previewImage"  data-index="{{index}}" data-type="1"/>
+        <image class="del-icon" src="/images/clear_icon.png" mode="aspectFit" onTap="deleteImage" data-index="{{index}}"/>
+      </view>
+      
+    </view>
+    
+
+  </view>
+  <!-- end底部固定功能模块 -->
+  <view></view>
+  
+  
+</view>
+<view class="personnel-view" a:if={{personnelSelectView}}>
+  <view class="personnel-item" a:for={{personnelNameList}} id="{{item.userId}}" onTap="addPersonnel" data-name="{{item.realName}}">{{item.realName}}</view>
+</view>

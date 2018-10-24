@@ -1,0 +1,89 @@
+<view class="section"> 
+ <!-- 归还表单  -->
+ <form class='receive-box' bindsubmit="formSubmit">
+  <!--list  -->
+  <view class='receive-list'>
+
+    <view class='receive-item flex-box' wx:for="{{list}}" wx:key="" wx:if='{{item.realNum>0}}'>
+      <view class='item-left'>
+        <image class='item-left-img' src='{{item.img}}' data-index="{{index}}" binderror="imgError" bindtap='previewImg' data-url="{{item.img}}"></image>
+      </view>
+      <view class='item-center flex-box'>
+      <text class='grey'>{{item.materielNum}}</text>
+        <text>{{item.materielName}}--{{item.shelvesName}}</text><!-- 名称 -->
+        <text>￥{{item.price}}</text>
+        <text>{{item.realNum}}{{item.unitName}}</text><!-- 实际领用数量 -->
+        <text class='red' wx:if="{{item.reasonName}}">{{item.reasonName}}</text>
+      </view>
+      <view class='item-right flex-box'>
+         <text wx:if="{{item.spec==null}}">/</text>
+          <text wx:else>{{item.spec}}</text><!-- 规格 -->
+        <!-- 主容器 -->  
+            <view class="stepper">  
+                <!-- 减号 -->  
+                <text class="{{item.minusStatus}}" bindtap="bindMinus" data-index="{{index}}">-</text>  
+                <!-- 数值 -->  
+                <input type="digit" bindchange="bindManual" value="{{item.returnNum}}"  data-index="{{index}}"/>  
+                <!-- 加号 -->  
+                <text class="{{item.plusStatus}}" bindtap="bindPlus" data-index="{{index}}">+</text>  
+            </view> 
+      </view>
+    </view>
+
+  </view>
+  <!--end list  -->
+
+  <!--提交按钮  -->
+  <view class='btn-box'>
+      <button class='btn blue lg' formType="submit">提交</button>
+  </view>
+
+ </form>
+ <!-- 归还表单  end-->
+
+
+ 
+
+
+</view> 
+
+<!--模态框 损耗原因  -->
+<view class='modal {{showModal.showModal}}'  >
+    <form >
+      <view class='modal-content'>
+        <view class='modal-title'>
+          <image src="/images/modal_title.png" class='modal-title-bg'></image>
+          <text class='modal-title-txt'>损耗原因</text>
+          
+        </view>
+        <view class='modal-detail'>
+
+          <view class=' picker-box flex-box'>
+            <view class='picker-label-box'>
+            <text class='picker-label'>损耗原因</text>
+              <text class='red'>*</text>
+            </view>
+            <picker class='picker ' value="{{reason_index}}" range="{{reason_arr}}" bindchange='reasonPicker'  range-key="name">
+              <text wx:if="{{reason_index==''}}" class='picker-pld'>请选择入库原因</text>
+              <input class='picker-input' disabled value='{{reason_arr[reason_index].name}}' name="reasonName"></input>
+              <input hidden name="reasonId" value='{{reason_arr[reason_index].id}}'></input>
+              <image class='picker-icon' src="/images/select.png"></image>
+            </picker>
+        </view> 
+
+        </view>
+      
+
+       <!-- <view class='modal-btn-group '>
+          <view class='modal-btn-item fr'>
+              <button formType="submit" class='modal-btn submit-btn' >确定</button>
+            </view>
+        </view> -->
+       
+      </view>
+    </form>
+ </view>
+ <view class='mask {{showModal.showMask}}' bindtap='hideModal' ></view>
+ <!--模态框 损耗原因 end-->
+
+

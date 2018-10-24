@@ -1,0 +1,70 @@
+<view class="section"> 
+  <view class='header flex-box'>
+   <view class='user-name' bindtap='goChangePsd'>{{userName}}</view>
+    <view class='message-box'  bindtap='goMessage'>
+      <view class='message'>
+        <image src='../../images/message.png' class='message-icon'></image>
+        <text  class='message-txt'>消息通知</text>
+      </view>
+      <!-- <view class='message-right'><image src="../../images/message2.png" class='message-icon'></image></view> -->
+    </view> 
+  </view>
+    
+    <view class='main'>
+    <view class='no-data {{noData}}'>暂无数据</view>
+     <view class="kind-list" style="min-height:{{scrollHeight}}px" >
+            <block wx:for="{{list}}" wx:key="id">
+                <view class="kind-list__item">
+                    <view id="{{item.id}}" class="weui-flex kind-list__item-hd " bindtap="kindToggle">
+                        <view class="weui-flex__item">
+                         <!-- <view wx:if="{{item.status}}"><image class='finished-img' src='../../images/finished.png'></image></view> -->
+                          <view class='progress' style='width:{{item.progress}}px' ></view>
+                          <view class='detail-box'>
+                          <view class='priority {{item.status}}'><text>{{item.statusStr}}</text></view>
+                            <view class='contract-detail flex-box'>
+                              <view class='detail-left flex-box'>
+                                <text class='contract-num'>合同编号：{{item.contractNum}}</text>
+                                <text class='contract-material'>采购面料：{{item.fabricList.length}}种</text>
+                              </view>
+                              <view class='detail-right flex-box'>
+                                <view class='right-info flex-box'>
+                                  <text>销售员：{{item.salersUserName}}</text>
+                                  <text>{{item.predictDate}}</text>
+                                </view>
+                                <view class='arrow-icon-box'>
+                                  <image class='arrow-icon' src="{{item.open ? '../../images/arrow_black_down.png' : '../../images/arrow_black.png'}}"></image>
+                                </view>
+                              </view>
+                            </view>
+                          </view>
+                          
+                        </view>
+                    </view>
+                    <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                        <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                            <block wx:for="{{item.fabricList}}" wx:for-item="subItem" wx:key="*this">
+                            <view class='weui-cell weui-cell_access sub-item flex-box'>
+                              <view class='sub-item-title'> 
+                                <text> {{subItem.fabricName}} </text>
+                                <text> {{subItem.fabricSpec}} </text>
+                                <text> {{subItem.fabricColorName}} </text>
+                              </view><!--规格+色别+面料称呼 -->
+                              <view>
+                                <text class='sub-item-count'>已完成{{subItem.finished}}</text>/
+                                <text>未完成{{subItem.unfinished}}</text>
+                              </view>
+                              
+                            </view>
+                                <!-- <navigator url="{{page}}/{{page}}" class="weui-cell weui-cell_access">
+                                    <view class="weui-cell__bd">{{page}}</view>
+                                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                                </navigator> -->
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </block>
+       </view>
+       <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+      </view>
+</view>  

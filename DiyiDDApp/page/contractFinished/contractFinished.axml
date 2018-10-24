@@ -1,0 +1,60 @@
+<view >
+   
+  <!-- 搜索框 -->
+  <!-- <view class="search-box">
+    <view class="search-content">
+         <icon type="search" class="search-icon" size="16"></icon>
+      <text class="search-pld">搜索缸号/日期区间/染厂/面料品名/客户ID</text>                            
+    </view>
+  </view> -->
+  <!-- 搜索框 --> 
+  
+  <!-- 折叠面板列表 -->
+   <view class="a-collapse" style='min-height:{{systemInfo.screenHeight-46}}px;'>
+    <view a:for={{collapseData.panels}}>
+      <!-- 父级 -->
+      <view
+        class="a-collapse-title {{item.expanded}}"
+        data-index={{index}}
+      >
+      <!-- 父级内容 -->
+        <view class="a-c-title-box">
+          <!-- 父级头部 -->
+            <view class="a-c-title-head ">
+              <view>客户编号：{{item.contract.customerNum}}</view>
+              <view class="tag-list" >
+                <view a:for={{item.contract.tagList}} a:for-item="sub" >{{sub.tagName}}</view>
+              </view>
+            </view>
+          <!-- end 父级头部 -->
+          <!-- 父级主体 -->
+            <view class="a-c-title-body" onTap="toContractDetail" data-title='{{item.contract.fabricNameStr}}' data-id="{{item.contract.id}}">
+              <view class="a-c-t-body-top">【理】{{item.contract.lidanNames}} 【跟】{{item.contract.gendanNames}} 【销】{{item.contract.salerNames}} 【关】{{item.contract.focusNames}}</view>
+              <view class="a-c-t-body-center">{{item.contract.fabricNameStr}}</view>
+              <view class="a-c-t-body-bottom flex-box">
+                <view class='detail-bottom-left'>
+                  <!-- 已完成量=仓库锁定量inventorySum+投染已完成量completeNum -->
+                  <!-- <text>已排单{{item.contract.allNum}}{{item.contract.unit}}/已完成{{item.contract.completeNum+item.contract.inventorySum}}{{item.contract.unit}}/合同数量{{item.contract.fabricSum}}{{item.contract.unit}} </text>
+                  <text class='last'>{{item.contract.process}}%</text>  -->
+                </view>
+                <view class='order-time'><text>{{item.contract.predictDate}}交</text></view>
+              </view>
+               <!-- 完成图标 -->
+              <view  class="finish-box">
+                <image src="/images/finished.png" mode="aspectFit" class="finish-img"/>
+              </view>
+            </view>
+          <!-- end 父级主体 -->
+
+        </view> 
+      <!-- end 父级内容 -->
+      </view>
+       <!-- end父级 -->
+
+       
+    </view>
+   </view>
+  <!-- 折叠面板列表 -->
+  <view class="bottom-line " hidden="{{bottomHidden}}" >————————我是有底线的————————</view>
+  <view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>
+</view>

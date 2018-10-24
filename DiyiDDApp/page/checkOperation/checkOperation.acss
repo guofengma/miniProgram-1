@@ -1,0 +1,77 @@
+/* 生产要求 */
+.a-collapse {
+  background-color: #f8f8f8;
+  color: #000;
+}
+
+
+.a-collapse-title::before{
+  content:"";
+  display: block;
+  clear: both;
+}
+
+.a-collapse-title {
+  position: relative;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 60rpx 0 30rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+  margin-top: 15rpx;
+   border-bottom: 1px solid #ddd;
+}
+
+.a-collapse-title-arrow {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  background-image: url("/images/picker_icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.a-collapse-title-arrow-up {
+  transform: rotate(180deg);
+}
+
+.a-collapse-content {
+  padding: 20rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+}
+.require-item{
+  min-height: 48rpx;
+  line-height: 48rpx;
+}
+.no-require{
+  
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  color: #999;
+}
+/* 生产要求 */
+/* 列表 */
+.vat-item{
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+  padding-bottom: 30rpx;
+}
+.v-i-top{
+  height: 151rpx;
+  padding: 28rpx 30rpx;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.v-i-top.grey{
+  background-color: #f8f8f8;
+}
+.v-i-t-top-right{
+  color: #919191;
+  font-size: 24rpx;
+}
+.btn.sm{
+  width: 330rpx;
+}

@@ -1,0 +1,141 @@
+<view class="section">  
+  <view class="navbar">  
+    <form report-submit='true' bindsubmit="submitFormId" class='formId-form'  wx:for="{{navbar}}" data-idx="{{index}}" wx:key="unique" bindtap="navbarTap">
+    <button formType="submit" class='formId-btn'> 
+     <form report-submit='true' bindsubmit="submitFormId" class='formId-form' >
+        <button formType="submit" class='formId-btn'> 
+          <text class="item {{currentTab==index ? 'active' : ''}}" >{{item}}</text> 
+        </button>
+      </form> 
+     </button>
+    </form> 
+  </view> 
+
+    <!--非现货 -->
+    <view hidden="{{currentTab!==0}}" class='box' >
+       <view class='no-data {{noData}}'>暂无数据</view>
+        <view class="order-list" style="min-height:{{scrollHeight}}px">
+        <block wx:for="{{list}}" wx:key="key">
+          <form report-submit='true' bindsubmit="submitFormId" class='formId-form'  bindtap='goOrderList' data-id="{{item.id}}">
+            <button formType="submit" class='formId-btn'>  
+              <view class='order-item'    >
+                <view class='priority {{item.urgency}}'><text></text></view><!--优先级  -->
+                <view class='order-detail'>
+                  <!-- <view class='progress {{item.urgency}}' style='width:{{item.progress}}px'></view> -->
+                  <view class='detail-info'>
+                    <view class='detail-head flex-box'>
+                      <view class='lable-list'>
+                      <!--循环标签  -->
+                        <block wx:for="{{item.tagList}}" wx:for-item="subItem" wx:key="tagName">
+                          <view class='order-lable' style="border-color:{{subItem.colorCode}};color:{{subItem.colorCode}}">
+                              <text>{{subItem.tagName}}</text>
+                          </view>
+                        </block>
+                      <!--循环标签 end -->
+                      </view>
+                      <view>
+                        <block wx:for="{{item.partnersList}}" wx:for-item="subItem">
+                          <text class='detail-head-right'>{{subItem}}</text>
+                          <text wx:if="{{item.partnersList.length>1&&index!==(item.partnersList.length-1)}}">、</text>
+                        </block>
+                      </view>
+                        
+                    </view>
+                    
+                    <view class='detail-top'>
+                      <text class='detail-top-left'>客户编号：{{item.customerNum}}</text>
+                      <text class='detail-top-right'>【销】{{item.salersUserName}}【理】{{item.lidanUserName}}【跟】{{item.gendanUserName}}</text>
+                      <!-- <text>{{item.fabricList.length}}种/{{item.fabricSum}}{{item.unit}}</text> -->
+                    </view>
+                    <view class='detail-middle flex-box'><!--规格+色别+面料称呼 -->
+                      <text class='ellipsis fabric-name'>{{item.fabricNameStr}}</text>
+                      <!-- <view class='lidan'>
+                        <image class='person-icon' src="../../images/lidan.png"></image>
+                        <text>{{item.lidanUserName}}</text>
+                      </view> -->
+                    </view>
+                    <view class='detail-bottom'>
+                      <view class='detail-bottom-left'>
+                        <text>已完成{{item.completeNum}}{{item.unit}}/合同数量{{item.fabricSum}}{{item.unit}}</text>
+                        <text class='last'>{{item.process}}%</text> 
+                      </view>
+                      <view class='order-time'><text>{{item.predictDate}}交</text></view>
+                    </view>
+                  </view>
+
+                </view>
+              </view>
+           </button>
+          </form> 
+        </block>
+          
+        </view>
+        <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+        <view class="body-view">  
+              <loading hidden="{{hidden}}" bindchange="loadingChange">  
+                  加载中...  
+              </loading>  
+          </view> 
+    </view>
+    <!--非现货end  -->
+
+
+<!--现货  -->
+     <view hidden="{{currentTab!==1}}" class='box' >
+        <view class='no-data {{noData}}'>暂无数据</view>
+  <view class="order-list" style="min-height:{{scrollHeight}}px">
+  <block wx:for="{{list}}" wx:key="key">
+    <form report-submit='true' bindsubmit="submitFormId" class='formId-form'  bindtap='goDetail' data-id="{{item.id}}" data-type="{{item.fabricType}}" data-orderNum="{{item.orderNum}}" data-title="{{item.fabricName}} {{item.spec}} {{item.color}} ">
+        <button formType="submit" class='formId-btn'>
+        <view class='order-item'   >
+        <view wx:if="{{item.status}}"><image class='finished-img' src='../../../images/finished.png'></image></view>
+          <view class='priority {{item.urgency}}'></view><!--优先级  -->
+          <view class='order-detail'>
+            <view class='progress {{item.urgency}}' style='width:{{item.progress}}px'></view>
+            <view class='detail-info'>
+              <view class='detail-top'>
+                <view>
+                  <!-- <image src="../../../images/person.png" class='person-icon'></image> -->
+                  <text>【跟】{{item.updateByUser.realName}}</text>
+                </view>
+                <text>{{item.partners.pname}}</text>
+              </view>
+              <view class='detail-middle flex-box'><!--规格+色别+面料称呼 -->
+                <view>
+                  <text>{{item.fabricName}} </text>
+                  <text>{{item.spec}} </text>
+                  <view>{{item.color}} </view>
+                </view>
+                <view class='detail-middle-right'>
+                  {{item.tecName}}
+                  <view class='order-time2'>{{item.estimateDate}}交</view>
+                </view>
+              </view>
+              <view class='detail-bottom'>
+                <view class='detail-bottom-left'>
+                  <text>排单量 {{item.realityNum}}  {{item.unit}}/</text>
+                  <text>已完成 {{item.hasCompleteNum}}{{item.unit}}/</text>
+                  <text>订单数量 {{item.estimateProduction}}{{item.unit}}</text>
+                  <text class='last'>{{item.process}}%</text>
+                </view>
+                <!-- <view class='order-time'><text>{{item.estimateDate}}</text></view> -->
+              </view>
+            </view>
+          </view>
+        </view>
+     </button>
+    </form> 
+  </block>
+    
+  </view>
+   <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+  <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+    </view>   
+    </view>
+<!--现货 end -->
+    
+    
+</view>  

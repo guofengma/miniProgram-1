@@ -1,0 +1,58 @@
+<view>
+   
+<!-- 生产要求 -->
+<view class="a-collapse">
+  <view a:for={{panels}}>
+    <view class="a-collapse-title" onTap="handleTitleTap" data-index={{index}}      >        {{item.title}}        
+      <view class="{{item.expanded ? 'a-collapse-title-arrow a-collapse-title-arrow-up' : 'a-collapse-title-arrow'}}" /></view>
+    <!-- 子级内容 -->
+    <view class="a-collapse-content" a:if={{item.expanded}}>
+      <!-- 生产要求 -->
+      <view a:if={{item.title=='生产要求'}} class="require">
+        <view class="require-item" a:if={{item.content.transportRemark}}>运输要求：{{item.content.transportRemark}}</view>
+        <view class="require-item" a:if={{item.content.packageRemark}}>包装要求：{{item.content.packageRemark}}</view>
+        <view class="require-item" a:if={{item.content.dyeRemark}}>印染要求：{{item.content.dyeRemark}}</view>
+        <view class="require-item" a:if={{item.content.especiallyRemark}}>特殊要求：{{item.content.especiallyRemark}}</view>
+        <view  a:if={{!item.content.especiallyRemark&&!item.content.packageRemark&&!item.content.dyeRemark&&!item.content.especiallyRemark}} class="no-require">暂无要求</view>
+      </view>
+      <!-- end生产要求 -->
+     
+    </view>
+    <!-- 子级内容 -->
+  </view>
+</view>
+<!-- end生产要求 -->
+<view class="split-line"></view>
+
+<!-- 缸列表 -->
+<view class="vat-list">
+  <view class="vat-item" a:for={{list}}>
+    <view 
+    class="v-i-top flex-box {{item.status==2?'grey':''}}" 
+    onTap="toNext" 
+    data-type="checkDetail" 
+    id="{{item.id}}" 
+    data-status="{{item.status}}"
+    data-dyeId="{{item.dyeId}}" 
+    data-title="{{item.dyeNumber}}">
+      <view class="v-i-t-top flex-box">
+        <view class="v-i-t-top-left">
+          <text class="red" a:if={{item.dyeEntity.isHuixiu}}>【回修】</text>
+          <text>缸号：{{item.dyeNumber}}</text>
+        </view>
+        <view class="v-i-t-top-right">{{item.dyeEntity.createDate}}</view>
+      </view>
+      <view class="v-i-t-bottom flex-box">
+        <view class="v-i-t-bottom-left">成品：{{item.dyeEntity.boltOut}}匹/{{item.dyeEntity.numOut}}kg</view>
+        <view class="v-i-t-bottom-right">次品：{{item.dyeEntity.inferiorBolt}}匹/{{item.dyeEntity.inferiorNum}}kg</view>        
+      </view>
+    </view>
+    <view class="v-i-bottom flex-box" a:if={{item.status==0}}>
+      <button class="btn sm" type="default" onTap="toNext" data-type="check" id="{{item.id}}" data-dyeId="{{item.dyeId}}" data-title="{{item.dyeNumber}}">验货</button>
+      <button class="btn sm" type="default" onTap="toNext" data-type="detail"  id="{{item.id}}" data-dyeId="{{item.dyeId}}" data-title="{{item.dyeNumber}}">生产详情</button>   
+    </view>    
+  </view>
+</view>
+<!-- end缸列表 -->
+    
+</view>

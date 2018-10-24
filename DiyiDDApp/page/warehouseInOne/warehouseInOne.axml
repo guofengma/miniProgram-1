@@ -1,0 +1,139 @@
+<view class="section">
+   
+<form onSubmit="saveForm">
+  <!-- 入库仓库 -->
+  <view class="form-item flex-box">
+    <view class="form-label">
+      <text class="red">*</text>
+      <text>入库仓库</text>
+    </view>
+    <view class="form-value">
+      <picker class="form-picker" range={{warehouseSelect}} range-key="storeName" onChange="choseWarehouse">
+        <view class="picker-content">
+          <text class="picker-pld" a:if={{!storeName}}>请选择入库仓库</text>
+          <text>{{storeName}}</text>
+          <view class="picker-icon"></view>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <!-- 入库仓库 -->
+
+  <!-- 入库货架 -->
+  <view class="form-item flex-box">
+    <view class="form-label">
+      <text class="red">*</text>
+      <text>入库货架</text>
+    </view>
+    <view class="form-value">
+      <picker class="form-picker" range={{shelvesSelect}} range-key="shelvesName" onChange="choseShelves">
+        <view class="picker-content">
+          <text class="picker-pld" a:if={{!shelvesName}}>请选择入库货架</text>
+          <text>{{shelvesName}}</text>
+          <view class="picker-icon"></view>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <!-- 入库货架 -->
+
+  
+  <!-- 入库匹数 -->
+  <view class="form-item flex-box">
+    <view class="form-label">
+      <text class="red">*</text>
+      <text>入库匹数</text>
+    </view>
+    <view class="form-value">
+      <input class="form-input" type='number' placeholder="请输入入库匹数" name="bolt" value="{{bolt}}" onInput="changeValue" data-name="bolt" />
+    </view>
+  </view>
+  <!-- 入库匹数 -->
+
+  <!-- 入库重量 -->
+  <view class="form-item flex-box">
+    <view class="form-label">
+      <text class="red">*</text>
+      <text>入库重量</text>
+    </view>
+    <view class="form-value flex-box">
+      <input class="form-input" type='digit' placeholder="请输入入库重量" name="num" value="{{num}}" onInput="changeValue" data-name="num" />
+      <text class="unit">{{unit}}</text>      
+    </view>
+  </view>
+  <!-- 入库重量 -->
+
+  <!-- 入库批次 不可修改-->
+  <view class="form-item flex-box">
+    <view class="form-label">
+      <text class="red">*</text>
+      <text>入库批次</text>
+    </view>
+    <view class="form-value">
+      <input class="form-input"  name="batch" value="{{batch}}" disabled />
+    </view>
+  </view>
+  <!-- 入库批次 -->
+
+   
+<!-- 面料品名 不可修改-->
+<view class="form-item flex-box">
+  <view class="form-label">
+    <text class="red">*</text>
+    <text>面料品名</text>
+  </view>
+  <view class="form-value">
+    <input class="form-input"  name="batch" value="{{fabricName}}" disabled />
+  </view>
+</view>
+<!-- 面料品名 -->
+
+<!-- 面料规格 -->
+<view class="form-item flex-box">
+  <view class="form-label">
+    <text class="red">*</text>
+    <text>面料规格</text>
+  </view>
+  <view class="form-value">
+    <input class="form-input" type="text" placeholder="请输入面料规格" name="spec" value="{{spec}}"  onInput="changeValue" data-name="spec" />
+  </view>
+</view>
+<!-- 面料规格 -->
+<!-- 面料颜色 -->
+<view class="form-item flex-box">
+  <view class="form-label">
+    <text class="red">*</text>
+    <text>面料颜色</text>
+  </view>
+  <view class="form-value">
+    <input class="form-input" type="text" placeholder="请输入面料颜色" name="color" value="{{color}}" onInput="changeValue" data-name="color" />
+  </view>
+</view>
+<!-- 面料颜色 -->
+  <!-- 提交按钮 -->
+  <view class="btn-box">
+    <button class="btn" type="default" formType="submit">提交入库</button>
+  </view>      
+  </form>
+  <view></view>
+</view>
+
+
+<!--模态框  入库成功-->
+<view class='modal'  a:if={{modalShow}}>
+  <form bindsubmit="formSubmitAgree">
+    <view class='modal-content sm'>
+     <view class="modal-body">
+       <view class="modal-body-item"> 品名：{{fabricName}}</view>
+       <view class="modal-body-item"> 颜色：{{color}}</view>        
+       <view class="modal-body-item"> 规格：{{spec}}</view>
+       <view class="modal-body-item"> 批次：{{batch}}</view>  
+       <view class="modal-body-item"> 入库位置：{{storeName}}--{{shelvesName}}</view>                               
+     </view>
+     <view class="modal-foot">入库成功!</view>
+      
+    </view>
+  </form>
+</view>
+<view class='mask '  a:if={{modalShow}}></view>
+<!--模态框 入库成功 end--> 

@@ -1,0 +1,68 @@
+<!--index.wxml-->
+<view class="section">
+ <view class='top-box' bindtap='goUser'>
+  <view class='top-bg'>
+    <image class='gb-img' src="/images/menu_bg.png"></image>
+  </view>
+  <view class='top-detail'>
+      <view class='top-logo'>
+         <image src='/images/logo.png' class='logo' mode='center'></image> 
+      </view>
+
+      <view class='top-user'>
+          <!-- <view class='user-name'>
+            <text>{{realName}}</text>
+          </view> -->
+          <view class='company'>梦境婚礼</view>
+      </view>
+    
+  </view>
+  
+ </view>
+
+
+
+ <!--菜单列表  -->
+ <view class='menu-box flex-box'>
+    <block wx:for="{{menuList}}" wx:key="menuId">
+      <view class='menu-item' bindtap='goNext' data-src="{{item.url}}">
+        <image src="/images/{{item.icon}}" class='item-icon'></image>
+        <text class='item-title'>{{item.name}}</text>
+      </view>
+    </block>
+
+    <!-- <view class='menu-item' bindtap='goNext' data-src="../materialRequisition/requisitionList/requisitionList">
+      <image src="/images/icon_wlsl.png" class='item-icon'></image>
+      <text class='item-title'>物料申领</text>
+    </view>
+
+    <view class='menu-item' bindtap='goNext' data-src="../materialCheck/materialCheckList/materialCheckList">
+      <image src="/images/icon_wlsh.png" class='item-icon'></image>
+      <text class='item-title'>物料审核</text>
+    </view>
+
+    <view class='menu-item' bindtap='goNext' data-src="../materialPrepare/materialPrepareList/materialPrepareList">
+      <image src="/images/icon_wlzb.png" class='item-icon'></image>
+      <text class='item-title'>物料准备</text>
+    </view>
+
+    <view class='menu-item' bindtap='goNext' data-src="../materialReturn/materialReturnList/materialReturnList">
+      <image src="/images/icon_wlgh.png" class='item-icon'></image>
+      <text class='item-title'>物料归还</text>
+    </view>
+  
+  <view class='menu-item' bindtap='goNext' data-src="../warehouseInCheck/inCheckList/inCheckList">
+    <image src="/images/icon_rksh.png" class='item-icon'></image>
+    <text class='item-title'>入库审核</text>
+  </view>
+  
+   <view class='menu-item' bindtap='goNext' data-src="../warehouseInApply/inApplyList/inApplyList">
+    <image src="/images/icon_rksq.png" class='item-icon'></image>
+    <text class='item-title'>入库申请</text>
+  </view> -->
+  
+ </view>
+
+ <!--菜单列表  end-->
+ 
+</view>

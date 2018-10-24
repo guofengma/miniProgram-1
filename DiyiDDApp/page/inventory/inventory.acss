@@ -1,0 +1,145 @@
+.section{
+  font-size: 30rpx;
+}
+/* 筛选tab */
+.tabBar{  
+  background: #fff;
+  position: fixed;
+  top: 0;left: 0;
+  width:100%;
+  border-top: 2rpx solid #ddd;
+  z-index: 9999;
+}  
+.tabBar .item{ 
+  display: inline-block; 
+  position: relative;  
+  flex: auto;  
+  text-align: center;  
+  line-height: 80rpx; 
+  width: 33%;
+  background-color:#f5f5f5;
+  color: #333; 
+  border-bottom: 2rpx solid #ddd;
+  
+}  
+.tabBar .item.active{  
+  border-bottom: 4rpx solid #1498F7;
+  color: #1498F7;
+ /* background-color: #fff;   */
+}
+.dropdown{
+  position: fixed;
+  top: 84rpx;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 80rpx;
+  height: 80rpx;
+  border-bottom: 2rpx solid #ddd;
+  text-align: center;
+  z-index: 9999  
+
+}
+.dropdown-item{
+  width: 149rpx;
+  background-color: #f5f5f5;
+  border-left: 1rpx solid #d7d7d7;
+}
+.dropdown-item:first-child{
+  border-left: none;
+}
+.dropdown-item.active{
+  background-color: #fff;
+  color: #1498F7;
+  
+}
+.dropdown-list{
+  position: absolute;
+  top: 166rpx;left: 0;
+  z-index: 5000;
+  width: 100%;
+  box-shadow:0 5rpx 5rpx rgba(0,0,0,.15);
+}
+.d-l-item{
+  line-height: 80rpx;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.item-tips{
+  margin-left: 20rpx;
+  color: #999;
+}
+/* end 筛选tab */
+
+/* 列表 */
+.inventory-list{
+  margin-top: 166rpx;
+  min-height: 90vh;
+}
+.a-collapse {
+  /* border-top: 1px solid #ddd; */
+  background-color: #fff;
+  color: #000;
+}
+
+.a-collapse-title {
+  border-bottom: 1px solid #ddd;
+}
+
+.a-collapse-title {
+  position: relative;
+  height: 220rpx;
+  /* line-height: 88rpx; */
+  padding: 0 20rpx;
+  /* font-size: 3rpx; */
+}
+
+.a-collapse-title-arrow {
+  width: 30rpx;
+  height: 30rpx;
+  background: url(/images/arrow_blue.png) no-repeat;
+  background-size: contain;
+  display: inline-block;
+  position: relative;
+  top: 6rpx;
+}
+.a-collapse-title-arrow-up {
+  transform: rotate(90deg);
+}
+
+.a-collapse-content {
+  /* padding: 20rpx; */
+  /* font-size: 30rpx; */
+}
+.a-c-t-item{
+  height: 100%;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+.a-c-t-left{
+    flex-direction: column;
+    /* width: 500rpx; */
+}
+.a-c-t-l-top{
+  font-size: 24rpx;
+}
+.a-c-t-l-bottom{
+  font-size: 26rpx;
+}
+.blue{
+  color: #1498F7;
+}
+.a-c-t-right{
+  justify-content: center;
+  flex-direction: column;
+}
+.a-c-c-item{
+  border-top: 2rpx solid #ddd;
+  padding: 16rpx 20rpx;
+  font-size: 26rpx;
+  background-color: #F8F8F8;
+  line-height: 32rpx;
+}
+

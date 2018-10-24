@@ -1,0 +1,110 @@
+
+<view class='flex-box top-scan' wx:if="{{scan}}" >
+   <text>货架信息</text>
+   <image src="/images/scan.png" class='scan-img-sm' bindtap='scan'></image>
+</view>
+<view class="section">
+
+  <!--货柜信息  -->
+  <view  wx:if="{{scan}}" >
+    <view class='info-box' wx:for="{{list}}" wx:key="" >
+      <view class='info' >
+        <view class='info-item'>
+          <text class='info-label'>面料名称：</text>
+          <text class='info-value'>{{item.fabricDescribe}}</text>
+        </view>
+        <view class='info-item'>
+          <text class='info-label'>面料编号:</text>
+          <text class='info-value'>{{item.fabircNum}}</text>
+        </view>
+        <view class='info-item'>
+          <text class='info-label'>面料分类:</text>
+          <text class='info-value'>{{item.rzFabricTypeEntity.typeName}}</text>
+        </view>
+        <view class='info-item'>
+          <text class='info-label'>面料规格:</text>
+          <text class='info-value' wx:if="{{item.spec==null}}">/</text>
+          <text class='info-value' wx:else>{{item.spec}}</text>
+        </view>
+        <view class='info-item'>
+          <text class='info-label'>面料数量:</text>
+          <text class='info-value'>{{item.num}}</text>
+        </view>
+        <view class='info-item'>
+          <text class='info-label'>已冻结量:</text>
+          <text class='info-value'>{{item.lockNum}}</text>
+        </view>
+        <view class='flex-box'>
+          <view class='info-item'>
+            <text class='info-label'>颜色:</text>
+            <text class='info-value' wx:if="{{item.color==null}}">/</text>
+           <text class='info-value' wx:else>{{item.color}}</text>
+          </view>
+          <view class='info-item'>
+            <text class='info-label'>单位:</text>
+            <text class='info-value' wx:if="{{item.unit==null}}">/</text>
+            <text class='info-value' wx:else>{{item.unit}}</text>
+          </view>
+        </view>
+
+        <view class='flex-box'>
+          <view class='info-item'>
+            <text class='info-label'>门幅:</text>
+            <text class='info-value' wx:if="{{item.mengfu==null}}">/</text>
+            <text class='info-value' wx:else>{{item.mengfu}}</text>
+          </view>
+          <view class='info-item'>
+            <text class='info-label'>克重:</text>
+            <text class='info-value' wx:if="{{item.weight==null}}">/</text>
+            <text class='info-value' wx:else>{{item.weight}}</text>
+          </view>
+        </view>
+        
+      </view> 
+
+      <view class='info-table'>
+
+        <view class='tabel-title'>面料明细</view>
+
+        <view class='tabel-head flex-box'>
+          <view class='th'>批次</view>  
+          <view class='th'>当前数量</view>                                                                                    
+          <view class='th'>已冻结量</view>                                                                                    
+        </view>
+
+        <view class='tabel-body '>
+        <view class='row flex-box' wx:for="{{item.warehouse}}" wx:for-item="subItem" wx:key="">
+            <view class='td'>{{subItem.batch}}</view>
+          <view class='td'>{{subItem.num}}</view>
+          <view class='td'>{{subItem.lockNum}}</view>
+        </view>
+        
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+
+  
+  <!--货柜信息  -->
+  
+
+
+<!--扫一扫  -->
+  <view class='scan' wx:else>
+      <view class='scan-img-box' bindtap='scan'>
+        <image src="/images/scan.png" class='scan-img'></image>
+      </view>
+      <view>货柜信息：请先扫一扫！</view>
+  </view>
+<!--扫一扫 end -->
+
+<view class='noData' hidden='{{noData}}'>暂无信息</view>
+
+
+ 
+  
+</view>  
+
+

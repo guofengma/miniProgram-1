@@ -1,0 +1,50 @@
+<view>
+  <!-- 物流信息 -->
+  <view class="info">
+    <view class="info-item">联系人：{{deliveryInfo.linkUser.realName}}</view>
+    <view class="info-item">联系电话：{{deliveryInfo.linkUser.mobile}}</view>
+    <view class="info-item">收货地址：{{deliveryInfo.customerAddress.address}}</view>
+    <view class="info-item">偏好物流：
+      <text a:if="{{deliveryInfo.customerAddress.logistics==''}}">无</text>
+      <text a:else>{{deliveryInfo.customerAddress.logistics}}</text>  
+    </view>
+    <view class="info-item lg">备注：
+      <text a:if="{{deliveryInfo.remarks==''}}">无</text>
+      <text a:else>{{deliveryInfo.remarks}}</text>      
+    </view>            
+  </view>
+  <!-- end 物流信息 -->  
+
+  <!-- 点货列表 -->
+  <view class="list">
+    <view 
+    class="list-item {{item.checkStatus==1?'blue':''}}" 
+    a:for={{deliveryInfo.detail}} 
+    id="{{item.id}}" 
+    data-index="{{index}}" 
+    data-number="{{item.number}}"
+    data-status="{{item.checkStatus}}" 
+    onTap="tally">
+      <view class="item-row flex-box" >
+        <view class="bold fz30">{{item.fabricName}}</view>
+        <view>批次：{{item.batch}}</view>
+      </view>
+      <view class="item-row flex-box">
+        <view>[规]{{item.spec}}</view>
+        <view>[色]{{item.color}}</view>
+        <view>缸号：{{item.number}}</view>        
+      </view>
+      <view class="item-row flex-box">
+        <view>[数]{{item.boltOut}}匹</view>
+        <view>{{item.storeName}}-{{item.shelvesName}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- end点货列表 --> 
+
+  <view class="btn-box">
+    <button class="btn" type="default" onTap="finishCheck" disabled="{{!finishTally}}">点货完成</button>
+  </view> 
+
+    
+</view>

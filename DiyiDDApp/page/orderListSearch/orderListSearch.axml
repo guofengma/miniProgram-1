@@ -1,0 +1,178 @@
+<view>
+  <!-- 搜索表单 -->
+  <view class="search-box">
+    <form onSubmit="search" onReset="reset">
+      <!-- 缸号 -->
+      <view class="form-item flex-box">
+        <view class="form-label">缸号:</view>
+        <view class="form-input">
+          <input class="input" type="text" placeholder="请输入缸号" onInput="changeVal"  data-name="vatNum"/>
+        </view>
+      </view>
+      <!-- 缸号 -->
+
+       <!-- 印染厂 -->
+      <view class="form-item flex-box">
+        <view class="form-label">印染厂:</view>
+        <view class="form-input">
+          <input 
+            class="input" 
+            type="text" 
+            placeholder="请选择印染厂"  
+            onFocus="showSelect" 
+            onBlur="hideSelect" 
+            onInput="searchName"
+            data-name="factoryName"
+            value='{{searchForm.factoryName.value}}'/>
+        </view>
+        <scroll-view class='sel-list' a:if={{!searchForm.factoryName.selHidden}} scroll-y="true">
+          <view a:for={{searchForm.factoryName.select}} id="{{item.id}}" class='sel-item' data-name="factoryName" data-value="{{item.name}}" onTap="choseName">{{item.name}}</view>
+          <view class='sel-item sel-no-data' hidden='{{searchForm.factoryName.noData}}'>暂无数据</view>
+        </scroll-view>
+      </view>
+      <!-- 印染厂 -->
+
+       <!-- 面料品名 -->
+      <view class="form-item flex-box">
+        <view class="form-label">面料品名:</view>
+        <view class="form-input">
+          <input 
+            class="input" 
+            type="text" 
+            placeholder="请选择面料品名"  
+            onFocus="showSelect" 
+            onBlur="hideSelect" 
+            onInput="searchName"
+            data-name="fabricName"
+            value='{{searchForm.fabricName.value}}'/>
+        </view>
+        <scroll-view class='sel-list' a:if={{!searchForm.fabricName.selHidden}} scroll-y="true">
+          <view a:for={{searchForm.fabricName.select}} id="{{item.id}}" class='sel-item' data-name="fabricName" data-value="{{item.name}}" onTap="choseName">{{item.name}}</view>
+          <view class='sel-item sel-no-data' hidden='{{searchForm.fabricName.noData}}'>暂无数据</view>
+        </scroll-view>
+      </view>
+      <!-- 面料品名 -->
+
+      <!-- 坯布批号 -->
+      <view class="form-item flex-box">
+        <view class="form-label">坯布批号:</view>
+        <view class="form-input">
+          <input 
+            class="input" 
+            type="text" 
+            placeholder="请选择坯布批号"  
+            onFocus="showSelect" 
+            onBlur="hideSelect" 
+            onInput="searchName"
+            data-name="clothBatch"
+            value='{{searchForm.clothBatch.value}}'/>
+        </view>
+        <scroll-view class='sel-list' a:if={{!searchForm.clothBatch.selHidden}} scroll-y="true">
+          <view a:for={{searchForm.clothBatch.select}} id="{{item.id}}" class='sel-item' data-name="clothBatch" data-value="{{item.name}}" onTap="choseName">{{item.name}}</view>
+          <view class='sel-item sel-no-data' hidden='{{searchForm.clothBatch.noData}}'>暂无数据</view>
+        </scroll-view>
+      </view>
+      <!-- 坯布批号 -->
+
+       <!-- 客户ID或客户名字 -->
+      <view class="form-item flex-box">
+        <view class="form-label">客户ID或客户名字:</view>
+        <view class="form-input">
+          <input 
+            class="input" 
+            type="text" 
+            placeholder="请选择客户ID或客户名字"  
+            onFocus="showSelect" 
+            onBlur="hideSelect" 
+            onInput="searchName"
+            data-name="customer"
+            value='{{searchForm.customer.value}}'/>
+        </view>
+        <scroll-view class='sel-list' a:if={{!searchForm.customer.selHidden}} scroll-y="true">
+          <view a:for={{searchForm.customer.select}} id="{{item.id}}" class='sel-item' data-name="customer" data-value="{{item.name}}" onTap="choseName">{{item.name}}</view>
+          <view class='sel-item sel-no-data' hidden='{{searchForm.customer.noData}}'>暂无数据</view>
+        </scroll-view>
+      </view>
+      <!-- 客户ID或客户名字 -->
+
+     <!-- 时间区间 -->
+      <view class="form-item flex-box">
+        <view class="form-label">时间区间:</view>
+        <view class="form-input flex-box">
+          <view class="date-box" onTap="choseDate" data-type="start">
+            <text a:if={{searchForm.startDate==""}} class="input-pld">开始时间</text>
+            <text a:else>{{searchForm.startDate}}</text>
+            <!-- <input type="text" placeholder="开始时间" class="input center"    /> -->
+          </view>
+          <text>-</text>
+          <view class="date-box" onTap="choseDate" data-type="end">
+             <text a:if={{searchForm.endDate==""}} class="input-pld">结束时间</text>
+            <text a:else>{{searchForm.endDate}}</text>
+            <!-- <input type="text" placeholder="结束时间" class="input center"   /> -->
+          </view>
+        </view>
+          
+      </view>
+      <!-- 时间区间 -->
+
+      <view class="btn-box flex-box">
+        <button class="btn sm grey" type="default" form-type="reset">重置</button>
+        <button class="btn sm" type="default" form-type="submit">搜索</button>
+      </view>
+      
+    </form>
+  </view>
+  <!-- end搜索表单 -->
+
+  <!-- 订单列表 -->
+  <view class="order-list">
+     <view 
+          class="a-c-c-item flex-box" 
+          a:for={{orderList}} 
+          a:for-item="orderItem" 
+          onTap="toVatList" 
+          data-gendans="{{orderItem.contract.gendans}}"
+          id="{{orderItem.id}}" 
+          data-status="{{orderItem.status}}"
+          data-title="{{orderItem.spec}} {{orderItem.color}}"
+          data-breakage="{{orderItem.estimateBreakage}}">
+          <view class="left-priority {{orderItem.urgency}} {{orderItem.isEmergent}} {{orderItem.contract.contractStatus==3?'stop':''}}"></view>
+          <view class="right-box {{orderItem.urgency}} {{orderItem.isEmergent}} {{orderItem.contract.contractStatus==3?'stop':''}}">
+            <view class="progress-bar {{orderItem.isEmergent}}" style="width:{{orderItem.progress*7}}rem"></view>
+            <!-- 子级主体 -->
+            <view class="right-content">
+              <view class="a-c-c-top flex-box">
+                <view >印染厂:{{orderItem.partners.pname}}</view>
+                <view >{{orderItem.tecName}}</view>
+              </view>
+              <view class="a-c-c-center flex-box">
+                <view class="left bold">{{orderItem.fabricInfo.fabricName}}</view>
+                <view class="right">
+                  <view>[规]{{orderItem.spec}}</view>
+                  <view>[色]{{orderItem.color}}</view>
+                </view>
+              </view>
+              <view class="a-c-c-bottom flex-box ">
+                <view class='left'>
+                  <!-- 未完 -->
+                 <text>已排单{{orderItem.paidanNum}}{{item.contract.unit}}/已完成{{orderItem.completedNum}}{{item.contract.unit}}/订单数量{{orderItem.estimateProduction}}{{item.contract.unit}} </text>
+                 <text class='last'>{{orderItem.process}}%</text> 
+                </view>
+                <view a:if={{orderItem.contract.contractStatus==3}} class="stop-txt">订单暂停</view>
+                <view a:else class='right {{orderItem.dateStatus}}'><text>{{orderItem.dateStr}}</text></view>
+              </view>
+              <!-- 完成图标 -->
+              <view a:if={{orderItem.status==1}} class="finish-box">
+                <image src="/images/finished.png" mode="aspectFit" class="finish-img"/>
+              </view>
+            </view>
+            <!-- end 子级主体 -->
+          </view>
+      </view>
+  </view>
+  <!-- end订单列表 -->
+  
+  <view class="bottom-line " hidden="{{bottomHidden}}">————————我是有底线的————————</view>
+  <view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>
+    
+</view>

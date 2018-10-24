@@ -1,0 +1,36 @@
+<view class="section">  
+  <view class='no-data {{noData}}' style="min-height:{{scrollHeight}}px">暂无数据</view>
+ 
+  
+  <view class="order-list" style="min-height:{{scrollHeight}}px">
+  <block wx:for="{{list}}" wx:key="key">
+    <view class='order-item'    bindtap='goDetail' data-id="{{item.id}}" data-type="{{item.fabricType}}" data-orderNum="{{item.orderNum}}" data-title=" {{item.spec}} {{item.color}} ">
+     <view wx:if="{{item.status==1}}"><image class='finished-img' src='../../../images/finished.png'></image></view> 
+      <!-- <view class='priority {{item.urgency}}'></view>优先级   -->
+      <view class='order-detail'>
+        <view class='progress {{item.urgency}}' style='width:{{item.progressLine}}px'></view>
+       
+        <view class='detail-info'>
+          <view class='detail-top '>
+            <text>订单负责人：{{item.createUser.realName}}</text>
+          </view>
+          <view class='detail-middle'>
+            <text>客户订单号：{{item.customerOrderNum}}</text>
+          </view>
+          <view class='detail-bottom '>
+           当前状态：{{item.statusStr}}
+          </view>
+          
+        </view>
+      </view>
+    </view>
+  </block>
+    
+  </view>
+   <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+  <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+    </view>  
+</view>  

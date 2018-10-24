@@ -1,0 +1,56 @@
+{
+  "pages":[
+    
+    "pages/login/login",
+    "pages/menu/menu",
+    "pages/taskList/taskList",
+    "pages/taskDetail/taskDetail",
+    
+     "pages/inventory/inventory",
+    "pages/containerOut/containerOut",
+    "pages/containerDetail/containerDetail",
+    
+    
+
+    "pages/taskList_finished/taskList_finished",
+    "pages/taskDetail_finished/taskDetail_finished",
+    
+    "pages/orderFollow/orderDetail/orderDetail",
+    
+    "pages/orderFollow/orderList/orderList",
+    
+    "pages/addStaff/addStaff",
+    "pages/shelfInfo/shelfInfo",
+    "pages/staffManagement/staffManagement",
+    "pages/checkShelves/checkShelves",
+    "pages/search/search",
+    
+    
+    
+    
+    
+    
+    "pages/message/message",
+    "pages/user/user",
+    "pages/changePsd/changePsd",
+    "pages/warehouseIn/warehouseIn",
+    "pages/warehouseOut/warehouseOut",
+    "pages/warehouseShift/warehouseShift",
+    "pages/warehouseCheck/warehouseCheck",
+    
+    
+    "pages/success/success",
+    
+    
+
+    "pages/basic/basic",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "时光家纺",
+    "navigationBarTextStyle":"black"
+  }
+}

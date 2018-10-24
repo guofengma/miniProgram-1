@@ -1,0 +1,21 @@
+<view>
+  <!-- 列表 -->
+  <view class="list">
+    <view class="list-item flex-box" a:for={{list}} id="{{item.id}}" onTap="toClothDetail" data-title="{{item.fabric.clothName}}">
+      <view class="item-left">
+        <view class="item-left-top"> {{item.fabric.clothName}}</view><!-- {{item.fabric.clothNum}} -->
+        <view class="item-left-bottom">{{item.num}}kg</view>        
+      </view>
+      <view class="item-right">
+        <view class="item-right-top">{{item.createDate.split(" ")[0]}}</view>
+        <view class="item-right-bottom">{{item.storehost.storeName}}--{{item.shelves.shelvesName}}</view>  
+      </view>      
+    </view>
+  </view>
+  <!-- end列表 -->  
+
+     
+<view class="bottom-line " hidden="{{bottomHidden}}">————————我是有底线的————————</view>
+<view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>
+    
+</view>

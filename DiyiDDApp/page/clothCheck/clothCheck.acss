@@ -1,0 +1,21 @@
+.list{
+  min-height: 100vh;
+  font-size: 28rpx;
+}
+.list-item{
+  height: 100rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+  padding: 28rpx 39rpx;
+}
+.item-left,.item-right{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.item-left-top{
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.item-right{
+  text-align: right;
+}

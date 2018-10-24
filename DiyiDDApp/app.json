@@ -1,0 +1,67 @@
+{
+  "pages": [
+   
+    
+    
+    
+    
+    "page/login/login",
+    "page/menu/menu",
+    "page/message/message",
+    "page/webView/webView",
+    "page/checkDetail/checkDetail",
+    
+    
+    
+     
+
+    "page/contractFinished/contractFinished",
+    "page/contractDetail/contractDetail",
+    "page/vatList/vatList",
+    "page/addVat/addVat",
+    "page/vatDetail/vatDetail",
+    "page/checkFlow/checkFlow",
+    "page/acceptance/acceptance",
+    "page/orderListSearch/orderListSearch",
+    "page/contractFollowBystaff/contractFollowBystaff",
+    "page/inventory/inventory",
+    
+    "page/warehouseIn/warehouseIn",
+    "page/warehouseOut/warehouseOut",
+    "page/success/success",
+    "page/clothCheck/clothCheck",
+    
+    "page/clothCheckDetail/clothCheckDetail",
+    "page/clothAudit/clothAudit",
+    "page/user/user",
+    "page/changePsd/changePsd",
+
+    "page/checkOperation/checkOperation",
+    "page/examineCargo/examineCargo",
+    "page/warehouseInOne/warehouseInOne", 
+    "page/checkInventory/checkInventory",
+    "page/delivery/delivery",
+    "page/deliveryDetail/deliveryDetail",
+     "page/deliveryForm/deliveryForm",
+     
+        
+    "page/index/index"
+  ],
+  "window": {
+    "enableWK": "YES",
+    "enableDSL": true,
+    "defaultTitle": "缔衣纺织",
+    "backgroundColor": "#F5F5F9",
+    "pullRefresh": false,
+    "allowsBounceVertical": true
+  },
+  "tabBar": {
+    "textColor": "#404040",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#F5F5F9",
+    "items": [
+      
+    ]
+  },
+  "debug": true
+}

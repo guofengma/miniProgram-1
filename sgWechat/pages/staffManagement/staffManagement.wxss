@@ -1,0 +1,38 @@
+.list-table{
+  font-size: 26rpx;
+}
+.table-head{
+  position: fixed;
+  top: 0;left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 20rpx;
+  background-color: #eaeaea;
+}
+.th,.td{
+   width: 22%; 
+  text-align: center;
+  
+}
+.th.lg,.td.lg{
+   width: 39%; 
+  
+}
+.table-body{
+  margin-top: 82rpx;
+   
+}
+.tr{
+  padding: 20rpx 20rpx;
+  border-bottom: 2rpx solid #eaeaea;
+}
+.float-btn-box{
+  position: fixed;
+  bottom: 70rpx;
+  right: 38rpx;
+  z-index: 5000;
+}
+.float-btn{
+  width: 150rpx;
+  height: 150rpx;
+}

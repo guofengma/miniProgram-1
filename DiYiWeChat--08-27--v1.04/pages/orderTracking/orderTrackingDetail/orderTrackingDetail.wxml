@@ -1,0 +1,98 @@
+<view class="page">
+    
+    <view class="page__bd page__bd_spacing">
+        <view class="kind-list">
+        <!--循坏data中的list  -->
+            <block wx:for="{{list}}" wx:key="id">
+                <view class="kind-list__item">
+                <!--标题  -->
+                    <view id="{{item.id}}" class="weui-flex kind-list__item-hd " bindtap="kindToggle">
+                        <view class="weui-flex__item">{{item.name}}</view>
+                        <image class="kind-list__img" src="{{item.open ? '/images/arrow_down.png' : '/images/arrow_left.png'}}"></image>
+                    </view>
+                <!--标题  -->
+                    <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                        <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+
+                         <!--坯布信息标题  -->
+                         <block wx:if="{{item.id=='cloth'}}">
+                            <view class='info-item'>
+                              <view class='flex-box info-item-hd '>
+                                <view class='info-item-title title_1 cloth_title'>坯布名</view>
+                                <view class='info-item-title title_2 cloth_title'>坯布批号</view>
+                                <view class='info-item-title title_3 cloth_title'>匹数</view>
+                                <view class='info-item-title title_4 cloth_title'>数量</view>
+                                <view class='info-item-title title_5 cloth_title'>余数</view>
+                              </view>
+                            </view>   
+                         </block> 
+                          <!--印染信息标题  -->
+                         <block wx:if="{{item.id=='dyeing'}}">
+                            <view class='info-item'>
+                              <view class='flex-box info-item-hd '>
+                                <view class='info-item-title title_1 dye_title'>缸号</view>
+                                <view class='info-item-title title_2 dye_title'>坯布批号</view>
+                                <view class='info-item-title title_3 dye_title'>匹数</view>
+                                <view class='info-item-title title_4 dye_title'>最新进度</view>
+                                <view class='info-item-title title_5 dye_title'></view>
+                                
+                              </view>
+                            </view>   
+                         </block> 
+                        <!--循坏子集dataList  -->
+                          <view class='info-item' wx:for="{{item.dataList}}" wx:key="id" wx:for-item="subItem">
+                            <view class='flex-box info-item-hd ' bindtap="kindToggleSub" id="{{subItem.id}}" data-index="{{subItem.subIndex}}" data-sub="{{subItem.sub}}">
+                              <text class='info-label' wx:if="{{subItem.label}}">{{subItem.label}}</text>
+                              <block wx:if="{{subItem.list}}" >
+                              <view class='flex-box'>
+                                <view wx:if="{{subItem.list.length<1}}">/</view>
+                                <view  class='item-list-val' wx:for="{{subItem.list}}" wx:for-item="valItem" wx:key="value">
+                                    <text  style="color:{{valItem.colorCode}};border-color:{{valItem.colorCode}}">{{valItem.tagName}}</text>
+                                </view>
+                              </view>
+                              </block>
+                              <block wx:else>
+                                <text class='info-value ' >{{subItem.value}}</text>
+                              </block> 
+                              <!--坯布信息  -->
+                               <block wx:if="{{item.id=='cloth'}}">
+                                <text class='info-value value_1 cloth_value' >{{subItem.cName}}</text>
+                                <text class='info-value value_2 cloth_value' >{{subItem.cNum}}</text>
+                                <text class='info-value value_3 cloth_value' >{{subItem.getBolt}}</text>
+                                <text class='info-value value_4 cloth_value' >{{subItem.num}}</text>
+                                <text class='info-value value_5 cloth_value' >{{subItem.bolt}}</text>
+                              </block> 
+                               <!--印染信息  -->
+                               <block wx:if="{{item.id=='dyeing'}}">
+                               <text class='info-value value_1 dye_value' >{{subItem.vatNum}}</text>
+                                <text class='info-value value_2 dye_value' >{{subItem.bacth}}</text>
+                                <text class='info-value value_3 dye_value' >{{subItem.bolt}}</text>
+                                <text class='info-value value_4 dye_value' >{{subItem.newProcess}}</text>
+                                
+                              </block> 
+
+                              <!--若有子集显示箭头  -->
+                              <image wx:if="{{subItem.sub}}" class='kind-list__img__sub' src="{{subItem.open ? '/images/arrow_down.png' : '/images/arrow_left.png'}}"></image>
+                            </view>
+                            <view class=" info-item-sub {{subItem.open ? 'info-item-sub_show' : ''}}">
+                            <!--循坏子集的子集 dataSubLsit -->
+                              <block wx:for="{{subItem.dataSubLsit}}" wx:key="id" wx:for-item="subSubItem">
+                                <view class='flex-box info-item-sub-item'>
+                                  <view>{{subSubItem.label}}</view>
+                                  <view style='color:{{subSubItem.color}}'>{{subSubItem.value}}</view>
+                                </view>
+                              </block>
+                            <!--循坏子集的子集 dataSubLsit end-->
+                            </view>
+                          </view>
+                        <!--循坏子集dataList end -->
+                        </view>
+                    </view>
+
+                </view>
+            </block>
+        <!--循坏data中的list  end -->
+            
+        </view>
+    </view>
+</view> 

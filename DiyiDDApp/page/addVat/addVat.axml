@@ -1,0 +1,105 @@
+<view class="add-vat-section">
+  <!-- 分缸表单 -->
+  <form onSubmit="saveVat" >
+      <view class="vat-item" a:for={{dyeVats}}>
+        <view class="vat-title flex-box">
+          <text>分缸明细（{{index+1}}）</text>
+          <text class="del-btn" a:if="{{index>0}}" onTap="deleteVat" data-index="{{index}}">删除</text>
+        </view>
+        <!--vat-body  -->
+        <view class="vat-body">
+          <!--投染编号  -->
+          <view class="v-b-item">
+            <view class="form-item flex-box">
+              <text>投染编号</text>
+              <input class="form-input" type="text" placeholder="" disabled value="{{orderNum}}-{{dyeNum+index}}" name="dyeNum-{{index}}" />
+            </view>
+          </view>
+          <!--end投染编号  -->
+          <!--缸号  -->
+          <view class="v-b-item">
+            <view class="form-item flex-box">
+              <text>缸号</text>
+              <input class="form-input" type="text" placeholder="请输入缸号"  value="{{item.number}}"  name="vatNum-{{index}}"/>
+            </view>
+          </view>
+          <!--缸号 end -->
+          <!-- 坯布 -->
+          <view class="v-b-item"  a:for={{item.clothList}} a:for-item="subItem" a:for-index="subIndex">
+            <!-- 删除批次按钮 -->
+            <view class="del-cloth-icon" onTap="delCloth" data-index="{{subIndex}}" data-parentIndex="{{index}}" a:if="{{subIndex>0}}"></view>
+            <!--坯布批次  -->
+            <view class="form-item flex-box">
+              <text>坯布批次</text>
+               <picker 
+                class="form-picker"  
+                range={{clothSelect}} 
+                range-key="clothName" 
+                onChange="choseCloth" 
+                data-parentIndex="{{index}}" 
+                data-index="{{subIndex}}"
+                value="{{subItem.batch}}"
+               >
+                  <view  class="picker-view" >
+                    <text>{{subItem.clothName}}</text>
+                    <view class="picker-icon" ></view>
+                  </view>
+               </picker>
+            </view>
+            <!--end坯布批次  -->
+            <!-- 匹数 -->
+            <view class="form-item flex-box">
+              <view>
+                <text>匹数</text>
+                <text class="input-tips">（当前可用匹数:{{clothSelect[subItem.clothIndex].bolt}}）</text>
+              </view>
+              <input 
+                class="form-input sm" 
+                type="number" 
+                placeholder="请输入匹数"  
+               value="{{subItem.clothBolt}}" 
+                onBlur="blurBolt"
+                onInput="inputBolt"
+                onFocus="focusBolt"
+                data-index="{{subIndex}}" 
+                data-parentIndex="{{index}}"/>
+                 <!-- value="{{subItem.clothBolt}}"   -->
+            </view>
+            <!-- end匹数 -->
+             <!-- 数量 -->
+            <view class="form-item flex-box">
+              <view>
+                <text>数量</text>
+              </view>
+              <view>{{subItem.colthCount}}千克</view>
+              <!-- <input class="form-input " type="number" placeholder="" disabled value="{{subItem.colthCount}}千克" /> -->
+            </view>
+            <!-- end数量 -->
+          </view>
+          <!-- end坯布 -->
+
+          <!-- 添加坯布批次按钮 -->
+          <view class="add-cloth-btn" onTap="addCloth" data-index="{{index}}">
+            <text>增加不同批号坯布</text>
+          </view>
+        </view>
+        <!--end vat-body  -->
+
+        <view class="split-line"></view>
+      </view>
+      <!-- 分缸按钮 -->
+      <view class="add-vat-btn flex-box" onTap="addVat">
+         <image class='add-vat-icon' src="/images/add_icon.png" mode="aspectFit"></image>
+         <text>分缸</text>
+      </view>
+
+       <!-- 提交按钮 -->
+      <view class="btn-box" >
+        <button class="btn" type="default" formType="submit" >提交</button>
+      </view>
+  </form>
+  <!-- end分缸表单 -->
+  
+ 
+    
+</view>

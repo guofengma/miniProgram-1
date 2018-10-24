@@ -1,0 +1,187 @@
+<view class="section">  
+  <!--搜索条件  -->
+  <view class='search-box' >
+    <form class='search-form' report-submit='true' bindsubmit="searchOrder">
+      <!--缸号  -->
+      <view class='item-group '>
+        <view class='form-item '>
+          <view class='input-box flex-box'>
+            <view class='form-label'>缸号：</view>
+            <view class='form-value'>
+              <input class='form-input' placeholder='请输入缸号' name="vatNum" bindinput='changeVal' data-name="vatNum" value="{{searchForm.vatNum.value}}"></input>
+            </view>
+          </view>
+          <!-- <view class='sel-list'>
+            <view class='sel-item'>1111</view>
+          </view> -->
+        </view>
+      <!--缸号  end-->
+        
+      <!--印染厂  -->
+      
+       <view class='form-item '>
+          <view class='input-box flex-box'>
+            <view class='form-label'>印染厂：</view>
+            <view class='form-value'>
+              <input class='form-input' placeholder='请选择印染厂' name="factoryName" bindtap='pickerSearch' data-name="factoryName" value='{{searchForm.factoryName.value}}' bindinput='searchInput'></input>
+              <input hidden name="factoryId" value='{{searchForm.factoryName.id}}'></input>
+            </view>
+          </view>
+           <scroll-view class='sel-list' hidden='{{searchForm.factoryName.selHidden}}' scroll-y="true">
+            <block wx:for="{{searchForm.factoryName.selList }}" wx:key="">
+              <view class='sel-item' bindtap='selTap' data-name="factoryName" data-value="{{item.name}}" data-id="{{item.id}}">{{item.name}}</view>
+            </block>
+            <view class='sel-item sel-no-data' hidden='{{searchForm.factoryName.noData}}'>暂无数据</view>
+          </scroll-view > 
+        </view>
+      <!--印染厂end  -->
+        
+      </view>
+
+
+       <view class='item-group '>
+      <!--面料品名： -->
+       
+       <view class='form-item '>
+          <view class='input-box flex-box'>
+            <view class='form-label'>面料品名：</view>
+            <view class='form-value'>
+              <input class='form-input' placeholder='请选择面料品名' name="fabricName" bindtap='pickerSearch' data-name="fabricName" value='{{searchForm.fabricName.value}}' bindinput='searchInput'></input>
+              <input hidden name="fabricId" value='{{searchForm.fabricName.id}}'></input>
+            </view>
+          </view>
+           <scroll-view scroll-y="true" class='sel-list' hidden='{{searchForm.fabricName.selHidden}}' >
+            <block wx:for="{{searchForm.fabricName.selList }}" wx:key="">
+              <view class='sel-item' bindtap='selTap' data-name="fabricName" data-value="{{item.name}}" data-id="{{item.id}}">{{item.name}}</view>
+            </block>
+            <view class='sel-item sel-no-data' hidden='{{searchForm.fabricName.noData}}'>暂无数据</view>
+          </scroll-view> 
+        </view>
+    <!-- 面料品名：end  -->
+      <!--坯布批号：  -->
+      <view class='form-item '>
+          <view class='input-box flex-box'>
+            <view class='form-label'>坯布批号：</view>
+            <view class='form-value'>
+              <input class='form-input' placeholder='请选择坯布批号' name="clothBatch" bindtap='pickerSearch' data-name="clothBatch" value='{{searchForm.clothBatch.value}}' bindinput='searchInput'></input>
+              <input hidden name="clothBatchId" value='{{searchForm.clothBatch.id}}'></input>
+            </view>
+          </view>
+           <scroll-view scroll-y="true"  class='sel-list' hidden='{{searchForm.clothBatch.selHidden}}'>
+            <block wx:for="{{searchForm.clothBatch.selList }}" wx:key="">
+              <view class='sel-item' bindtap='selTap' data-name="clothBatch" data-value="{{item.name}}" data-id="{{item.id}}">{{item.name}}</view>
+            </block>
+            <view class='sel-item sel-no-data' hidden='{{searchForm.clothBatch.noData}}'>暂无数据</view>
+          </scroll-view> 
+        </view>
+        <!-- 坯布批号：end  -->
+
+      </view>
+
+       <view class='item-group '>
+       <!-- 客户ID或客户名字： -->
+       <view class='form-item lg'>
+          <view class='input-box flex-box'>
+            <view class='form-label'>客户ID或客户名字：</view>
+            <view class='form-value'>
+              <input class='form-input' placeholder='请选择客户ID或客户名字' name="customer" bindtap='pickerSearch' data-name="customer" value='{{searchForm.customer.value}}' bindinput='searchInput'></input>
+              <input hidden name="customerId" value='{{searchForm.customer.id}}'></input>
+            </view>
+          </view>
+           <scroll-view scroll-y="true"  class='sel-list' hidden='{{searchForm.customer.selHidden}}'>
+            <block wx:for="{{searchForm.customer.selList }}" wx:key="">
+              <view class='sel-item' bindtap='selTap' data-name="customer" data-value="{{item.name}}" data-id="{{item.id}}">{{item.name}}</view>
+            </block>
+            <view class='sel-item sel-no-data' hidden='{{searchForm.customer.noData}}'>暂无数据</view>
+          </scroll-view > 
+        </view>
+      <!-- 客户ID或客户名字：end  -->
+      </view>
+      
+      <view class='item-group '>
+        <!--时间区间  -->
+        <view class='form-item flex-box'>
+            <view class='form-label'>时间区间：</view>
+            <view class='form-value flex-box'>
+                <picker mode="date" class='picker' value="{{startDate}}"  bindchange="bindDateChange" data-name="startDate">
+                  <view class="picker-value">
+                     {{startDate}}
+                  </view>
+                </picker>
+                <view>-</view>
+                <picker mode="date" class='picker' value="{{endDate}}"  bindchange="bindDateChange" data-name="endDate">
+                  <view class="picker-value">
+                    {{endDate}}
+                  </view>
+                </picker>
+            </view>
+        </view>
+      </view>
+
+      <view class='btn-group flex-box'>
+        <view class='btn-box'>
+          <button form-type='reset' class='btn grey' bindtap='formReset'>重置</button>
+        </view>
+        <view class='btn-box'>
+          <button form-type='submit' class='btn'>搜索</button>
+        </view>
+      </view>
+      
+    </form>
+
+  </view>
+  <!--end 搜索条件  -->
+  <view class='no-data {{noData}}' style="min-height:{{scrollHeight}}px">暂无数据</view>
+  
+  <view class="order-list" style="min-height:{{scrollHeight}}px">
+  <block wx:for="{{list}}" wx:key="key">
+    <form report-submit='true' bindsubmit="submitFormId" class='formId-form'  bindtap='goDetail' data-id="{{item.id}}" data-type="{{item.fabricType}}" data-orderNum="{{item.orderNum}}" data-title=" {{item.spec}} {{item.color}} " data-status="{{item.status}}" >
+      <button formType="submit" class='formId-btn'>
+    <view class='order-item'   >
+    <view wx:if="{{item.status==1}}"><image class='finished-img' src='../../../images/finished.png'></image></view>
+      <view class='priority {{item.urgency}}'></view><!--优先级  -->
+      <view class='order-detail'>
+        <view class='progress {{item.urgency}}' style='width:{{item.progress}}px'></view>
+        <view class='detail-info'>
+          <view class='detail-top'>
+            <view>
+              <!-- <image src="../../../images/person.png" class='person-icon'></image> -->
+              <text>【跟】{{item.updateByUser.realName}}</text>
+            </view>
+            <text>{{item.partners.pname}}</text>
+          </view>
+          <view class='detail-middle flex-box'><!--规格+色别+面料称呼 -->
+            <view class='detail-middle-left'>
+              <text>{{item.fabricName}} {{item.spec}}</text>
+              <text> </text>
+              <view>{{item.color}}</view>
+            </view>
+            <view class='detail-middle-right'>
+              {{item.tecName}}
+              <view class='order-time'>{{item.estimateDate}}交</view>
+            </view>
+          </view>
+          <view class='detail-bottom'>
+            <view class='detail-bottom-left'>
+              <text>排单量 {{item.realityNum}} {{item.unit}}/</text>
+              <text>已完成 {{item.hasCompleteNum}}{{item.unit}}/</text>
+              <text>订单数量 {{item.estimateProduction}}{{item.unit}}</text>
+              <text class='last'>{{item.process}}%</text>
+            </view>
+            <!-- <view class='detail-bottom-right order-time'><text>{{item.estimateDate}}交</text></view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+        </button>
+</form>
+  </block>
+    
+  </view>
+   <view class='bottom-line {{display}}' >————————我是有底线的————————</view>
+  <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+    </view>  
+</view>  

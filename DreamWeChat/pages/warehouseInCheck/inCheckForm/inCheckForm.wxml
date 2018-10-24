@@ -1,0 +1,66 @@
+<view class="section">  
+   <form bindsubmit="formSubmit" class='check-form'>
+
+      <view class='form-item picker-box flex-box'>
+          <text class='picker-label'>物料分类</text>
+          <text class='picker-val'>{{materiel.materielType.typeName}}</text>
+         
+      </view>
+
+       <view class='form-item picker-box flex-box'>
+          <text class='picker-label'>物料编号</text>
+          <text class='picker-val'>{{materiel.materiel.materielNum}}</text>
+          
+          
+      </view>
+
+      <view class='form-item input-box flex-box'>
+        <text class='input-label lg'>物料信息</text>
+        <view class='input-val lg' >
+          <view>物料名称：{{materiel.materiel.materielName}}</view>
+          <view wx:if="{{materiel.materiel.spec==null}}">规格：/</view>
+          <view wx:else>规格：{{materiel.materiel.spec}}</view>
+          
+          <view>单位：{{materiel.materiel.rzUnitEntity.unitName}}</view>
+        </view>
+      </view>
+
+      <view class='form-item picker-box flex-box'>
+          <text class='picker-label'>入库原因</text>
+          <text class='picker-val'>{{materiel.reason.reasonName}}</text>
+      </view>
+
+       <view class='form-item input-box flex-box last'>
+        <text class='input-label '>申请人</text>
+          <text class='picker-val'>{{materiel.createByUser.realName}}</text>
+      </view>
+
+       <view class='margin-line'></view>
+
+       <view class='form-item input-box flex-box '>
+        <text class='input-label '>入库数量</text>
+        <input name="numIn" type='digit' placeholder='请输入入库数量' value='{{materiel.num}}'></input>
+      </view>
+
+      <view class='form-item picker-box flex-box'>
+          <text class='picker-label'>入库位置</text>
+          <picker class='picker ' value="{{place_index}}" range="{{place_arr}}" bindchange='placePicker' name="place" range-key="name">
+            <text wx:if="{{place==''}}" class='picker-pld'>请选择入库位置</text>
+            <input class='picker-input' disabled value='{{placeName}}' name="placeName"></input>
+            <input hidden name="placeId"  value='{{place}}'></input>
+            
+            <image class='picker-icon' src="/images/select.png"></image>
+          </picker>
+      </view>
+
+      <view class='form-item input-box flex-box '>
+        <text class='input-label '>备注</text>
+        <textarea class='' name="remarks" placeholder='输入备注情况'></textarea>
+      </view>
+
+      <view class='btn-box'>
+        <button class='btn lg default' formType="submit">同意</button>
+      </view>
+
+   </form>
+</view>  

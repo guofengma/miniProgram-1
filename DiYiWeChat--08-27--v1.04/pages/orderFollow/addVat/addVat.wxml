@@ -1,0 +1,136 @@
+<view class="section">  
+   <form class='var-form' bindsubmit="formSubmit" report-submit='true'>
+    <!--分缸明细  -->
+    <view class='form-item' wx:for="{{vatList}}" wx:key="{{vat}}" >
+      <view class='item-top flex-box'>
+        <text>分缸明细({{index+1}})</text>
+        <text class='delete-btn' bindtap="delBind" wx:if="{{index>0}}" data-index="{{index}}">删除</text>
+      </view>
+
+      <view class='input-box flex-box'>
+      <view class='label-box flex-box'>
+          <text class='input-label'>印染编号</text>
+        </view>
+        <input class='input' placeholder='' value='{{orderNum}}-{{dyeNum+index}}' disabled name='dipdye_num{{index}}'></input>
+      </view>
+
+      <view class='input-box flex-box var-num'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>缸号</text>
+        </view>
+        <form report-submit='true' bindsubmit="submitFormId" class='formId-form' >
+          <button formType="submit" class='formId-btn'> 
+            <input class='input formId-input' placeholder='请输入缸号'   name="vat_num{{index}}" value="{{item.vat_num}}" bindblur='setVal' data-name="vat_num" data-index="{{index}}"></input>
+         </button>
+      </form> 
+      </view>
+      <block wx:for="{{clothList[index]}}" wx:for-item="subItem" wx:key="" wx:for-index="idx">
+          <view class='cloth-box'>
+              <view class='cloth-inner inner txt'  >
+              <!-- bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{subItem.txtStyle}}" -->
+                  <image class='delClothBatch' src='../../../images/warn.png' wx:if="{{idx>0}}" data-index="{{idx}}" data-parent="{{index}}" bindtap="delClothBatch" data-batchindex="{{batch_arr[index][idx].index}}"></image>
+                   <view class='picker-box'>
+                      <picker bindchange="bindBatchPickerChange" value="{{batch_arr[index][idx].index}}" range="{{batch_arr[index][idx].option}}" range-key="name" data-current="{{idx}}" data-parent="{{index}}">
+                        <view class="picker flex-box">
+                          <text class='cloth-title'>坯布批次</text>
+                          <view>
+                            <text wx:if="{{batch_arr[index][idx].index==''}}" class='picker-pld'>请选择</text>
+                            <input value='{{batch_arr[index][idx].option[batch_arr[index][idx].index].value}}' name="batch{{index}}{{idx}}" style='display:none'></input>
+                                  {{batch_arr[index][idx].option[batch_arr[index][idx].index].name}}<image src='../../../images/down.png'class="picker-icon"></image>
+                            <input hidden  value='{{batch_arr[index][idx].option[batch_arr[index][idx].index].clothId}}' name="clothId{{index}}{{idx}}"></input>
+                                  
+                            <input hidden maxlength="-1" value='{{batch_arr[index][idx].option[batch_arr[index][idx].index].clothInfo}}' name="clothInfo{{index}}{{idx}}"></input>
+                            <input hidden  value='{{batch_arr[index][idx].option[batch_arr[index][idx].index].inventoryStorehostId}}' name="inventoryStorehostId{{index}}{{idx}}"></input>
+                            
+                          </view>
+                        </view>
+                      </picker>
+                    </view>
+
+                  <view class='input-box flex-box bolt'>
+                    <view class='label-box flex-box'>
+                      <text class='input-label cloth-title'>匹数</text>
+                      <text class='input-tips cloth-title'>当前可用匹数:{{usableList[batch_arr[index][idx].index].bolt}}</text>
+                    </view>
+                    <input class='input' placeholder='请输入匹数'  type='number' bindblur='clacNum' name="bolt{{index}}{{idx}}" data-weight="{{batch_arr[index][idx].option[batch_arr[index][idx].index].weight}}" data-parent="{{index}}" data-index="{{idx}}" bindinput="limitBolt" data-batchindex="{{batch_arr[index][idx].index}}" value='{{subItem.bolt}}' bindfocus='clacNumFocus'></input>
+                  </view>
+                  <view class='input-box flex-box'>
+                    <view class='label-box flex-box'>
+                      <text class='input-label cloth-title'>数量</text>
+                    </view>
+                    <input class='input ' placeholder='单位：{{unit}}'  type='number' disabled value='{{numList[index][idx]}} {{unit}}'></input>
+                  </view>
+
+              </view>
+
+              <!-- <view data-index="{{idx}}" bindtap = "cloth-del delItem" class="inner del">删除</view> -->
+
+          </view>
+         
+      </block>
+
+      <form report-submit='true' bindsubmit="submitFormId" class='formId-form'  bindtap='addCloth' data-index="{{index}}" >
+          <button formType="submit" class='formId-btn add-cloth-formId-btn'> 
+             <form report-submit='true' bindsubmit="submitFormId" class='formId-form' >
+              <button formType="submit" class='formId-btn add-cloth-formId-btn'> 
+                <form report-submit='true' bindsubmit="submitFormId" class='formId-form' >
+                  <button formType="submit" class='formId-btn add-cloth-formId-btn'>
+                    <view class='add-cloth' >增加不同批号坯布</view>
+                  </button>
+                </form> 
+             </button>
+            </form> 
+          </button>
+      </form> 
+
+      <!-- <view class='input-box flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>匹数</text>
+          <text class='input-tips'>当前可用匹数:{{p_count}}</text>
+        </view>
+        <input class='input' placeholder='请输入匹数'  type='number' value="{{item.p_count}}" name="p_count{{index}}" bindinput='limitVal' bindblur='calcPCount' bindfocus='focusVal' data-index="{{index}}"  data-name="p_count" ></input>
+      </view>
+
+      <view class='input-box flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>数量</text>
+          <text class='input-tips'>当前可用数量:{{count}}</text>
+        </view>
+        <input class='input' placeholder='请输入数量 单位：{{unit}}'  type='number' value="{{item.count}}" name="count{{index}}" bindinput='limitVal2' bindblur='calcCount' bindfocus='focusVal2' data-index="{{index}}" data-name="count"></input>
+      </view>
+
+      <view class='input-box flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>进缸匹重</text>
+        </view>
+        <input class='input' type='number' placeholder='单位：{{unit}}/匹'  value="{{item.weight}}{{unit}}/匹" name="weight{{index}}" disabled></input>
+      </view> -->
+    </view>
+    
+    <!--分缸明细 end -->
+    <view class='split-line'></view>
+   
+
+    <form report-submit='true' bindsubmit="submitFormId" class='formId-form'  bindtap="insert" >
+          <button formType="submit" class='formId-btn add-vat-formId-btn'> 
+             <form report-submit='true' bindsubmit="submitFormId" class='formId-form' >
+              <button formType="submit" class='formId-btn add-vat-formId-btn'> 
+                <form report-submit='true' bindsubmit="submitFormId" class='formId-form' >
+                  <button formType="submit" class='formId-btn add-vat-formId-btn'>
+                    <view class='allot-vat flex-box' >
+                      <image class='addVat-icon' src="../../../images/tian.png"></image>
+                      <text>分缸</text>
+                    </view>
+                  </button>
+                </form> 
+             </button>
+            </form> 
+          </button>
+      </form> 
+    
+
+    <view class='submit-btn-box'>
+      <button  formType="submit" class='submit-btn'>提交</button>
+    </view>
+   </form>
+</view>  

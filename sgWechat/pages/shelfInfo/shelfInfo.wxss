@@ -1,0 +1,95 @@
+.noData{
+  margin: 400rpx auto;
+  text-align: center;
+  font-size: 32rpx;
+  color: #999;
+}
+.section{
+  margin-top: 70rpx;
+}
+.top-scan{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 32rpx;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  line-height: 50rpx;
+  background-color: #fff;
+  border-bottom: 2rpx solid #eaeaea;
+}
+.scan-img-sm{
+  width: 50rpx;
+  height: 50rpx;
+}
+.scan{
+  text-align: center;
+}
+.scan-img-box{
+  width: 500rpx;
+  height: 500rpx;
+  border: 3rpx solid #1296db;
+  border-radius: 50%;
+  margin: 100rpx auto;
+  position: relative;
+}
+.scan-img{
+  width: 300rpx;
+  height: 300rpx;
+  position: absolute;
+  top: 50%;left: 50%;
+  margin-left: -150rpx;
+  margin-top: -150rpx;
+}
+.info-box{
+  margin-bottom: 40rpx;
+  padding-bottom: 60rpx;
+  border-bottom: 10rpx solid #eaeaea;
+
+}
+
+.info{
+  padding: 10rpx;
+  font-size: 28rpx;
+
+  
+}
+.info-item{
+  padding: 12rpx 0rpx;
+}
+.flex-box .info-item{
+  width: 50%;
+}
+
+.info-table{
+  text-align: center;
+  font-size: 28rpx;
+  margin: 10rpx;
+  border: 2rpx solid #ddd;
+  border-left: none;
+  
+}
+.tabel-title{
+  font-size: 32rpx;
+   border-left: 2rpx solid #ddd;
+  line-height: 80rpx;
+  font-weight: bold;
+}
+.tabel-head{
+  font-weight: bold;
+  justify-content: flex-start;
+ 
+  
+}
+.tabel-body{
+  justify-content: flex-start;
+}
+.th,.td{
+  width: 33%;
+  border-left: 2rpx solid #ddd;
+  border-top: 2rpx solid #ddd;
+  line-height: 60rpx;
+  padding: 10rpx;
+  
+}

@@ -1,0 +1,37 @@
+<view>
+  <!-- 列表 -->
+  <view class="list">
+    <view 
+     class="list-item flex-box" 
+     a:for={{list}} 
+     id="{{item.id}}" 
+     onTap="toClothDetail" 
+     data-item="{{item}}"      
+     data-title="{{item.contract.customerNum}}">
+      <view class="item-left {{item.urgency==2?'red':''}}"></view>
+      <view class="item-right">
+          <view class="item-right-row flex-box">
+            <view>客户编号：{{item.contract.customerNum}}</view>
+            <view>{{item.customerAddress.logistics}}</view>            
+          </view>
+          <view class="item-right-row grey">
+            <text>【销】{{item.contract.salerNames}}</text>
+            <text>【理】{{item.contract.lidanNames}}</text>            
+          </view>
+          <view class="item-right-row fz30 heigth40">
+            <view class="ellipsis" a:for={{item.detail}} a:for-item="subItem">{{subItem.fabricName}} {{subItem.spec}} {{subItem.color}} {{subItem.boltOut}}匹</view>
+          </view>
+          <view class="item-right-row flex-box colord1">
+            <view class="fz20">地址：{{item.customerAddress.address}}</view>
+            <view class="{{item.dateStatus}}">{{item.createDate}}前发货</view>            
+          </view>
+      </view>      
+    </view>
+  </view>
+  <!-- end列表 -->  
+
+     
+<view class="bottom-line " hidden="{{!noDataHidden}}" >————————我是有底线的————————</view>
+<view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>
+    
+</view>

@@ -1,0 +1,87 @@
+ .form-item{
+   justify-content: flex-start;
+   border-bottom: 1rpx solid #d7d7d7;
+   padding: 30rpx 20rpx;
+   font-size: 30rpx;
+   line-height:52rpx;
+   padding-left: 25rpx;
+ }
+ .form-item.border-none{
+   border-bottom: none;
+   
+ }
+ .form-label{
+   min-width: 114rpx;
+   margin-right: 16rpx;
+   position: relative;
+ }
+ .form-label .red{
+   position: absolute;
+   top: -8rpx;
+   left: -12rpx;
+ }
+ .value-tab{
+   min-width: 100rpx;
+	height: 52rpx;
+	background-color: #f8f8f8;
+	border-radius: 10rpx;
+  color: #000;
+  text-align: center;
+  line-height:52rpx;
+  margin-right: 27rpx;
+  padding: 0 12rpx;
+ }
+
+ .form-value.others{
+   flex-wrap: wrap;
+   justify-content: flex-start;
+ }
+ .value-tab.lg{
+   margin-top: 30rpx
+ }
+ .value-tab.active{
+	background-color: #0090ff;
+  color: #fff;
+ }
+ .form-input{
+   text-align: center;
+    line-height:52rpx;
+   height: 52rpx;
+   width: 100%;
+
+ }
+ .form-textarea.sm{
+   height: 52rpx;
+   line-height: 52rpx;
+   padding: 0;
+ }
+ .add-img,.preview-img-sm{
+  width: 93rpx;
+  height: 93rpx;
+}
+.preview-img-sm{
+  margin-right:16rpx;
+}
+.img-box-sm{
+  position: relative;
+}
+.img-box-sm .img-del-icon{
+  right: 98rpx;
+  width: 20rpx;height: 20rpx;
+}
+.btn-box{
+  margin-top:60rpx; 
+}
+.color-img-box{
+  justify-content: space-around;
+  text-align: center;
+}
+.red-label{
+  color: #f00;
+}
+.btn.md{
+  width: 400rpx;
+}
+.btn.sm{
+  width: 200rpx;
+}

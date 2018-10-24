@@ -1,0 +1,87 @@
+.detail-box{
+  font-size: 28rpx;
+  padding: 20rpx;
+  border-bottom: 2rpx solid #dedede;
+}
+.detail-row{
+  display: flex;
+  /* justify-content: space-between; */
+  padding: 10rpx 0rpx;
+}
+.detail-item:first-child{
+   width: 60%; 
+}
+.detail-label{
+  color: #999;
+}
+.detail-value.blue{
+  color: #1e87f0;
+}
+.progress .detail-item{
+  width: 100%;
+}
+.slider-box{
+  line-height: 60rpx;
+}
+.slider-box slider{
+  width: 75%;
+}
+
+/*主容器*/  
+.stepper {  
+    width: 294rpx;  
+    height: 70rpx;  
+    /*给主容器设一个边框*/  
+    border: 2rpx solid #ddd;  
+    border-radius: 4rpx;  
+     /* margin:0 auto;    */
+     float: right;
+}  
+  
+/*加号和减号*/  
+.stepper text {  
+    width: 70rpx;  
+    line-height: 70rpx;  
+    text-align: center;  
+    float: left;  
+}  
+  
+/*数值*/  
+.stepper input {  
+    width: 150rpx;  
+    height: 70rpx;  
+    float: left;  
+    margin: 0 auto;  
+    text-align: center;  
+    font-size: 24rpx;  
+    /*给中间的input设置左右边框即可*/  
+    border-left: 2rpx solid #ddd;  
+    border-right: 2rpx solid #ddd;  
+}  
+  
+/*普通样式*/  
+.stepper .normal{  
+    color: black;  
+}  
+  
+/*禁用样式*/  
+.stepper .disabled{  
+    color: #ccc;  
+} 
+
+.cir{  
+  display: inline-block;  
+  margin-top: 20rpx;  
+}  
+  
+.canvas-box{  
+  text-align: center  
+}  
+  
+.cc{  
+    
+  margin-top: -120px; 
+  font-size: 40rpx; 
+  color: #1e87f0;
+    
+}   

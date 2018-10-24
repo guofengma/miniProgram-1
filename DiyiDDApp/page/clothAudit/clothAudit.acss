@@ -1,0 +1,24 @@
+.list{
+  min-height: 100vh;
+  font-size: 28rpx;
+}
+.list-item{
+  border-bottom: 1rpx solid #d7d7d7;
+  padding: 28rpx 39rpx;
+}
+.item-content{
+  height: 150rpx;
+   display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.c-c-txt{
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.item-btn-group{
+  margin-top: 30rpx;
+}
+.btn.sm{
+  width:300rpx;
+}

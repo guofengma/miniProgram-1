@@ -1,0 +1,65 @@
+<view class="section"> 
+ <!-- 详情参数 -->
+   <view class='arg-box'>
+      <view class='arg-item'>编号：{{info.applyNum}}</view>
+      <view class='arg-item'>用途：{{info.useReason}}</view>
+     <view class='arg-item'>物料数量：{{realNum}}件</view>
+      <view class='arg-item'>预计金额：{{realPrice}}元</view>
+       <view class='arg-item'>仓库操作人：{{info.materielUser.realName}}</view>
+   </view>
+ <!-- 详情参数 end-->
+
+ <view class='margin-line'></view>
+
+ <!-- 领用明细  -->
+ <view class='receive-box'>
+  <view class='receive-title'>领用明细</view>
+
+  <view class='receive-list'>
+
+    <view class='receive-item flex-box' wx:for="{{info.applyMaterialList}}" wx:key="">
+      <view class='item-left'>
+        <image class='item-left-img' src='{{item.img}}' data-index="{{index}}" binderror="imgError" bindtap='previewImg' data-url="{{item.img}}"></image>
+      </view>
+
+     
+
+      <view class='item-right flex-box'>
+        <view class='flex-box'>
+          <text>{{item.materielName}}</text><!-- 名称 -->
+          <text wx:if="{{item.spec==null}}">/</text>
+
+          <text wx:else>{{item.spec}}</text><!-- 规格 -->
+        </view>
+        <view>￥{{item.price}}</view>
+        <view class='flex-box'>
+          <text>{{item.num}}{{item.unitName}}</text><!-- 申请数量 -->
+          <view>
+            <view wx:if="{{item.status==2}}">
+              <text class='red' >已拒绝</text>
+              <text class='red' wx:if="{{item.remarks!==null}}">（{{item.remarks}})</text>
+            </view>
+             
+             <text class='red' wx:else>准备{{item.realNum}}{{item.unitName}}</text><!-- 实际领用数量 -->
+          </view>
+        </view>
+       
+       
+      </view>
+
+    </view>
+
+    
+
+  </view>
+ 
+ </view>
+ <!-- 领用明细  end-->
+
+  <!-- 确认领用 -->
+  <view class='btn-box'>
+    <button class='btn blue lg' bindtap='receiveConfirm' >确认领用</button>
+  </view>
+ 
+
+</view>  

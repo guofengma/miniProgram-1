@@ -1,0 +1,29 @@
+.list{
+  font-size: 34rpx;
+  border-top:2rpx solid #ddd;
+}
+.list-item{
+  padding: 20rpx 28rpx;
+  border-bottom:2rpx solid #ddd;
+}
+.item-value{
+  color: #999;
+}
+.nav{
+  width: 700rpx;
+}
+.nav-icon{
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 6rpx;
+}
+.logout,.goBack{
+  background-color: #fff;
+  font-size: 34rpx;
+  width: 95%;
+  margin: 60rpx auto;
+}
+.logout{
+ background-color: #5B9CF8;
+  color: #fff;
+}

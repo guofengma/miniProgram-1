@@ -1,0 +1,27 @@
+<view class="section"> 
+<form  bindsubmit="formSubmit" class='form'>
+    <view class='list-item flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>旧密码</text>
+        </view>
+        <input class='input' placeholder='请输入旧密码'  name="old_psd" type='password'></input>
+    </view>
+    <view class='list-item flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>新密码</text>
+        </view>
+        <input class='input' placeholder='请输入新密码'  name="new_psd" type='password'></input>
+    </view>
+    <view class='list-item flex-box'>
+        <view class='label-box flex-box'>
+          <text class='input-label'>确认密码</text>
+        </view>
+        <input class='input' placeholder='请再次输入密码'  name="confirm_psd" type='password'></input>
+    </view>
+    
+     <view class='btn-box'>
+      <button class='btn lg default' formType="submit">保存并返回</button>
+     </view>
+</form> 
+    
+</view>  

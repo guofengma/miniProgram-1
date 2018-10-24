@@ -1,0 +1,45 @@
+<!--搜索框  -->
+<view class='search-box'>
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input"  placeholder="输入货柜编号" bindchange="searchInput" value='{{searchValue}}'/>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--选项卡-->
+<view class="tabTit box tc bg_f flex-box">
+    <view class="tabTit-item flex-box tabTit-item{{index}} {{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="" data-index="{{index}}" bindtap="filterTab" data-name="{{item}}">
+      <text class='ellipsis'>{{item}}</text>
+      <image src="/images/arrowSelect.png" ></image>
+    </view>
+</view>
+<!--筛选项-->
+
+
+
+
+<view class="list-box" style="min-height:{{scrollHeight}}px" >  
+  <view class='no-data {{noData}}'>暂无数据</view>
+     <view class="list " style="min-height:{{scrollHeight-90}}px" >
+            <block wx:for="{{list}}" wx:key="id">
+                <view class='item flex-box'  data-id="{{item.id}}" >
+                   <view class='td td_1'>{{item.row}}{{item.height}}{{item.line}}</view>
+                   <view class='td td_2 flex-box'>
+                   <text wx:if="{{item.fabrics==null}}">/</text>
+                     <text wx:else>{{item.fabrics}}</text>
+                   </view>
+                   
+                </view>
+            </block>
+       </view>
+       <view class='bottom-line {{display}}' >————————我是有底线的————————</view> 
+       <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+    </view>  
+</view> 

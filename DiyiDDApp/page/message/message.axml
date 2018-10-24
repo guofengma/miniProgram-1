@@ -1,0 +1,23 @@
+<view class="section">
+  <!--list  -->
+  <view class='msg-list' >
+    <block a:for="{{list}}" a:key="id">
+      <view class='msg-item flex-box'>
+        <view>
+          <image src='../../images/info.png' class='info-icon'></image>
+        </view>
+        <view>
+          <view class='msg-title'>{{item.title}}</view>
+          <view class='msg-time'>{{item.createDate}}</view>
+          <view class='msg-content '>
+            <view class='msg-value'>{{item.message}}</view>
+          </view>
+        </view>
+        <view a:if="{{!item.status}}" class='red-point'></view>
+      </view>
+    </block>
+  </view>
+  <!--end list  -->
+  <view class="bottom-line " hidden="{{bottomHidden}}">————————我是有底线的————————</view>
+  <view class='no-data' hidden="{{noDataHidden}}">暂无数据</view>
+</view>  

@@ -1,0 +1,193 @@
+/* 搜索表单 */
+.form-item{
+  justify-content: flex-start;
+  position: relative;
+  height: 86rpx;
+  line-height: 86rpx;
+  font-size: 30rpx;
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.form-label{
+  margin-right: 10rpx;
+  min-width: 150rpx;
+}
+.input{
+  font-size: 30rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  padding: 0;
+
+}
+.input.center{
+  text-align: center;
+}
+.sel-list{
+  position: absolute;
+  top: 64rpx;left: 150rpx;
+  background-color: #fff;
+  width: 420rpx;
+  min-height: 145rpx;
+  max-height: 292rpx;
+  overflow-y: auto;
+  border: 2rpx solid #eaeaea;
+  border-radius: 4rpx;
+  z-index: 5000;
+}
+.sel-item{
+  padding: 16rpx 10rpx;
+  line-height: 48rpx;
+  border-bottom: 2rpx solid #eaeaea;
+}
+
+.sel-item.sel-no-data{
+  text-align: center;
+  border-bottom: none;
+  color: #999;
+  margin-top: 40rpx;
+}
+.btn-box{
+  border-bottom: 2rpx solid #eaeaea;
+}
+.btn.sm{
+  width: 250rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.btn.grey{
+ background-color:#eaeaea;
+ color: #666;
+}
+.input-pld{
+  color: #ccc;
+}
+.date-box{
+  width: 250rpx;
+  text-align: center;
+}
+
+/*end 搜索表单 */
+/* 订单列表 */
+.order-list{
+  min-height: 600rpx;
+}
+.a-c-c-item{
+  width:708rpx;
+  border: solid 1px #919191;
+  border-top: none;
+  margin: 0 auto;
+  
+}
+.left-priority{
+  width:8rpx;
+  height:163rpx;
+  background-color: #919191;
+}
+.left-priority.red{
+  background-color:#ff0000;
+}
+.left-priority.orange{
+  background-color:#ff8400;
+}
+.left-priority.green{
+  background-color:#1ac1b2;
+}
+.left-priority.emergent{
+  background-color:#ff0000;
+}
+.left-priority.stop{
+  background-color:#eeeeee;
+}
+.right-box{
+  width:700rpx;
+  height:163rpx;
+  position:relative;
+}
+.right-box.emergent{
+  background-color: #ffe4e4;
+}
+.right-box.stop{
+  background-color: #eeeeee;
+}
+.progress-bar{
+  position:absolute;
+  top:0;left:0;
+  width:60rpx;
+  height:163rpx;
+  background-color:#fefcc8;
+}
+.progress-bar.emergent{
+  background-color: #F7A8A8;
+}
+.right-content{
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  padding:16rpx 20rpx;
+  box-sizing: border-box;
+}
+.finish-box{
+  position: absolute;
+  top: 25rpx;
+  right: 42rpx;
+}
+.finish-img{
+  width: 111rpx;
+  height: 111rpx;
+}
+.a-c-c-top {
+  font-size:18rpx;
+  margin-bottom:14rpx;
+}
+.a-c-c-center{
+  justify-content:flex-start;
+  font-size:18rpx;
+  line-height:32rpx;
+}
+.a-c-c-center .left{
+  width:325rpx;
+  margin-right:45rpx;
+}
+.a-c-c-center .bold{
+  font-size: 30rpx;
+  line-height:32rpx;
+}
+.a-c-c-bottom{
+  font-size: 20rpx;
+  margin-top: 13rpx;
+}
+.a-c-c-bottom .last,.detail-bottom-left .last{
+  margin-left: 8rpx;
+}
+.not-order{
+  width: 710rpx;
+  text-align: center;
+  font-size: 30rpx;
+  height: 163rpx;
+  line-height: 163rpx;
+  border: solid 1px #919191;
+  border-top: none;
+  color: #919191;
+}
+.stop-txt{
+
+}
+.a-c-c-bottom .right.red{
+  background-color: #f00;
+  color: #fff;
+  padding: 8rpx 8rpx;
+}
+.a-c-c-bottom .right.orange{
+  color: #ff8400;
+}
+.check-finish{
+  color: #919191;
+  margin-top: 42rpx;
+  text-align: center;
+  margin-bottom: 29rpx;
+}
+.no-data{
+  top: 74%;
+  font-size: 30rpx;
+}
+/* 订单列表 */

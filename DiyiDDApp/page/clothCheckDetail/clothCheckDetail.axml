@@ -1,0 +1,219 @@
+<view>
+  <form onSubmit="saveForm" >
+    <!-- 克重 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>克重:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.weight.status==2?'active':''}}" onTap="choseValue" data-name="weight" data-value="2">偏轻</view>
+        <view class="value-tab {{formData.weight.status==1?'active':''}}" onTap="choseValue" data-name="weight" data-value="1">正常</view>
+        <view class="value-tab {{formData.weight.status==3?'active':''}}" onTap="choseValue" data-name="weight" data-value="3">偏重</view>        
+      </view>
+    </view>
+    <view class="form-item" a:if={{formData.weight.status!==1}}>
+      <view class="form-value">
+        <input class="form-input" type="text" placeholder="请输入实际值" onInput="setValue" data-name="weight"/>
+      </view>
+    </view>
+    <!-- end克重 -->
+
+     
+    <!-- 门幅 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>门幅:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.width.status==2?'active':''}}" onTap="choseValue" data-name="width" data-value="2">偏小</view>
+        <view class="value-tab {{formData.width.status==1?'active':''}}" onTap="choseValue" data-name="width" data-value="1">正常</view>
+        <view class="value-tab {{formData.width.status==3?'active':''}}" onTap="choseValue" data-name="width" data-value="3">偏重</view>
+      </view>
+    </view>
+    <view class="form-item" a:if={{formData.width.status!==1}}>
+      <view class="form-value">
+        <input class="form-input" type="text" placeholder="请输入实际值" onInput="setValue" data-name="width"/>
+      </view>
+    </view>
+    <!-- end门幅 -->
+
+    <!-- 清洁度 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>清洁度:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.clean==1?'active':''}}" onTap="choseValue" data-name="clean" data-value="1">正常</view>
+        <view class="value-tab {{formData.clean==2?'active':''}}" onTap="choseValue" data-name="clean" data-value="2">轻微脏污</view>
+        <view class="value-tab {{formData.clean==3?'active':''}}" onTap="choseValue" data-name="clean" data-value="3">严重脏污</view>
+      </view>
+    </view>
+    <!-- end清洁度 -->
+
+     
+    <!-- 弹力 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>弹力:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.elastica==2?'active':''}}" onTap="choseValue" data-name="elastica" data-value="2">松</view>
+        <view class="value-tab {{formData.elastica==1?'active':''}}" onTap="choseValue" data-name="elastica" data-value="1">正常</view>
+        <view class="value-tab {{formData.elastica==3?'active':''}}" onTap="choseValue" data-name="elastica" data-value="3">紧</view>
+      </view>
+    </view>
+    <!-- end弹力 -->
+
+     
+    <!-- 手感 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>手感:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.handFeeling==2?'active':''}}" onTap="choseValue" data-name="handFeeling" data-value="2">偏软</view>
+        <view class="value-tab {{formData.handFeeling==1?'active':''}}" onTap="choseValue" data-name="handFeeling" data-value="1">正常</view>
+        <view class="value-tab {{formData.handFeeling==3?'active':''}}" onTap="choseValue" data-name="handFeeling" data-value="3">偏硬</view>
+      </view>
+    </view>
+    <!-- end手感 -->
+
+    <!-- 毛感 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <!-- <text class="red">*</text> -->
+        <text>毛感:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.woolFeel==2?'active':''}}" onTap="choseValue" data-name="woolFeel" data-value="2">偏轻</view>
+        <view class="value-tab {{formData.woolFeel==1?'active':''}}" onTap="choseValue" data-name="woolFeel" data-value="1">正常</view>
+        <view class="value-tab {{formData.woolFeel==3?'active':''}}" onTap="choseValue" data-name="woolFeel" data-value="3">偏重</view>
+      </view>
+    </view>
+    <!-- end毛感 -->
+
+     
+    <!-- 密度 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>密度:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.density==2?'active':''}}" onTap="choseValue" data-name="density" data-value="2">偏稀</view>
+        <view class="value-tab {{formData.density==1?'active':''}}" onTap="choseValue" data-name="density" data-value="1">正常</view>
+        <view class="value-tab {{formData.density==3?'active':''}}" onTap="choseValue" data-name="density" data-value="3">偏密</view>
+      </view>
+    </view>
+    <!-- end密度 -->
+
+      
+    <!-- 厚度 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <!-- <text class="red">*</text> -->
+        <text>厚度:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.thickness==2?'active':''}}" onTap="choseValue" data-name="thickness" data-value="2">偏薄</view>
+        <view class="value-tab {{formData.thickness==1?'active':''}}" onTap="choseValue" data-name="thickness" data-value="1">正常</view>
+        <view class="value-tab {{formData.thickness==3?'active':''}}" onTap="choseValue" data-name="thickness" data-value="3">偏厚</view>
+      </view>
+    </view>
+    <!-- end厚度 -->
+     
+    <!-- 针路 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>针路:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.needleMark==1?'active':''}}" onTap="choseValue" data-name="needleMark" data-value="1">无</view>
+        <view class="value-tab {{formData.needleMark==2?'active':''}}" onTap="choseValue" data-name="needleMark" data-value="2">轻微</view>
+        <view class="value-tab {{formData.needleMark==3?'active':''}}" onTap="choseValue" data-name="needleMark" data-value="3">严重</view>
+      </view>
+    </view>
+    <!-- end针路 -->
+
+     
+    <!-- 横档 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>横档:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.rung==1?'active':''}}" onTap="choseValue" data-name="rung" data-value="1">无</view>
+        <view class="value-tab {{formData.rung==2?'active':''}}" onTap="choseValue" data-name="rung" data-value="2">轻微</view>
+        <view class="value-tab {{formData.rung==3?'active':''}}" onTap="choseValue" data-name="rung" data-value="3">严重</view>
+      </view>
+    </view>
+    <!-- end横档 -->
+
+     
+    <!-- 纱线异常 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <!-- <text class="red">*</text> -->
+        <text>纱线异常:</text>
+      </view>
+      <view class="form-value flex-box">
+        <textarea class="form-textarea sm" placeholder="请输入纱线异常" maxlength="-1" auto-height name="yarn"/>
+      </view>
+    </view>
+    <!-- end纱线异常 -->
+
+     
+    <!-- 品质评定 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <text class="red">*</text>
+        <text>品质评定:</text>
+      </view>
+      <view class="form-value flex-box">
+        <view class="value-tab {{formData.quality==2?'active':''}}" onTap="choseValue" data-name="quality" data-value="2">偏差</view>
+        <view class="value-tab {{formData.quality==1?'active':''}}" onTap="choseValue" data-name="quality" data-value="1">正常</view>
+        <view class="value-tab {{formData.quality==3?'active':''}}" onTap="choseValue" data-name="quality" data-value="3">不合格</view>
+      </view>
+    </view>
+    <!-- end品质评定 -->
+
+     
+    <!-- 特殊备注 -->
+    <view class="form-item flex-box">
+      <view class="form-label">
+        <!-- <text class="red">*</text> -->
+        <text>特殊备注:</text>
+      </view>
+      <view class="form-value flex-box">
+        <textarea class="form-textarea  red" placeholder="特殊备注" maxlength="-1" auto-height name="remarks"/>
+      </view>
+    </view>
+    <!-- end特殊备注 -->
+
+    <!-- 图片 -->
+    <view class="add-img-box">
+      <image class="add-img" src="/images/imgAdd.png" mode="aspectFit" onTap="choseImg"/>
+    </view>
+    <view class="imgs-preview flex-box">
+      <view class="img-box flex-box" a:for={{imgSrc}} >
+        <image class="preview-img" src="{{item}}" mode="aspectFit" onTap="previewImage" data-index="{{index}}" data-type="1" />
+        <image class="img-del-icon" src="/images/clear_icon.png" mode="aspectFit" onTap="deleteImage" data-index="{{index}}"/>
+      </view>
+    </view>
+    <!-- end图片 -->
+
+
+    <!-- 完成按钮 -->
+    <view class="btn-box ">
+      <button class="btn " type="default"  formType="submit">完成</button>
+    </view>
+  </form>
+    
+</view>
