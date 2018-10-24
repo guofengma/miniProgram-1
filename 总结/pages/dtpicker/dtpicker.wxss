@@ -1,0 +1,2 @@
+/* pages/dtpicker/dtpicker.wxss */
+@import "../picker2/picker.wxss";

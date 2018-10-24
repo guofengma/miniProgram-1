@@ -1,0 +1,127 @@
+<view class="section"> 
+ <!-- 全部完成时的表单模态框  -->
+ <view class='modal {{showAmountModal.showModal}}'>
+    <form bindsubmit="formSubmit">
+      <view class='modal-content'>
+        <view class='modal-title'>验收</view>
+        <view class='input-item'>
+          <text>成品匹数</text>
+          <input placeholder='请输入成品匹数' name="boltOut"></input>
+        </view>
+        <view class='input-item'>
+          <text>成品数量</text>
+          <input placeholder='请输入成品数量' name="numOut"></input>
+        </view>
+         <view class='input-item'>
+          <text>次品匹数</text>
+          <input placeholder='请输入次品匹数' name="inferiorBolt"></input>
+        </view>
+        <view class='input-item'>
+          <text>次品数量</text>
+          <input placeholder='请输入次品数量' name="inferiorNum"></input>
+        </view>
+       
+        <view class='btn-item'>
+          <button formType="submit" class='submit-btn'>验收</button>
+        </view>
+      </view>
+    </form>
+ </view>
+ <view class='mask {{showAmountModal.showMask}}'></view>
+ <!-- 全部完成时的表单模态框  end--> 
+
+<view class="navbar">  
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
+</view> 
+  
+<!--未完成-->  
+<view hidden="{{currentTab!==0}}" class='box' > 
+  <!--添加分缸按钮  -->
+  <view class='add-btn-box'  >
+    <button class='add-btn' bindtap='addVat'>新增分缸</button>
+  </view> 
+  <!--添加分缸按钮 end -->
+ <view class='no-data {{noData}}'>暂无数据</view>
+ <view class='vat-list'   style="min-height:{{winHeight}}px" >
+  <!--循环list  -->
+  <view class='vat-item' wx:for="{{list}}" wx:key="key" >
+    <view class='vat-detail' bindtap='goAddP'  bindlongpress='deleteVat' data-process="{{item.flowList}}" data-title="{{item.dyeNum}}" data-id="{{item.id}}" data-finish="{{item.processFinish}}" >
+      <view class='vat-top flex-box'>
+        <text class='dyeing-num'>{{item.dyeNum}}</text><!--印染编号-->
+        <text class='vat-num'>{{item.number}}</text><!--缸号-->
+      </view>
+      <view class='vat-bottom flex-box'>
+        <text>{{item.boltIn}}/{{item.numIn}} {{item.weight}}千克/匹</text><!--匹数/数量  进缸平均匹重-->
+        <text>{{item.color}}</text><!--印染色别 -->
+      </view>
+    </view>
+    <view class='process-list flex-box' bindtap='goProgress' data-id="{{item.id}}" data-title="{{item.dyeNum}}">
+      <!--流程循坏  -->
+      <block wx:for="{{item.flowList}}" wx:for-item="subItem" wx:key="id">
+        <view class='process-item'>
+          <icon type="{{subItem.iconType}}" size="14" color="{{subItem.iconColor}}" class='process-icon'/>
+          <text>{{subItem.flowName}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!--循环list  end-->
+ </view> 
+ <view class='bottom-line {{display}}' >我是有底线的</view>
+  <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+  </view>
+
+</view> 
+ <!--未完成 end  -->
+  
+<!--已完成-->  
+<view hidden="{{currentTab!==1}}" class='box' style="min-height:{{winHeight}}px"> 
+<view class='no-data  {{noData}}'>暂无数据</view> 
+  <view class='finish-list' >
+  <!--循环list  -->
+  <block wx:for="{{finishedList}}" wx:key="key">
+    <view  class='vat-item '   bindtap='goProgress' data-title="{{item.dyeNum}}" data-id="{{item.id}}" ><!-- 损坏：#E51C23，异常：#FF9800，正常：#fff;-->
+      <view class='vat-detail {{item.level}}'>
+        <view wx:if="{{item.level}}" class='grade {{item.level}}'>评级{{item.level}}</view><!-- 评级 -->
+        <view class='vat-top flex-box'>
+          <text class='dyeing-num'>{{item.dyeNum}}</text><!-- 印染编号 -->
+          <text class='vat-num'>{{item.number}}</text><!-- 缸号 -->
+        </view>
+        <view class='vat-bottom flex-box'>
+          <view>
+            <view>
+              <image src="../../../images/{{cloth_img}}" class='cloth-icon'></image>
+              <text>{{item.boltOut}}/{{item.numOut  }} {{item.weightOut}}千克/匹</text><!--匹数/数量  进缸平均匹重-->
+            </view>
+            <view>
+              <image src="../../../images/{{cloth_inferior_img}}" class='cloth-icon'></image>
+              <text>{{item.inferiorBolt}}/{{item.inferiorNum  }} {{item.inferiorweight}}千克/匹</text><!--匹数/数量  进缸平均匹重-->
+            </view>
+          </view>
+         <text>{{item.color}}</text><!--印染色别 -->
+        </view>
+      </view>
+    </view>
+  </block>
+  
+
+ 
+  <!--循环list  -->
+    
+  </view> 
+  <view class='bottom-line {{display}}' >我是有底线的</view>
+   <view class="body-view">  
+        <loading hidden="{{hidden}}" bindchange="loadingChange">  
+            加载中...  
+        </loading>  
+  </view>
+  <button  class='finish-btn' bindtap='confirmCompleted'>确认订单完成</button>
+</view> 
+<!--已完成end-->  
+ 
+  
+  
+</view>  

@@ -1,0 +1,15 @@
+<view class="section">  
+   <view class="row-wrap">
+          <view class="label">预约项目</view>
+          <picker bindchange="bindCasPickerChange" value="{{casIndex1}}" range="{{casArray}}">
+            <view>
+              <text>{{casArray[casIndex]}}</text>
+            </view>
+
+          </picker>
+        </view>
+      </view>
+    <view class="section {{reply?'on':'off'}}">
+       <input name="other" placeholder="请输入所预约项目" type="text"/>
+    <!-- </view> -->
+</view>  

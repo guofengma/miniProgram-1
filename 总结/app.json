@@ -1,0 +1,54 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/pay/index",
+    "pages/user/index",
+    "pages/basic/index",
+    "pages/accordion/accordion",
+    "pages/refresh/refresh",
+    "pages/addComponents/addComponents",
+    "pages/picker/picker",
+    "pages/delete/delete",
+    "pages/dtpicker/dtpicker",
+    "pages/picker2/picker"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "总结",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#469EE7",
+    "backgroundColor": "#fefefe",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/iconfont-home.png",
+        "selectedIconPath": "images/iconfont-home-active.png"
+      },
+      {
+        "pagePath": "pages/basic/index",
+        "text": "基础模块",
+        "iconPath": "images/iconfont-list.png",
+        "selectedIconPath": "images/iconfont-list-active.png"
+      },
+      {
+        "pagePath": "pages/pay/index",
+        "text": "付费功能",
+        "iconPath": "images/iconfont-cart.png",
+        "selectedIconPath": "images/iconfont-cart-active.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "个人中心",
+        "iconPath": "images/iconfont-user.png",
+        "selectedIconPath": "images/iconfont-user-active.png"
+      }
+    ]
+  }
+}

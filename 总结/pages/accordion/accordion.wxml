@@ -1,0 +1,46 @@
+<view class="page">
+    
+    <view class="page__bd page__bd_spacing">
+        <view class="kind-list">
+        <!--循坏data中的list  -->
+            <block wx:for="{{list}}" wx:key="id">
+                <view class="kind-list__item">
+                <!--标题  -->
+                    <view id="{{item.id}}" class="weui-flex kind-list__item-hd " bindtap="kindToggle">
+                        <view class="weui-flex__item">{{item.name}}</view>
+                        <image class="kind-list__img" src="{{item.open ? '../../../images/arrow_down.png' : '../../../images/arrow_left.png'}}"></image>
+                    </view>
+                <!--标题  -->
+                    <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                        <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                        <!--循坏子集dataList  -->
+                          <view class='info-item ' wx:for="{{item.dataList}}" wx:key="id">
+                            <view class='flex-box info-item-hd ' bindtap="kindToggleSub" id="{{item.id}}" data-index="{{item.subIndex}}" data-sub="{{item.sub}}">
+                              <text class='info-label'>{{item.label}}</text>
+                              <text class='info-value'>{{item.value}}</text>
+                              <!--若有子集显示箭头  -->
+                              <image wx:if="{{item.sub}}" class='kind-list__img__sub' src="{{item.open ? '../../../images/arrow_down.png' : '../../../images/arrow_left.png'}}"></image>
+                            </view>
+                            <view class=" info-item-sub {{item.open ? 'info-item-sub_show' : ''}}">
+                            <!--循坏子集的子集 dataSubLsit -->
+                              <block wx:for="{{item.dataSubLsit}}" wx:key="id">
+                                <view class='flex-box info-item-sub-item'>
+                                  <text>{{item.label}}</text>
+                                  <text>{{item.value}}</text>
+                                </view>
+                              </block>
+                            <!--循坏子集的子集 dataSubLsit end-->
+                            </view>
+                          </view>
+                        <!--循坏子集dataList end -->
+                        </view>
+                    </view>
+
+                </view>
+            </block>
+        <!--循坏data中的list  end -->
+            
+        </view>
+    </view>
+</view> 
+

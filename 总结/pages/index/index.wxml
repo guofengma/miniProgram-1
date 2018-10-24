@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+ <navigator url='../accordion/accordion'>1.手风琴效果</navigator>
+ <navigator url='../refresh/refresh'>2.下拉刷新，上拉加载</navigator>
+ <navigator url='../addComponents/addComponents'>3.动态增加组件、删除组件</navigator>
+ <navigator url='../picker/picker'>3.picker(可手输)</navigator>
+ <navigator url='../delete/delete'>3.左滑删除</navigator>
+ <navigator url='../dtpicker/dtpicker'>4.日期选择器</navigator>
+ <navigator url='../picker2/picker'>3.多级选择器（省市联动）</navigator>
+ 
+ 
+ 
+ 
+</view>
