@@ -1,0 +1,103 @@
+  /* navbar */
+  .weui-tab__panel{
+    margin-top: 86rpx;
+  }
+  .weui-badge.weui-badge_dot{
+    position: absolute;
+    top: 20rpx;right: 56rpx;
+    font-size: 12rpx;
+    border-radius: 50%;
+  }
+  /*end  navbar */
+  
+  /* 列表 */
+  .list-item{
+    padding: 46rpx 52rpx;
+    border-bottom: 2rpx solid #d7d7d7;
+  }
+  .left-img{
+    width: 154rpx;
+    height: 154rpx;
+  }
+  .left-label-box{
+  position: absolute;
+  top: 0;right: 0;
+  min-width: 123rpx;
+  height: 38rpx;
+  line-height: 38rpx;
+  background-color: rgba(255,255,255,.8);
+  font-size: 18rpx;
+  padding-right: 11rpx;
+  box-sizing: border-box;
+}
+.l-l-b-icon{
+  width: 15rpx;
+  height: 21rpx;
+  position: relative;
+  top: 4rpx;
+  right: 12rpx;
+}
+  .i-c-right{
+    width: 468rpx;
+    margin-left: 25rpx;
+  }
+  .i-c-r-center{
+    margin: 18rpx 0;
+  }
+  .item-bottom{
+    margin-top: 20rpx;
+  }
+  
+  .i-c-r-content{
+    width: 320rpx;
+  }
+ 
+   .i-c-r-content.sm{
+    width: 200rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .call-box{
+    /* padding-top: 80rpx; */
+  }
+  .call-icon{
+    width: 13rpx;
+	  height: 27rpx;
+    position: relative;
+    right: 8rpx;
+    top: 4rpx;
+  }
+  .list_00 .call-box{
+    /* padding-top: 56rpx; */
+    padding-right: 30rpx;
+  }
+  .call-icon.lg{
+    width: 19rpx;
+	  height: 39rpx;
+    top: 7rpx;
+    right: -12rpx;
+
+  }
+  .list_02{
+    padding: 0 32rpx;
+  }
+  .list_02 .list-item{
+    border: 2rpx solid #d7d7d7;
+    border-radius: 10rpx;
+    margin-top: 32rpx;
+    padding: 0rpx;
+  }
+  .list_02 .item-content{
+    padding: 22rpx;
+    border-bottom: 2rpx solid #d7d7d7;
+  }
+  .list_02 .item-bottom{
+    overflow: hidden;
+    margin: 20rpx;
+  }
+ 
+  /* end 列表 */
+  

@@ -1,0 +1,23 @@
+.page{
+  background-color: #F7F7FA;
+  min-height: 100vh;
+  padding-top: 25rpx;
+  box-sizing: border-box;
+}
+.page__bd{
+  background-color: #fff;
+}
+.user-img{
+  width: 58rpx;
+	height: 58rpx;
+  position: absolute;
+  top: -38rpx;
+  right: 46rpx;
+}
+.weui-cell{
+  line-height: 54rpx;
+}
+.weui-cell__ft{
+  width: 520rpx;
+}
+

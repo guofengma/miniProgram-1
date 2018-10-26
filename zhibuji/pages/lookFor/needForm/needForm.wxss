@@ -1,0 +1,17 @@
+/* 标签 */
+.weui-navbar{
+  border-color: #d7d7d7;
+  position: fixed;
+  top: 0;left: 0;
+  z-index: 500;
+  background-color: #fff;
+}
+
+.weui-navbar__slider{
+  height: 4rpx;
+}
+/* 表单 */
+.weui-tab__content{
+  padding: 50rpx;
+  min-height: 900rpx;
+}

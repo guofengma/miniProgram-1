@@ -1,0 +1,13 @@
+<view class="page">
+    <view class="page__bd">
+      <view class='top'>
+        <image class='top-img' src="/images/pay_success.png"></image>
+        <view class='top-txt'>支付成功</view>
+      </view>
+      <view class='bottom tc'>订单生成，请等待接单！</view>
+      
+    </view>
+</view>
+
+
+

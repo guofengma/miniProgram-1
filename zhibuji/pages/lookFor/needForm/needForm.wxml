@@ -1,0 +1,213 @@
+<view class="page">
+    <view class="page__bd">
+       <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+              <!-- 基础信息 -->
+                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                  <form bindsubmit='finishFirst'  data-offset="125" data-active="1">
+                    <!--寻布地点 -->
+                    <view class='form-item flex-sb'>
+                      <view class='form-label required'>寻布地点：</view>
+                      <view class='form-value'>
+                        <picker class='form-picker pr' disabled>
+                          <text class='picker-value'>绍兴轻纺城</text>
+                          <image class='picker-icon' src="/images/picker_icon.png"></image>
+                        </picker>
+                      </view>
+                    </view>
+                    <!--end 寻布地点 -->
+
+                     <!--面料名称 -->
+                    <view class='form-item flex-sb'>
+                      <view class='form-label required'>面料名称：</view>
+                      <view class='form-value'>
+                        <input class='form-input' placeholder='输入面料全称，如全棉布' name=""></input>
+                      </view>
+                    </view>
+                    <!--end 面料名称 -->
+
+                     <!--面料分类 -->
+                    <view class='form-item flex-sb'>
+                      <view class='form-label required'>面料分类：</view>
+                      <view class='form-value'>
+                        <picker class='form-picker pr'>
+                          <text class='picker-pld' wx:if="1">请选择面料分类</text>
+                          <text class='picker-value' wx:else>棉</text>
+                          <image class='picker-icon' src="/images/picker_icon.png"></image>
+                        </picker>
+                      </view>
+                    </view>
+                    <!--end 面料分类 -->
+
+                     <!--具体描述 -->
+                    <view class='form-item '>
+                      <view class='form-label required'>具体描述：</view>
+                      <view class='form-value'>
+                        <textarea class='form-textarea' placeholder='请具体描述下你的面料，如千鸟格印花，做女装用，春夏季' name="" maxlength="-1"></textarea>
+                      </view>
+                    </view>
+                    <!--end 具体描述 -->
+
+                     <!--样品照片 -->
+                    <view class='form-item '>
+                      <view class='form-label required'>样品照片（不少于一张）：</view>
+                      <view class='form-value'>
+                         <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{files}}" wx:key="*this">
+                                    <view class="weui-uploader__file  weui-uploader__file_status" bindtap="previewImage" id="{{item.path}}">
+                                        <image class="weui-uploader__img" src="{{item.path}}" mode="aspectFill" />
+                                        <image class='delete-icon' bindtap='deleteImage' src="/images/delete_icon.png" data-index="{{index}}"></image>
+                                        <view class="weui-loading upload" wx:if="{{item.status==0}}" ></view>
+                                        <!-- 上传失败提示 -->
+                                        <view class="weui-uploader__file-content" wx:if="{{item.status==2}}">
+                                          <icon type="warn" size="23" color="#F43530"></icon>
+                                        </view>
+                                        <!-- 上传失败提示 -->
+                                    </view>
+                                </block>
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                      </view>
+                    </view>
+                    <!--end 样品照片 -->
+
+                     <!--截止时间 -->
+                    <view class='form-item flex-sb'>
+                      <view class='form-label required'>截止时间：</view>
+                      <view class='form-value'>
+                        <picker class='form-picker pr' mode = 'date' bindchange='choseDate'>
+                          <text class='picker-pld' wx:if="{{endDate==''}}">请选择结束时间</text>
+                          <text class='picker-value' wx:else>{{endDate}}</text>
+                          <image class='picker-icon' src="/images/picker_icon.png"></image>
+                        </picker>
+                      </view>
+                    </view>
+                    <!--end 截止时间 -->
+
+                    <!-- 下一步按钮 -->
+                    <button class='btn form-btn' form-type='submit'>下一步</button>
+                    <!--end 下一步按钮 -->
+                    
+                    
+                  </form>
+                </view>
+              <!--end 基础信息 -->
+              <!-- 选填信息 -->
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                  <form bindsubmit='finishSecond' data-offset="250" data-active="2"> 
+                    <view class='red fs24 tc mb15'>您填写的信息越完善，找到布的成功率越高</view>
+
+                    <!--门幅 -->
+                    <view class='form-item flex-fs'>
+                      <view class='form-label sm'>门幅：</view>
+                      <view class='form-value lg'>
+                        <input class='form-input' placeholder='请输入门幅' type="digit" name=""></input>
+                      </view>
+                      <text class='form-unit'>cm</text>
+                    </view>
+                    <!--end 门幅 --> 
+
+                     <!--克重 -->
+                    <view class='form-item flex-fs'>
+                      <view class='form-label sm'>克重：</view>
+                      <view class='form-value lg'>
+                        <input class='form-input' placeholder='请输入克重' type="digit" name=""></input>
+                      </view>
+                      <text class='form-unit'>g/m²</text>
+                    </view>
+                    <!--end 克重 --> 
+
+                     <!--花型 -->
+                    <view class='form-item flex-fs'>
+                      <view class='form-label sm'>花型：</view>
+                      <view class='form-value lg'>
+                        <input class='form-input' placeholder='请输入面料的花型，如细花纹' type="digit" name=""></input>
+                      </view>
+                    </view>
+                    <!--end 花型 --> 
+
+                     <!--工艺 -->
+                    <view class='form-item flex-fs'>
+                      <view class='form-label sm'>工艺：</view>
+                      <view class='form-value'>
+                        <picker class='form-picker pr'>
+                          <text class='picker-pld' wx:if="1">请选择工艺</text>
+                          <text class='picker-value' wx:else>压花</text>
+                          <image class='picker-icon' src="/images/picker_icon.png"></image>
+                        </picker>
+                      </view>
+                    </view>
+                    <!--end 工艺 -->
+
+                     <!--成分 -->
+                    <view class='form-item flex-fs'>
+                      <view class='form-label sm'>成分：</view>
+                      <view class='form-value lg'>
+                        <input class='form-input' placeholder='请输入面料材质和占比，如100%' type="digit" name=""></input>
+                      </view>
+                    </view>
+                    <!--end 成分 --> 
+
+                    <!--其他备注 -->
+                    <view class='form-item '>
+                      <view class='form-label'>其他备注：</view>
+                      <view class='form-value'>
+                        <textarea class='form-textarea' placeholder='请填写未涉及的相关内容' name="" maxlength="-1"></textarea>
+                      </view>
+                    </view>
+                    <!--end 其他备注 -->
+
+                    <!-- 按钮组 -->
+                    <view class='btn-box flex-sb'>
+                      <button class='btn sm form-btn grey'  bindtap='changeStep'  data-offset="0" data-active="0">上一步</button>
+                      <button class='btn sm form-btn ' form-type='submit' >下一步</button>
+                    </view>
+                    <!--end 按钮组 -->
+                  </form>
+                </view>
+              <!-- end选填信息 -->
+            
+              <!-- 费用计算 -->
+                <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                  <form bindsubmit='finishThird' >
+                     <!--奖励金 -->
+                    <view class='form-item flex-fs'>
+                      <view class='form-label sm'>奖励金：</view>
+                      <view class='form-value lg'>
+                        <input class='form-input' placeholder='请输入奖励金' type="digit" name=""></input>
+                        <view class='red fs24  mt15'>根据市场情况，奖励金最少200元起</view>
+                      </view>
+                      <text class='form-unit'>元</text>
+                    </view>
+                    <!--end 奖励金 --> 
+
+                    <!-- 按钮组 -->
+                    <view class='btn-box flex-sb mt700'>
+                      <button class='btn sm form-btn grey' bindtap='changeStep' data-offset="125" data-active="1">上一步</button>
+                      <button class='btn sm form-btn ' form-type='submit' >提交</button>
+                    </view>
+                    <!--end 按钮组 -->
+                     
+                  </form>
+                </view>
+              <!-- end 费用计算 -->
+                
+            </view>
+        </view>
+    </view>
+</view>
+
+
+

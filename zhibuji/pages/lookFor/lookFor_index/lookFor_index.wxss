@@ -1,0 +1,97 @@
+/* 我要寻布界面 */
+.content_0{
+  padding: 48rpx;
+}
+.content_0 .img-box{
+  width: 100%;
+	height: 545rpx;
+  margin-bottom: 200rpx;
+}
+/* 我要寻布界面 */
+
+/* 未成为小哥界面 */
+.not-be-content{
+  text-align: center;
+
+}
+.not-be-content .top-content{
+  margin-top: 143rpx;
+}
+.not-be-content .t-c-img{
+  width: 454rpx;
+	height: 345rpx;
+}
+.bottom-content{
+  margin-top: 147rpx;
+}
+/* end 未成为小哥界面 */
+
+/* 我能寻布列表 */
+.list{
+  padding: 50rpx 32rpx;
+}
+.list-item{
+  width: 100%;
+	min-height: 200rpx;
+	background-color: #ffffff;
+	border-radius: 10rpx;
+	border: solid 1rpx #b9bbba;
+  margin-bottom: 26rpx;
+  padding: 14rpx 16rpx;
+  box-sizing: border-box;
+}
+.item-left{
+  width: 170rpx;
+  text-align: right;
+  position: relative;
+  
+}
+.left-img{
+  width: 169rpx;
+	height: 169rpx;
+}
+.left-label-box{
+  position: absolute;
+  top: 0;right: 0;
+  min-width: 123rpx;
+  height: 38rpx;
+  line-height: 38rpx;
+  background-color: rgba(255,255,255,.8);
+  font-size: 18rpx;
+  padding-right: 11rpx;
+  box-sizing: border-box;
+}
+.l-l-b-icon{
+  width: 15rpx;
+  height: 21rpx;
+  position: relative;
+  top: 4rpx;
+  right: 12rpx;
+}
+.item-right{
+  margin-left: 25rpx;
+  width: 628rpx;
+}
+.i-r-top{
+  max-width: 452rpx;
+}
+.i-r-c-txet {
+  max-width: 380rpx;
+}
+.i-r-center{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.i-r-bottom{
+  line-height:56rpx; 
+}
+.i-r-b-time{
+  width: 258rpx;
+}
+.i-r-b-price{
+  width: 180rpx;
+  word-break: break-all;
+}
+
+/* end 我能寻布列表 */
+

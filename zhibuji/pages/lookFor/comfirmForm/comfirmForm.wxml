@@ -1,0 +1,89 @@
+<view class="page">
+    <view class="page__bd">
+        <!-- 联系方式 -->
+        <view class='top-contact'>
+
+          <view class='t-c-row flex-fs'>
+            <image class='t-c-row-icon' src="/images/user_icon.png" ></image>
+            <view class='t-c-row-value'>张女士</view>
+          </view>
+
+          <view class='t-c-row flex-fs'>
+            <image class='t-c-row-icon mobile-icon' src="/images/mobile_icon.png" ></image>
+            <view class='t-c-row-value'>1589652458</view>
+          </view>
+
+        </view>
+        <!-- end联系方式 -->
+
+        <!-- 订单内容 -->
+        <view class='order-content '>
+          <!-- 图片 -->
+          <view class='img-list flex-fs '>
+            <view class='img-item' wx:for="{{imgList}}" wx:key="" bindtap='previewImage' data-src="{{item}}" data-list="{{imgList}}">
+              <image src="{{item}}"  class='img'></image>
+            </view>
+           
+          </view>
+          <!-- 图片 -->
+
+          <view class='content-row flex-sb'>
+            <view class='c-r-label'>寻布地点：</view>
+            <view class='c-r-value tr'>绍兴轻纺城</view>
+          </view>
+
+          <view class='content-row flex-sb'>
+            <view class='c-r-label'>面料名称：</view>
+            <view class='c-r-value tr'>全棉印花布</view>
+          </view>
+
+           <view class='content-row flex-sb'>
+            <view class='c-r-label'>具体描述：</view>
+            <view class='c-r-value tr'>千鸟格，做女装，春</view>
+          </view>
+
+          <view class='content-row flex-sb'>
+            <view class='c-r-label'>截止时间：</view>
+            <view class='c-r-value tr'>2022-12-12</view>
+          </view>
+
+          <view class='content-row flex-sb'>
+            <view class='c-r-label'>门幅：</view>
+            <view class='c-r-value tr'>10cm</view>
+          </view>
+
+          <view class='content-row flex-sb'>
+            <view class='c-r-label'>克重：</view>
+            <view class='c-r-value tr'>247g/m2</view>
+          </view>
+
+          <view class='content-row flex-sb'>
+            <view class='c-r-label'>花型：</view>
+            <view class='c-r-value tr'>全棉印花布</view>
+          </view>
+
+          <view class='content-row flex-sb'>
+            <view class='c-r-label'>工艺：</view>
+            <view class='c-r-value tr'>印花</view>
+          </view>
+
+           <view class='content-row flex-sb'>
+            <view class='c-r-label'>成分：</view>
+            <view class='c-r-value tr'>100%棉</view>
+          </view>
+        </view>
+        <!--end 订单内容 -->
+        
+        <!--底部 -->
+        <view class='foot flex-sb'>
+          <view class='foot-sum'>合计：￥200元</view>
+          <view class='foot-btn' bindtap='chosePayWay'>提交</view>
+        </view>
+        <!--end底部 -->
+        
+        
+    </view>
+</view>
+
+
+

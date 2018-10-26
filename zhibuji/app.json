@@ -1,0 +1,43 @@
+{
+  "pages":[
+    
+    "pages/lookFor/lookFor_index/lookFor_index",
+    "pages/lookFor/needForm/needForm",
+    "pages/lookFor/comfirmForm/comfirmForm",
+    "pages/lookFor/paySuccess/paySuccess",
+    "pages/orders/orders_index/orders_index",
+    "pages/orders/orders_detail/orders_detail",
+    "pages/user/user_index/user_index",
+    "pages/user/myData/myData",
+    "pages/user/myWallet/myWallet",
+    "pages/user/feedback/feedback"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "织布机",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/lookFor/lookFor_index/lookFor_index",
+        "text": "寻布",
+        "iconPath":"images/tabIcon_01.png",
+        "selectedIconPath":"images/tabIcon_01_active.png"
+      },
+      {
+        "pagePath": "pages/orders/orders_index/orders_index",
+        "text": "订单",
+        "iconPath": "images/tabIcon_02.png",
+        "selectedIconPath": "images/tabIcon_02_active.png"
+      },
+      {
+        "pagePath": "pages/user/user_index/user_index",
+        "text": "我的",
+        "iconPath": "images/tabIcon_03.png",
+        "selectedIconPath": "images/tabIcon_03_active.png"
+      }
+    ]
+  }
+}

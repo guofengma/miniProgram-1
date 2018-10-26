@@ -1,0 +1,9 @@
+.top{
+  padding-top: 165rpx;
+  padding-bottom: 122rpx;
+  text-align: center;
+}
+.top-img{
+  margin-bottom: 46rpx;
+  width: 250rpx;height: 250rpx
+}

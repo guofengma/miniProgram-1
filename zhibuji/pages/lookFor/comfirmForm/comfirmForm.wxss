@@ -1,0 +1,59 @@
+.top-contact{
+  border-bottom: 11rpx solid #f8f8f8;
+}
+.t-c-row {
+  height: 80rpx;
+  line-height: 80rpx;
+  border-top: 2rpx solid #d7d7d7;
+  padding: 0 58rpx;
+}
+.t-c-row-icon{
+  width: 32rpx;
+	height: 33rpx;
+  margin-right: 28rpx;
+  position: relative;
+  top: 23rpx;
+}
+.mobile-icon{
+	height: 38rpx;
+}
+.order-content{
+  padding: 24rpx 55rpx;
+}
+.img-list{
+  margin-bottom: 24rpx;
+}
+.img-item{
+  margin-right: 41rpx;
+}
+.img-list .img{
+  width: 109rpx;
+	height: 109rpx;
+}
+.content-row{
+  padding: 14rpx 0;
+  word-break: break-all;
+}
+.c-r-label{
+  min-width: 152rpx;
+}
+.foot{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 139rpx;
+  line-height: 139rpx;
+	background-color: #f8f8f8;
+	border: solid 1px #d7d7d7;
+  padding-left: 55rpx;
+  font-size: 36rpx;
+  margin-top: 12rpx;
+}
+.foot-btn{
+  color: #fff;
+  background-color: #37bb18;
+  width: 249rpx;
+  text-align: center;
+}

@@ -1,0 +1,344 @@
+<view class="page">
+    <view class="page__bd">
+       
+
+
+        <!-- 模块一 -->
+        <view class='detail-item item_01'>
+          <!-- 轮播 -->
+          <swiper 
+            indicator-dots="true"
+            indicator-color="#e6e6e6"
+            indicator-active-color="#fff"
+            autoplay="true" >
+            <block wx:for="{{imgUrls}}" wx:key="">
+              <swiper-item>
+                <image src="{{item}}" class="slide-image" mode='center'/>
+              </swiper-item>
+            </block>
+          </swiper>
+          <!--end 轮播 -->
+          <view class='item-title'>订单详情</view>
+          <view class='item-body'>
+           <!-- 内容一 -->
+            <view class='i-b-content' wx:if="{{tType==1}}">
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>需求方：</view>
+                <view class='row-value'>张拉拉</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>联系电话：</view>
+                <view class='row-value'>15289654259</view>
+                <view class='icon-box'>
+                  <image src="/images/call_icon.png" class='call-icon'></image>
+                </view>
+              </view>
+              
+            </view>
+            <!--end 内容一 -->
+            <!-- 内容二 -->
+            <view class='i-b-content'>
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>订单编号：</view>
+                <view class='row-value'>$#FEWRfefw#FEWRfefwqaf#FEWRfefwqaf#FEWRfefwqaf#FEWRfefwqaf#FEWRfefwqafqafe</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>寻布地点：</view>
+                <view class='row-value'>绍兴轻纺城</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>面料名称：</view>
+                <view class='row-value'>绿色格子布</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>面料分类：</view>
+                <view class='row-value'>棉布</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>订单状态：</view>
+                <view class='row-value'>待确认</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>截止时间：</view>
+                <view class='row-value'>2012-12-12</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>具体描述：</view>
+                <view class='row-value'>千鸟格布纹棉布，春夏季做裙子用的，千父级可耦合福我我去偶发湖二期  鸟格哇各色嘎嘎</view>
+              </view>
+              
+            </view>
+            <!--end 内容二 -->
+            <!-- 内容三 -->
+            <view class='i-b-content'>
+
+              <view class='i-b-c-row flex-sb'>
+                <view class='i-b-c-row flex-fs'>
+                  <view class='row-label'>门幅：</view>
+                  <view class='row-value'>120cm</view>
+                </view>
+                <view class='i-b-c-row flex-fs'>
+                  <view class='row-label'>克重：</view>
+                  <view class='row-value'>125g</view>
+                </view>
+              </view>
+
+              <view class='i-b-c-row flex-sb'>
+                <view class='i-b-c-row flex-fs'>
+                  <view class='row-label'>成分：</view>
+                  <view class='row-value'>100%棉</view>
+                </view>
+                <view class='i-b-c-row flex-fs'>
+                  <view class='row-label'>花型：</view>
+                  <view class='row-value'>白绿条纹</view>
+                </view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>工艺：</view>
+                <view class='row-value'>压花</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>其他备注：</view>
+                <view class='row-value'>啦啦啦啦啦啦啦</view>
+              </view>
+
+               <view class='i-b-c-row flex-fs' wx:if="{{status==2&&tType==0}}">
+                <view class='row-label'>实际支出：</view>
+                <view class='row-value'>20元</view>
+              </view>
+
+               <!-- 操作按钮 -->
+              <view class='btn-box flex-sb' wx:if="{{status==1&&tType==0}}">
+                <button class='btn sm grey'>取消订单</button>
+                <button class='btn sm'>编辑订单</button>
+              </view>
+              <!-- end 操作按钮 -->
+
+              <!-- 重新发起按钮 -->
+              <view class='btn-box ' wx:if="{{status==2&&tType==0}}">
+                <button class='btn'>重新发起</button>
+              </view>
+              <!--end 重新发起按钮 -->
+              
+
+            </view>
+            <!--end 内容三 -->
+
+           
+            
+            
+          </view>
+        </view>
+        <!-- end模块一 -->
+
+        <!-- 模块二-->
+        <view class='detail-item item_02' wx:if="{{status==1}}">
+          <view class='item-title'>寻布{{tType==0?'信息':'结果'}}</view>
+          <view class='item-body'>
+          <!-- 内容一 -->
+            <view class='i-b-content'>
+              <view class='i-b-c-row flex-fs' wx:if="{{tType==0}}">
+                <view class='row-label'>寻布人：</view>
+                <view class='row-value'>zhangdada</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs' wx:if="{{tType==0}}">
+                <view class='row-label'>联系电话：</view>
+                <view class='row-value'>15965874562</view>
+                <view class='icon-box'>
+                  <image src="/images/call_icon.png" class='call-icon'></image>
+                </view>
+              </view>
+              <!-- 图片 -->
+              <view class='img-list flex-fs'>
+                <view class='img-box'>
+                  <image class='img' src="/images/1.png"></image>
+                </view>
+                <view class='img-box'>
+                  <image class='img' src="/images/1.png"></image>
+                </view>
+                <view class='img-box'>
+                  <image class='img' src="/images/1.png"></image>
+                </view>
+                <view class='img-box'>
+                  <image class='img' src="/images/1.png"></image>
+                </view>
+              </view>
+              <!--end  图片 -->
+
+              <!-- 按钮 -->
+              <button class='btn' wx:if="{{tType==1}}">上传样品</button>
+              <!-- 按钮 -->
+              
+            </view>
+          <!--end 内容一 -->
+          </view>
+        </view>
+        <!-- end模块二-->
+
+        <!-- 模块三 -->
+        <view class='detail-item item_03' wx:if="{{status==2&&tType==0}}">
+
+         
+          <view class='item-title'>寻布结果</view>
+          <!-- 轮播 -->
+          <swiper 
+            indicator-dots="true"
+            indicator-color="#e6e6e6"
+            indicator-active-color="#fff"
+            autoplay="true" >
+            <block wx:for="{{imgUrls}}" wx:key="">
+              <swiper-item>
+                <image src="{{item}}" class="slide-image" mode='center'/>
+              </swiper-item>
+            </block>
+          </swiper>
+          <!--end 轮播 -->
+           <view class='item-body'>
+                <!-- 内容一 -->
+            <view class='i-b-content'>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>寻布人：</view>
+                <view class='row-value'>李丹</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>寻样编号：</view>
+                <view class='row-value'>19fe486fd4e5fe</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>上传时间：</view>
+                <view class='row-value'>2012-12-12</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>面料名称：</view>
+                <view class='row-value'>绿色格子布</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>面料分类：</view>
+                <view class='row-value'>棉布</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>具体描述：</view>
+                <view class='row-value'>千鸟格布纹棉布，春夏季做裙子用的，千父级可耦合福我我去偶发湖二期  鸟格哇各色嘎嘎</view>
+              </view>
+              
+            </view>
+            <!--end 内容一 -->
+            <!-- 内容二 -->
+            <view class='i-b-content'>
+             <view class='i-b-c-row flex-sb'>
+                <view class='i-b-c-row flex-fs'>
+                  <view class='row-label'>门幅：</view>
+                  <view class='row-value'>120cm</view>
+                </view>
+                <view class='i-b-c-row flex-fs'>
+                  <view class='row-label'>克重：</view>
+                  <view class='row-value'>125g</view>
+                </view>
+              </view>
+
+              <view class='i-b-c-row flex-sb'>
+                <view class='i-b-c-row flex-fs'>
+                  <view class='row-label'>成分：</view>
+                  <view class='row-value'>100%棉</view>
+                </view>
+                <view class='i-b-c-row flex-fs'>
+                  <view class='row-label'>花型：</view>
+                  <view class='row-value'>白绿条纹</view>
+                </view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>工艺：</view>
+                <view class='row-value'>压花</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>其他备注：</view>
+                <view class='row-value'>啦啦啦啦啦啦啦</view>
+              </view>
+              
+            </view>
+            <!--end 内容二 -->
+            <!-- 内容三 -->
+            <view class='i-b-content'>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>提供商：</view>
+                <view class='row-value'>啦啦啦纺织面料有限公司</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>提供商：</view>
+                <view class='row-value'>啦啦啦纺织面料有限公司</view>
+              </view>
+              
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>联系人：</view>
+                <view class='row-value'>古总</view>
+              </view>
+
+              <view class='i-b-c-row flex-fs'>
+                <view class='row-label'>联系电话：</view>
+                <view class='row-value'>15289654259</view>
+                <view class='icon-box'>
+                  <image src="/images/call_icon.png" class='call-icon'></image>
+                </view>
+              </view>
+
+            </view>
+            <!--end 内容三 -->
+           </view>
+        </view>
+        <!-- end 模块三 -->
+
+        <!-- 模块四 -->
+        <view class='detail-item item_04' wx:if="{{status==2&&tType==0}}">
+           <view class='item-title'>其他样品面料</view>
+             <view class='item-body flex-sb'>
+              <!-- 图片 -->
+              <view class='img-list flex-fs'>
+                <view class='img-box'>
+                  <image class='img' src="/images/1.png"></image>
+                </view>
+                <view class='img-box'>
+                  <image class='img' src="/images/1.png"></image>
+                </view>
+                <view class='img-box'>
+                  <image class='img' src="/images/1.png"></image>
+                </view>
+                <view class='img-box'>
+                  <image class='img' src="/images/1.png"></image>
+                </view>
+              </view>
+              <!--end  图片 -->
+              <view class="weui-cell__ft weui-cell__ft_in-access "></view>
+
+             </view>
+        </view>
+        <!-- end 模块四 -->
+        
+        <view></view>
+        
+        
+    </view>
+</view>
+
+
+

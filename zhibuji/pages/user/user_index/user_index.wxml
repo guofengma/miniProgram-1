@@ -1,0 +1,44 @@
+<view class="page">
+    <view class="page__bd">
+        <!-- 用户信息 -->
+        <view class='top-info tc'>
+          <image class='user-img' src="{{userInfo.avatarUrl}}"></image>
+          <view wx:if="{{authorization}}" class='user-txt'>{{userInfo.nickName}}</view>
+          <view wx:else class='user-txt'>
+            <button 
+            wx:if="{{canIUse}}" 
+            open-type="getUserInfo" 
+            bindgetuserinfo="bindGetUserInfo"
+            type='default'
+            class='login-btn'
+            >
+            <view class='btn-txt'>授权登录</view>
+            </button>
+            <view wx:else>请升级微信版本</view>
+          </view>
+        </view>
+        <!-- end用户信息 -->
+
+        <!-- list -->
+        <view class='list'>
+          <navigator url="../myData/myData" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">我的资料</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="../myWallet/myWallet" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">我的钱包</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">200元</view>
+            </navigator>
+           <navigator url="../feedback/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">帮助与反馈</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+        </view>
+        <!--end  list -->
+        
+        
+    </view>
+</view>
+
+
+

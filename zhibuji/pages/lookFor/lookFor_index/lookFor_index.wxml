@@ -1,0 +1,108 @@
+<view class="page">
+    <view class="page__bd">
+    <!-- weui-tab -->
+        <view class="weui-tab">
+            <!-- weui-navbar -->
+            <view class="weui-navbar full">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view 
+                      id="{{index}}" 
+                      class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" 
+                      bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);">
+                </view>
+            </view>
+            <!-- end weui-navbar -->
+ 
+            <!-- weui-tab__panel -->
+            <view class="weui-tab__panel">
+                <!--content_0  -->
+                <view class="weui-tab__content content_0" hidden="{{activeIndex != 0}}">
+                  <!-- 图片 -->
+                  <view class='img-box'>
+                    <image class='img' src="/images/1.png" ></image>
+                  </view>
+                  <!-- end图片 -->
+                  <!-- 按钮 -->
+                  <button class='btn' bindtap='toForm'>寻布小哥帮忙</button>
+                  <!-- 按钮 -->
+                  
+                  
+                </view>
+                <!--end content_0  -->
+
+                <!--content_1  -->
+                <view class="weui-tab__content content_1" hidden="{{activeIndex != 1}}">
+                  <!-- 未成为小哥界面 -->
+                  <view wx:if="{{!isLaddie}}" class='not-be-content'>
+                        <view class='top-content'>
+                          <image class='t-c-img' src="/images/1.png"></image>
+                          <view class='t-c-txt'>你还不是寻布小哥，点击加入我们吧</view>
+                        </view>
+                        <view class='bottom-content'>
+                          <button class='btn md' bindtap='toBeLaddie'>成为寻布小哥</button>
+                        </view>
+                  </view>
+                  <!-- end未成为小哥界面 -->
+                
+                  <!-- list -->
+                  <view wx:else class='list' style="min-height:{{windowHeight}}px">
+                    <!-- 列表类容 -->
+                    <view class='list-item flex-sb' wx:for="{{list}}" wx:key="">
+                      <view class='item-left'>
+                        <image  class="left-img" src="/images/1.png" ></image>
+                        <view class='left-label-box tr'>
+                          <image class='l-l-b-icon' src="/images/position_icon.png"></image>
+                          <text>绍兴柯桥</text>
+                        </view>
+                      </view>
+                      <view class='item-right '>
+                           <view class='i-r-top w100 ellipsis'>绿白格子布绿白格子布绿白格子布绿白格子布绿白格子布绿白格子布绿白格子布</view> 
+                           <view class='i-r-center w100 flex-fs fs24'>
+                            <text class='green mr40 '>•</text>
+                            <text class=' i-r-c-txet ellipsis'>纯棉纯棉纯棉纯棉纯棉纯棉纯棉纯棉纯棉纯棉纯棉纯棉纯棉纯棉</text>
+                           </view>
+                           <view class='i-r-bottom w100 fs24 flex-sb'>
+                            <view class='i-r-b-time'>截止时间：2018-12-24</view>
+                            <view class='i-r-b-price fs36 fw'>
+                              20000元
+                            </view>
+                           </view>
+                      </view>
+                    </view>
+                    <!-- end列表类容 -->
+
+                    <!-- 暂无数据 -->
+                    <view class="weui-loadmore weui-loadmore_line middle" hidden='{{noDataHidden}}'>
+                        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+                    </view>
+                    <!-- end暂无数据 -->
+
+                    <!-- 底线 -->
+                    <view class="weui-loadmore weui-loadmore_line bottom" hidden='{{bottomHidden}}' style="margin-top:{{windowHeight}}px">
+                        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底啦</view>
+                    </view>
+                    <!-- end底线 -->
+                  </view>
+                  <!-- end list -->
+                </view>
+                <!--end content_1  -->
+            </view>
+            <!-- end weui-tab__panel -->
+        </view>
+        <!-- end weui-tab -->
+    </view>
+</view>
+
+<!-- 模态框 -->
+<view class='modal' wx:if="{{showModal}}">
+  <view class='modal-content'>
+   
+  </view>
+  <view class='modak-mask' bindtap='hideModal'></view>
+</view>
+<!-- end模态框 -->
+

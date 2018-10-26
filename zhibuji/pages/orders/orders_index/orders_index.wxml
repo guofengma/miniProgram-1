@@ -1,0 +1,161 @@
+<view class="page">
+    <view class="page__bd">
+       <view class="weui-tab">
+             <!-- weui-navbar-top -->
+            <view class="weui-navbar full">
+                <block wx:for="{{topTabs}}" wx:key="*this">
+                    <view 
+                      id="{{index}}" 
+                      class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" 
+                      bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);">
+                </view>
+            </view>
+            <!-- end weui-navbar-top -->
+
+            <!-- weui-navbar -->
+            <view class="weui-navbar second">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item pr {{activeIndexSecond == index ? 'weui-bar__item_on' : ''}}" bindtap="secondTabClick">
+                        <view class="weui-navbar__title ">
+                          {{item}}
+                           <view class="weui-badge weui-badge_dot"></view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <!--end  weui-navbar -->
+            
+            <!-- weui-tab__panel -->
+            <view class="weui-tab__panel">
+                <!-- 待确认 -->
+                <view class="weui-tab__content" hidden="{{activeIndexSecond != 0}}">
+                  <view class='list list_00'>
+                    <!-- 列表内容 -->
+                    <view class='list-item'>
+                        <view class='item-content flex-sb' bindtap='todetail' id="" data-name="绿白条子布">
+                          <view class='i-c-left pr'>
+                            <image class='left-img' src='/images/1.png'></image>
+                            <view class='left-label-box tr'>
+                              <image class='l-l-b-icon' src="/images/position_icon.png"></image>
+                              <text>绍兴柯桥</text>
+                            </view>
+                          </view>
+                          <view class='i-c-right flex-sb'>
+                            <view class='i-c-r-content'>
+                              <view class='i-c-r-top ellipsis'>绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布</view>
+                              <view class='i-c-r-center fs24 ellipsis'>奖励金3000000000000000000000000000000000元</view>
+                              <view class='i-c-r-bottom fs24'>截止时间：2018-12-21</view>
+                            </view>
+                            <view class='i-c-r-content sm fs24 tr' wx:if="{{activeIndex==1}}">
+                              <view class='call-box' bindtap='callUp'>
+                                <text>壁咚猫</text>
+                                <image class='call-icon lg' src="/images/call_icon.png"></image>
+                              </view>
+                            </view>
+                          </view>
+                        </view>
+                        <view class='item-bottom flex-sb' wx:if="{{activeIndex==0}}">
+                          <button class='btn sm grey' bindtap='cancelOrder'>取消订单</button>
+                          <button class='btn sm '>编辑订单</button>
+                        </view>
+                    </view>
+                    <!-- 列表内容 -->
+                  </view>
+                </view>
+                <!-- end 待确认 -->
+
+                <!-- 寻布中 -->
+                <view class="weui-tab__content" hidden="{{activeIndexSecond != 1}}">
+                  <view class='list list_01'>
+                    <!-- 列表内容 -->
+                    <view class='list-item'>
+                        <view class='item-content flex-sb' bindtap='todetail' id="" data-name="绿白条子布">
+                          <view class='i-c-left pr'>
+                            <image class='left-img' src='/images/1.png'></image>
+                            <view class='left-label-box tr'>
+                              <image class='l-l-b-icon' src="/images/position_icon.png"></image>
+                              <text>绍兴柯桥</text>
+                            </view>
+                          </view>
+                          <view class='i-c-right flex-sb'>
+                            <view class='i-c-r-content'>
+                              <view class='i-c-r-top ellipsis'>绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布</view>
+                              <view class='i-c-r-center fs24 ellipsis'>奖励金3000000000000000000000000000000000元</view>
+                              <view class='i-c-r-bottom fs24'>截止时间：2018-12-21</view>
+                            </view>
+                            <view class='i-c-r-content sm fs24 tr' >
+                              <view class='sample-num'>5个样品</view>
+                              <view class='h80' wx:if="{{activeIndex==0}}"></view>
+                              <view class='call-box' bindtap='callUp' wx:if="{{activeIndex==0}}">
+                                <image class='call-icon' src="/images/call_icon.png"></image>
+                                <text>壁咚猫</text>
+                              </view>
+                            </view>
+                          </view>
+                        </view>
+                        <view class='item-bottom flex-sb' bindtap='comfirm'>
+                          <button class='btn sm ' wx:if="{{activeIndex==0}}">寻布人确认</button>
+                          <button class='btn sm ' wx:else>上传样布</button>
+                          
+                        </view>
+                    </view>
+                    <!-- 列表内容 -->
+                  </view>
+                </view>
+                <!-- end寻布中 -->
+
+                <!-- 已关闭 -->
+                <view class="weui-tab__content" hidden="{{activeIndexSecond != 2}}">
+                   <view class='list list_02'>
+                    <!-- 列表内容 -->
+                    <view class='list-item'>
+                        <view class='item-content flex-sb' bindtap='todetail' id="" data-name="绿白条子布">
+                          <view class='i-c-left pr'>
+                            <image class='left-img' src='/images/1.png'></image>
+                            <view class='left-label-box tr'>
+                              <image class='l-l-b-icon' src="/images/position_icon.png"></image>
+                              <text>绍兴柯桥</text>
+                            </view>
+                          </view>
+                          <view class='i-c-right'>
+                              <view class='i-c-r-top ellipsis'>绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白条子布绿白</view>
+                              <view class='i-c-r-center fs24 ellipsis'>奖励金3000元</view>
+                              <view class='i-c-r-bottom fs24'>截止时间：2018-12-21</view>
+                          </view>
+                        </view>
+                        <view class='item-bottom' bindtap='comfirm'>
+                          <!-- <button class='btn sm grey fr'>没有满意的样品</button> -->
+                          <!-- <view class='tc w100 fs24'>寻布成功</view> -->
+                          <view class='fs24'>关闭原因：需求方不要找了</view>
+                        </view>
+                    </view>
+                    <!-- 列表内容 -->
+                  </view>
+                </view>
+                <!-- end 已关闭 -->
+
+
+
+                <!-- 暂无数据 -->
+                <view class="weui-loadmore weui-loadmore_line middle" hidden='{{noDataHidden}}'>
+                  <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+                </view>
+                <!-- end暂无数据 -->
+                <!-- 底线 -->
+                <view class="weui-loadmore weui-loadmore_line bottom" hidden='{{bottomHidden}}' style="margin-top:{{windowHeight}}px">
+                  <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底啦</view>
+                </view>
+                <!-- end底线 -->
+                
+            </view>
+            <!--end  weui-tab__panel -->
+        </view>
+    </view>
+</view>
+
+
+

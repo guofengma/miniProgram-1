@@ -1,0 +1,57 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">我的头像</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access pr">
+            <image class='user-img' src="{{userInfo.avatarUrl}}"></image>
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">微信名</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{userInfo.nickName}}</view>
+        </view>
+        <view class="weui-cell" >
+          <view class="weui-cell__bd">性别</view>
+          <view  class="weui-cell__ft weui-cell__ft_in-access" bindtap='choseGender'>{{gender}}</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">姓名</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" bindtap='editInfo' data-name="userName">{{userName?userName:"请输入姓名"}}</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">手机号</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" bindtap='editInfo' data-name="mobile">{{mobile?mobile:"请输入手机号"}}</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">地区</view>
+          <picker class="region-picker " mode="region" bindchange="regionChange" value="{{region}}">
+           <view class="weui-cell__ft weui-cell__ft_in-access">{{region?region:"请选择地区"}}</view>
+          </picker>
+        </view>
+         
+        
+    </view>
+</view>
+
+<!-- 模态框 -->
+<view class='modal' wx:if="{{showModal}}">
+  <view class='modal-content sm'>
+    <form bindsubmit='saveInfo'>
+      <view class='modal-head sm'>{{modal.title}}</view>
+      <view class='modal-body sm'>
+        <input type='text' class='modal-input' placeholder='请输入{{modal.title}}' name="{{modal.name}}"></input>
+      </view>
+      <view class='modal-foot sm flex-sb'>
+        <button class='modal-btn'  bindtap='hideModal'>取消</button>
+        <button class='modal-btn' form-type='submit'>确定</button>
+        
+      </view>
+    </form>
+    
+  </view>
+  <view class='modak-mask' bindtap='hideModal'></view>
+</view>
+<!-- end模态框 -->
+
+
+

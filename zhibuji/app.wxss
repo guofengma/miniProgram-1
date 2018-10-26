@@ -1,0 +1,300 @@
+@import 'weui.wxss';
+/**app.wxss**/
+page{
+    background-color: #fff;
+    font-size: 30rpx;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+/* 宽高 */
+.w100{
+  width: 100%;
+}
+.h80{
+  height: 80rpx;
+}
+/* 定位 */
+.pr{
+  position: relative;
+}
+/* 浮动 */
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+/* 字体颜色/大小 */
+.green{
+  color: #92d859;
+}
+.red{
+  color: #f00;
+}
+.fs24{
+  font-size: 24rpx;
+}
+.fs36{
+  font-size: 36rpx;
+}
+.fw{
+  font-weight: bold;
+}
+.tc{
+  text-align: center
+}
+.tr{
+  text-align: right;
+}
+/* 间距 */
+.ml40{
+  margin-left: 40rpx;
+}
+.mr40{
+  margin-right: 40rpx;
+}
+.mb15{
+  margin-bottom: 15rpx;
+}
+.mt15{
+  margin-top: 15rpx;
+}
+.mt700{
+  margin-top: 700rpx;
+}
+/*文字超出省略*/
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+/*弹性盒子  */
+.flex-sb{
+  display: flex;
+  justify-content: space-between;
+  
+}
+.flex-fs{
+  display: flex;
+  justify-content: flex-start
+}
+.column-center{
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/* navbar */
+.weui-navbar.full{
+  background-color: #37bb18;
+  color:#fff;
+  border: none;
+  z-index: 3000;
+  position: fixed;
+  top: 0;left: 0;
+}
+.weui-navbar.full .weui-navbar__item{
+  padding:24rpx 0;
+
+}
+.weui-navbar.full .weui-navbar__title{
+  font-size: 30rpx;
+}
+.weui-navbar.full .weui-navbar__item.weui-bar__item_on{
+  color: #fff;
+}
+.weui-navbar.full .weui-navbar__slider{
+  background-color: #fff;
+  width: 119rpx;
+  height: 4rpx;
+  bottom: 24rpx;
+}
+.weui-navbar.second{
+  position: fixed;
+  top: 96rpx;left: 0;
+  z-index: 3000;
+  margin: 0 25rpx;
+  width: 700rpx;
+  
+}
+.weui-navbar.second .weui-navbar__item{
+  padding: 18rpx 0;
+}
+.weui-navbar.second .weui-navbar__item.weui-bar__item_on{
+  color: #fd4810;
+}
+/* end navbar */
+
+/* button */
+.btn{
+ width: 584rpx;
+	height: 93rpx;
+  line-height: 93rpx;
+	background-color: #37bb18;
+	border-radius: 10px;
+  color: #fff;
+  font-size: 30rpx;
+}
+.btn.md{
+  width: 500rpx;
+	height: 105rpx;
+  line-height: 105rpx;
+}
+.btn.sm{
+ width: 227rpx;
+	height: 64rpx;
+  line-height: 64rpx;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+}
+.btn.grey{
+  background-color: #f8f8f8;
+  color: #000;
+}
+/* end button */
+
+/* modal */
+.modal{
+  position: absolute;
+  top: 0;left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+
+}
+.modak-mask{
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,.3);
+}
+.modal-content{
+  width: 600rpx;
+	height: 800rpx;
+	background-color: #f8f8f8;
+	border-radius: 10px;
+  position: absolute;
+  top: 50%;left: 50%;
+  margin-top: -400rpx;
+  margin-left: -300rpx;
+  text-align: center;
+}
+.modal-content.sm{
+  width: 578rpx;
+	height: 360rpx;
+   margin-top: -260rpx;
+  margin-left: -289rpx;
+}
+.modal-head.sm{
+  height: 76rpx;
+  line-height: 76rpx;
+  background-color: #EDEDED;
+  border-radius: 20rpx 20rpx 0  0;
+}
+.modal-foot{
+   border-top: 2rpx solid #ddd;
+}
+.modal-btn{
+  color: #1f91fe;
+  width: 49%;
+  border-radius: 0 0 0 20rpx;
+}
+.modal-btn:last-child{
+  border-left: 2rpx solid #ddd;
+  border-radius: 0 0 20rpx 0 ;
+  
+}
+.modal-btn::after{
+  border: none;
+  border-radius: 0;
+}
+.modal-body{
+  height:140rpx;
+  text-align: center;
+}
+.modal-input{
+  width: 482rpx;
+	height: 71rpx;
+	background-color: #ffffff;
+	border-radius: 20rpx;
+	border: solid 2rpx #e4e4e4;
+  margin: 50rpx auto;
+}
+/*end  modal */
+/* 数据相关 */
+.weui-loadmore_line.middle{
+  margin-top: 400rpx;
+}
+/* end 数据相关 */
+
+/* 表单 */
+.form-item{
+  margin-bottom: 36rpx;
+}
+.form-label{
+  min-width: 162rpx;
+  line-height: 68rpx;
+}
+.form-label.sm{
+  min-width: 100rpx;
+}
+.form-label.required:before{
+  content: "*";
+  color: #f00;
+  display: inline-block;
+}
+.form-picker,.form-input{
+  width: 480rpx;
+	height: 65rpx;
+	background-color: #ffffff;
+	border-radius: 10rpx;
+	border: solid 2rpx #d7d7d7;
+  padding: 0 20rpx;
+  line-height: 65rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+.picker-icon{
+  width: 24rpx;
+	height: 14rpx;
+  position: absolute;
+  top: 25rpx;right: 30rpx;
+}
+.picker-pld{
+  color: #808080;
+}
+.form-textarea{
+  width: 626rpx;
+	height: 203rpx;
+	background-color: #ffffff;
+	border-radius: 10rpx;
+  border: solid 2rpx #d7d7d7;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-top: 10rpx;
+}
+.delete-icon{
+  position: absolute;
+  bottom: 4rpx;right: 4rpx;
+  width: 30rpx;height: 30rpx;
+}
+.weui-loading.upload{
+  position: absolute;
+  top: 79rpx;left: 79rpx;
+}
+.form-btn{
+  margin-top: 50rpx;
+}
+.form-btn.sm{
+  width: 293rpx;
+	height: 93rpx;
+  line-height: 93rpx;
+  font-size: 30rpx;
+}
+.form-unit{
+  margin-left: 18rpx;
+  line-height: 65rpx;
+}
+/*end 表单 */
+
+
